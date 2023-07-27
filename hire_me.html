@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire Me</title>
+    <link href="css/font-awesome/css/all.min.css?ver=1.2.0" rel="stylesheet">
+    <style>
+        body {
+            background-color: white;
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif; /* Use the same font as in the original index.html */
+        }
+        .hire-container {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+        }
+        .button {
+            width: 150px;
+            height: 50px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px; /* To create almost semi-circle effect */
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            color: white;
+        }
+        .purple {
+            background-color: rgba(128, 0, 128, 0.5); /* 70% opacity makes it 30% lighter */
+        }
+        .green {
+            background-color: rgba(0, 128, 0, 0.5); /* 70% opacity makes it 30% lighter */
+        }
+        /* Add a thin white border to the images */
+        .workana-image, .upwork-image {
+            /* border: 1px solid white; */
+            border-radius: 50%;
+            width: 30px; /* Adjust the width to fit inside the button */
+            height: 30px; /* Adjust the height to fit inside the button */
+            margin-right: 10px;
+            margin-left: 10px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .workana-image img, .upwork-image img {
+            width: 300%;
+            height: 300%;
+            object-fit: contain;
+        }
+        .home-button {
+            width: 150px;
+            height: 50px;
+            border: 2px solid rgb(59, 89, 152); /* Border color for the transparent button */
+            border-radius: 25px; /* Round the corners slightly */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: rgb(59, 89, 152); /* Text and icon color */
+            background-color: transparent; /* Make the button transparent */
+            font-size: large;
+        }
+        .home-button i {
+            margin-right: 2px; /* Add space between icon and text */
+            /* object-fit: contain; */
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="hire-container">
+        <p>Contact me &#x1F447 <b>here</b> and...  <b>here</b> &#x1F447 for freelance projects &#x1F604;</p>
+    </div>
+    <div class="button-container">
+        <button class="button purple" onclick="navigateToWorkana()">
+            <div class="workana-image"><img src="images/Logo_Workana.png" alt="Workana Logo"></div>
+        </button>
+        <button class="button green" onclick="navigateToUpwork()">
+            <div class="upwork-image"><img src="images/upwork.svg" alt="Upwork Logo"></div>
+        </button>
+    </div>
+    <div style="margin-top: 50px;">
+        <button class="home-button" onclick="navigateToIndex()">
+            <i class="fas fa-home"></i>Home
+        </button>
+    </div>
+
+    <script>
+        function navigateToWorkana() {
+            window.location.href = "https://www.workana.com/freelancer/7e2a0c180a1cbc57c0b06cc2c6b6913f";
+        }
+
+        function navigateToUpwork() {
+            window.location.href = "https://www.upwork.com/freelancers/~0126f2668e29c597f8";
+        }
+        function navigateToIndex() {
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
