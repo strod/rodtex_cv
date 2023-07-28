@@ -11,5 +11,5 @@ function navigateToIndex() {
 }
 
 function navigateToAppHome() {
-    window.location.href = "/portfolio/tiktokapi/index.html";
+    window.location.href = "/rodtex_cv/portfolio/tiktokapi/index.html";
 }
