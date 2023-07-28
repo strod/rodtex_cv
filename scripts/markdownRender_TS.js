@@ -1,51 +1,57 @@
 const TermsOfServiceText = `
-# Terms of Service
+# Terms of Service for rod_ttk_api_conector
 
-These Terms of Service ("Terms") govern your access to and use of the TikTok app ("App") provided by RodTex_TikTokAPI ("we," "us," or "our"). By using the App, you agree to be bound by these Terms. If you do not agree with any part of these Terms, you should not use the App.
+Effective Date: [2023-07-18]
 
-##### 1. Eligibility
+Welcome to rod_ttk_api_conector! These Terms of Service ("Terms") govern your use of the rod_ttk_api_conector application ("Application") and its interaction with the TikTok API and other TikTok Developer Services. By using the Application, you agree to be bound by these Terms. If you do not agree to these Terms, please refrain from using the Application.
 
-1.1 Age Requirement: There are no age restrictions for using the App. By using the App, you represent and warrant that you are capable of entering into a binding contract with us and meet all eligibility requirements.
+## 1. License and Use of TikTok Developer Services
 
-1.2 Compliance: You agree to comply with all applicable laws, regulations, and third-party agreements while using the App.
+1.1. License: You are granted a limited, non-exclusive, non-transferable, and revocable license to use the TikTok Developer Services through the Application for your personal, non-commercial use only.
 
-##### 2. User Accounts
+1.2. TikTok Information: Any TikTok Information obtained through the Application must be used exclusively within the Application for your personal, non-commercial purposes.
 
-2.1 Account Creation: To use certain features of the App, you may need to create a user account. You are responsible for providing accurate and complete information during the registration process and keeping your account credentials secure.
+## 2. Compliance and Restrictions
 
-2.2 Account Usage: You are solely responsible for any activity that occurs under your account. You must notify us immediately of any unauthorized use or security breaches.
+2.1. Reasonable Use: You must comply with all applicable laws, rules, and regulations when using the Application and the TikTok Developer Services. Ensure you review and adhere to TikTok's requirements, policies, and guidelines.
 
-2.3 Account Termination: We reserve the right to suspend, terminate, or disable your account, without prior notice, for any violation of these Terms or any other reason at our sole discretion.
+2.2. General Restrictions: When using the Application and TikTok Developer Services, you agree not to:
 
-##### 3. Content
+- Violate any intellectual property rights, laws, regulations, or policies applicable to the TikTok Developer Services or TikTok Services.
+- Use the TikTok Developer Services for any commercial or unauthorized purpose, including spamming, advertisements, or solicitation without TikTok's express written consent.
+- Introduce harmful content, viruses, malware, or engage in any unauthorized activities through the Application or TikTok Developer Services.
 
-3.1 User Content: The App allows you to post, upload, and share content, including but not limited to text, images, videos, and audio ("User Content"). You retain ownership of your User Content, but by submitting it on the App, you grant us a non-exclusive, worldwide, royalty-free license to use, reproduce, modify, adapt, publish, and distribute your User Content for the purpose of operating and promoting the App.
+2.3. Compliance Audit: TikTok may audit your compliance with these Terms. You agree to cooperate and provide any necessary information to demonstrate your compliance.
 
-3.2 Prohibited Content: You agree not to post or share any content that is illegal, infringes upon intellectual property rights, violates privacy or publicity rights, or contains harmful or offensive material. We reserve the right to remove any content that violates these Terms or is otherwise objectionable.
+## 3. Data Protection
 
-3.3 Intellectual Property: The App and its original content (excluding User Content) are protected by intellectual property rights owned by us or our licensors. You agree not to modify, distribute, reproduce, or create derivative works based on the App without our prior written consent.
+3.1. Privacy: Your use of the Application and TikTok Developer Services is subject to the privacy practices and policies outlined in the Application's privacy policy.
 
-##### 4. Privacy
+## 4. Termination
 
-4.1 Data Collection: We collect and process personal information in accordance with our Privacy Policy. By using the App, you consent to our collection, use, and sharing of personal information as described in the Privacy Policy.
+4.1. Termination: TikTok reserves the right to terminate or suspend your access to the Application and TikTok Developer Services at any time and for any reason without prior notice.
 
-4.2 Cookies and Tracking Technologies: We may use cookies and similar tracking technologies to enhance your experience and collect information about your usage of the App. You can manage your preferences related to cookies through your device or browser settings.
+## 5. Contact and Support
 
-##### 5. Disclaimer of Warranties
+For any questions, support, or inquiries regarding the rod_ttk_api_conector Application, please contact:
+Email: rodstex@gmail.com
 
-The App is provided on an "as is" and "as available" basis without warranties of any kind, whether express or implied. We do not warrant that the App will be uninterrupted, error-free, or free from viruses or other harmful components. Your use of the App is at your own risk.
+## 6. Modifications to the Terms
 
-##### 6. Limitation of Liability
+We may update or modify these Terms from time to time, and any changes will be effective upon posting. It is your responsibility to review these Terms regularly for any updates. By continuing to use the Application after any modifications to the Terms, you agree to be bound by the revised Terms.
 
-To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of the App, even if we have been advised of the possibility of such damages.
+## 7. Governing Law
 
-##### 7. Governing Law and Dispute Resolution
+These Terms shall be governed by and construed in accordance with the laws of [Your Jurisdiction], without regard to its conflicts of law principles.
 
-These Terms shall be governed by and construed in accordance with the laws of [Your Country/Jurisdiction]. Any disputes arising under or in connection with these Terms shall be subject to the exclusive jurisdiction of the courts located in [Your City/Jurisdiction].
+## 8. Entire Agreement
 
-##### 8. Modifications to the Terms
+These Terms constitute the entire agreement between you and the rod_ttk_api_conector Application regarding your use of the TikTok Developer Services and the Application and supersede any prior agreements or communications.
 
-We reserve the right to modify or update these Terms at any time. Any changes will be effective immediately upon posting the revised Terms on the App. Your continued use of the App after the changes have been made constitutes your acceptance of the modified Terms.
+By using the rod_ttk_api_conector Application, you acknowledge that you have read, understood, and agreed to these Terms.
+
+[Rodrigo Teixeira]
+[São Paulo, SP, Brazil]
 `;
 // Get the target element
 const mdContentTermsOfService = document.getElementById('TermsOfServiceMD');

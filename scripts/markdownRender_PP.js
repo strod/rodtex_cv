@@ -1,63 +1,50 @@
 const PrivacyPolicyText = `
-# Privacy Policy
+# Privacy Policy for rod_ttk_api_conector
 
-This Privacy Policy explains how the app collects, uses, and discloses personal information when you use the TikTok app ("App").
+Effective Date: [2023-07-20]
 
-##### 1. Information We Collect
+Your privacy is important to us. This Privacy Policy ("Policy") explains how *rod_ttk_api_conector* collects, uses, and protects your personal information in connection with your use of the rod_ttk_api_conector application ("Application") and its interaction with the TikTok API and other TikTok Developer Services. By using the Application, you consent to the collection and use of your personal information as outlined in this Policy. If you do not agree with this Policy, please refrain from using the Application.
 
-###### 1.1 Personal Information
+## 1. Information We Collect
 
-We may collect the following types of personal information from you:
+1.1. TikTok Information: The Application interacts with the TikTok API and collects information made available through the TikTok Developer Services. This may include user data, posts, videos, and other content shared on TikTok. The Application does not collect any TikTok user credentials, passwords, or personal identification information beyond the scope of the TikTok API.
 
-- Contact Information: Such as your name, email address, phone number, or other similar contact details.
-- Usage Information: Such as your IP address, device information, log data, and analytics regarding your use of the App.
-- User Content: Any personal information that you provide in the content you submit or upload on the App.
+1.2. Usage Data: The Application may collect certain usage data, including but not limited to device information, IP address, app version, and usage patterns, to improve the Application's performance and user experience.
 
-###### 1.2 Cookies and Tracking Technologies
+## 2. How We Use Your Information
 
-We may use cookies and similar tracking technologies to enhance your experience and collect information about your usage of the App. These technologies help us analyze trends, administer the App, track users' movements, and gather demographic information.
+2.1. Application Usage: We use the TikTok Information collected through the Application to provide you with the features and functionality of the Application, such as displaying TikTok content within the Application.
 
-##### 2. How We Use Your Information
+2.2. Improvements and Analytics: We may use usage data and analytics to improve the performance, features, and user experience of the Application.
 
-We may use the collected information for the following purposes:
+## 3. Data Sharing and Disclosure
 
-- To provide and maintain the App.
-- To personalize your experience and improve the App's features and functionality.
-- To respond to your inquiries, comments, or feedback.
-- To send you promotional or marketing communications (with your consent).
-- To detect, prevent, and address technical issues, security breaches, or illegal activities.
+3.1. TikTok Data: The TikTok Information collected through the Application is used solely within the Application and is not shared or disclosed to any third parties.
 
-##### 3. Information Sharing and Disclosure
+3.2. Legal Requirements: We may disclose your information if required to do so by law or in response to valid legal requests.
 
-We may share your personal information in the following circumstances:
+## 4. Security
 
-- With your Consent: We may share your information when you provide us with your explicit consent.
-- Service Providers: We may engage trusted third-party service providers to assist us in operating, analyzing, and improving the App. These service providers will have access to your information solely for the purpose of performing tasks on our behalf.
-- Legal Requirements: We may disclose your information if required by law or in response to valid requests by public authorities.
+4.1. Data Security: We take reasonable measures to protect your information from unauthorized access, loss, misuse, or alteration. However, no data transmission over the internet or electronic storage is entirely secure, and we cannot guarantee absolute security.
 
-##### 4. Data Retention
+## 5. Children's Privacy
 
-We will retain your personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law.
+5.1. The Application is not intended for use by individuals under the age of [13 or any other applicable age for data processing consent under relevant privacy laws]. We do not knowingly collect or solicit personal information from individuals under this age. If you believe we have collected personal information from a child under this age, please contact us immediately, and we will promptly delete such information.
 
-##### 5. Security
+## 6. Changes to this Policy
 
-We take reasonable measures to protect your personal information from unauthorized access, disclosure, alteration, or destruction. However, please be aware that no method of transmission over the internet or electronic storage is 100% secure.
+6.1. We may update or modify this Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will post any updates on this page, and the revised Policy will be effective upon posting.
 
-##### 6. Children's Privacy
+## 7. Contact Us
 
-The App is not intended for use by individuals under the age of [age]. We do not knowingly collect personal information from children. If you believe we have inadvertently collected information from a child, please contact us immediately, and we will take appropriate steps to remove the information from our systems.
+If you have any questions or concerns regarding this Privacy Policy or the Application's privacy practices, please contact us at:
 
-##### 7. Third-Party Links and Services
+Email: rodstex@gmail.com
 
-The App may contain links to third-party websites or services that are not operated by us. We are not responsible for the privacy practices of these third parties. We encourage you to review the privacy policies of those third parties before providing any personal information.
+[Rodrigo Teixeira]
+[São Paulo, SP, Brazil]
 
-##### 8. Changes to this Privacy Policy
-
-We reserve the right to update or change this Privacy Policy at any time. Any modifications will be effective immediately upon posting the updated version on the App. Your continued use of the App after the changes have been made constitutes your acceptance of the modified Privacy Policy.
-
-##### 9. Contact Us
-
-If you have any questions, concerns, or suggestions regarding this Privacy Policy, please contact us at rodstex@gmail.com.
+By using the rod_ttk_api_conector Application, you acknowledge that you have read, understood, and agreed to this Privacy Policy.
 `;
 // Get the target element
 const mdContentPrivacyPolicy = document.getElementById('PrivacyPolicyMD');
