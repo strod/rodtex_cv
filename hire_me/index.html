@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hire Me</title>
-    <link href="css/font-awesome/css/all.min.css?ver=1.2.0" rel="stylesheet">
+    <link href="/css/font-awesome/css/all.min.css?ver=1.2.0" rel="stylesheet">
     <style>
         body {
             background-color: white;
@@ -78,11 +78,56 @@
             margin-right: 2px; /* Add space between icon and text */
             /* object-fit: contain; */
         }
+        .center_container{
+            display: block;
+            text-align: center;
+        }
+        .focault_table {
+            display: table;
+            border-collapse: separate;
+            box-sizing: border-box;
+            text-indent: initial;
+            white-space: collapse;
+            word-wrap: wrap;
+            line-height: normal;
+            font-weight: normal;
+            font-size: medium;
+            font-style: normal;
+            background-color: rgb(255,255,255);
+            color: -internal-quirk-inherit;
+            text-align: start;
+            border-spacing: 2px;
+            border-color: gray;
+            font-variant: normal;
+        }
+        .tbody {
+            display: table-row-group;
+            vertical-align: middle;
+            border-color: inherit;
+        }
+        .trow {
+            display: table-row;
+            vertical-align: inherit;
+            border-color: inherit;
+        }
+        .td {
+            display: table-cell;
+            vertical-align: inherit;
+        }
     </style>
 </head>
 <body>
     <br>
     <br>
+    <div class="center_container">
+        <div class="focault_table">
+            <div class="tbody">
+                <div class="trow">
+                    <img src="/images/foucault.jpeg"/>
+                </div>
+            </div>
+        </div>
+    </div>
     <br>
     <br>
     <div class="hire-container">
@@ -90,29 +135,20 @@
     </div>
     <div class="button-container">
         <button class="button purple" onclick="navigateToWorkana()">
-            <div class="workana-image"><img src="images/Logo_Workana.png" alt="Workana Logo"></div>
+            <div class="workana-image"><img src="/images/Logo_Workana.png" alt="Workana Logo"></div>
         </button>
         <button class="button green" onclick="navigateToUpwork()">
-            <div class="upwork-image"><img src="images/upwork.svg" alt="Upwork Logo"></div>
+            <div class="upwork-image"><img src="/images/upwork.svg" alt="Upwork Logo"></div>
         </button>
     </div>
-    <div style="margin-top: 50px;">
+    <br>
+    <br>
+    <br>
+    <div class="button-container">
         <button class="home-button" onclick="navigateToIndex()">
             <i class="fas fa-home"></i>Home
         </button>
     </div>
-
-    <script>
-        function navigateToWorkana() {
-            window.location.href = "https://www.workana.com/freelancer/7e2a0c180a1cbc57c0b06cc2c6b6913f";
-        }
-
-        function navigateToUpwork() {
-            window.location.href = "https://www.upwork.com/freelancers/~0126f2668e29c597f8";
-        }
-        function navigateToIndex() {
-            window.location.href = "index.html";
-        }
-    </script>
+    <script src="/scripts/navigate.js"></script>
 </body>
 </html>

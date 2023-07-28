@@ -56,6 +56,15 @@
 .timeline-card-success:after {
   background-color: #37BC9B; }
 
+.timeline-card-portfolio {
+  border-left-color: #cb3925; }
+
+.timeline-card-portfolio:before {
+  border-color: #cb3925; }
+
+.timeline-card-portfolio:after {
+  background-color: #cb3925; }
+
 html {
   scroll-behavior: smooth; }
 
@@ -96,6 +105,14 @@ html {
 .avatar img {
   /* Safari 6.0 - 9.0 */
   filter: grayscale(100%); }
+
+.portfolio-img {
+  max-width: 100px;
+  max-height: 100px;
+  margin-top: 20px;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto; }
 
 footer a:not(.nav-link) {
   color: inherit;
@@ -139,3 +156,65 @@ footer a:not(.nav-link) {
   .page-break {
     padding-top: 5rem;
     page-break-before: always; } }
+
+/* BACK TO HOME */
+.home-button {
+  width: 150px;
+  height: 50px;
+  /* Border color for the transparent button */
+  border: 2px solid rgb(59, 89, 152); 
+  /* Round the corners slightly */
+  border-radius: 25px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgb(59, 89, 152); /* Text and icon color */
+  background-color: transparent; /* Make the button transparent */
+  font-size: large;
+}
+.home-button i {
+  margin-right: 2px; /* Add space between icon and text */
+  /* object-fit: contain; */
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.app-home-button {
+  width: 150px;
+  height: 50px;
+  margin-left: 20px;
+  border: 2px solid rgb(59, 89, 152); /* Border color for the transparent button */
+  border-radius: 25px; /* Round the corners slightly */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgb(59, 89, 152); /* Text and icon color */
+  background-color: transparent; /* Make the button transparent */
+  font-size: large;
+}
+
+.app-home-button i {
+  margin-right: 2px; /* Add space between icon and text */
+  /* object-fit: contain; */
+}
+
+.project-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.project-info {
+  flex: 1;
+}
+
+.project-image {
+  flex-shrink: 0; /* Prevent the image from shrinking */
+  margin-left: 20px; /* Add some space between the image and text */
+}

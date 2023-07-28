@@ -28,6 +28,7 @@ function updateAgeDisplay() {
 
     // Update the content of the <span> element with the calculated age
     document.getElementById("ageDisplay").textContent = age;
+    document.getElementById("ageDisplay2").textContent = age;
 }
 
 updateAgeDisplay();
