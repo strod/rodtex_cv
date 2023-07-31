@@ -1,13 +1,86 @@
 /* Buttons */
 /* Inputs */
 /* Timeline custom component */
-.timeline-container {
+.timeline-container-work {
   height: 400px; /* Adjust the height as per your requirement */
   overflow-y: scroll;
 }
+
+.timeline-container-education {
+  height: 250px; /* Adjust the height as per your requirement */
+  overflow-y: scroll;
+}
+
+.timeline-container-porfolio {
+  height: 200px; /* Adjust the height as per your requirement */
+  overflow-y: scroll;
+}
+
+/* Hide the scrollbar for webkit-based browsers */
+.timeline-container-work::-webkit-scrollbar {
+  width: 0.5em; /* Set a small width to the scrollbar to trigger its presence */
+}
+
+.timeline-container-work::-webkit-scrollbar-track {
+  background: transparent; /* Hide the scrollbar track */
+}
+
+.timeline-container-work::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Hide the scrollbar thumb */
+}
+/* Hide the scrollbar for Firefox */
+.timeline-container-work {
+  scrollbar-width: none; /* Hide the scrollbar in Firefox */
+}
+
+/* Hide the scrollbar for webkit-based browsers */
+.timeline-container-education::-webkit-scrollbar {
+  width: 0.5em; /* Set a small width to the scrollbar to trigger its presence */
+}
+
+.timeline-container-education::-webkit-scrollbar-track {
+  background: transparent; /* Hide the scrollbar track */
+}
+
+.timeline-container-education::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Hide the scrollbar thumb */
+}
+/* Hide the scrollbar for Firefox */
+.timeline-container-education {
+  scrollbar-width: none; /* Hide the scrollbar in Firefox */
+}
+
+/* Hide the scrollbar for webkit-based browsers */
+.timeline-container-porfolio::-webkit-scrollbar {
+  width: 0.5em; /* Set a small width to the scrollbar to trigger its presence */
+}
+
+.timeline-container-porfolio::-webkit-scrollbar-track {
+  background: transparent; /* Hide the scrollbar track */
+}
+
+.timeline-container-porfolio::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Hide the scrollbar thumb */
+}
+/* Hide the scrollbar for Firefox */
+.timeline-container-porfolio {
+  scrollbar-width: none; /* Hide the scrollbar in Firefox */
+}
+
 .timeline {
-  border-left: 2px solid #E6E9ED;
+  position: relative;
+  /* border-left: 2px solid #E6E9ED; */
   padding: 1rem 0; }
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px; /* Adjust the value as per your requirement */
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #E6E9ED; /* Color of the timeline line */
+}
 
 .timeline-card {
   position: relative;
@@ -27,7 +100,7 @@
   width: 12px;
   height: 12px;
   top: 20px;
-  left: -41px;
+  left: -28px;
   border: 2px solid;
   z-index: 2; }
 
