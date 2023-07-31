@@ -1,6 +1,10 @@
 /* Buttons */
 /* Inputs */
 /* Timeline custom component */
+.timeline-container {
+  height: 400px; /* Adjust the height as per your requirement */
+  overflow-y: scroll;
+}
 .timeline {
   border-left: 2px solid #E6E9ED;
   padding: 1rem 0; }
