@@ -214,6 +214,7 @@ html {
   text-align: right;
   margin-left: auto;
   margin-right: auto; 
+  vertical-align: top;
 }
 
 footer a:not(.nav-link) {
@@ -288,6 +289,7 @@ footer a:not(.nav-link) {
   /* Round the corners slightly */
   border-radius: 25px; 
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -296,12 +298,17 @@ footer a:not(.nav-link) {
   font-size: large;
 }
 .buy-button i {
+  position: absolute;
   margin-left: 4px; /* Add space between icon and text */
   /* object-fit: contain; */
 }
 
 .button-container {
   display: flex;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 50px;
   justify-content: center;
 }
 
@@ -330,6 +337,46 @@ footer a:not(.nav-link) {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.project-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.project-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.iframe-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  border-color: #cb3925;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
+
+/* Then style the iframe to fit in the container div with full height and width */
+.responsive-iframe {
+  position: absolute;
+  border-color: #cb3925;
+  margin-left: 20px;
+  margin-right: 20px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .project-info {
