@@ -13,3 +13,7 @@ function navigateToIndex() {
 function navigateToAppHome() {
     window.location.href = "/portfolio/tiktokapi/index.html";
 }
+
+function navigateToCausalImpact(){
+    window.location.href = "https://www.udemy.com/course/data-science-hacks-google-casual-impact/?referralCode=8E0F95EAEBB946179A4B";
+}

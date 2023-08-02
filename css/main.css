@@ -200,12 +200,21 @@ html {
   filter: grayscale(100%); }
 
 .portfolio-img {
-  max-width: 100px;
-  max-height: 100px;
+  max-width: 216px;
+  max-height: 216px;
   margin-top: 20px;
-  text-align: left;
+  text-align: center;
   margin-left: auto;
   margin-right: auto; }
+
+.online-course-img {
+  max-width: 375;
+  max-height: 211px;
+  margin-top: 20px;
+  text-align: right;
+  margin-left: auto;
+  margin-right: auto; 
+}
 
 footer a:not(.nav-link) {
   color: inherit;
@@ -268,6 +277,26 @@ footer a:not(.nav-link) {
 }
 .home-button i {
   margin-right: 2px; /* Add space between icon and text */
+  /* object-fit: contain; */
+}
+
+.buy-button {
+  width: 150px;
+  height: 50px;
+  /* Border color for the transparent button */
+  border: 2px solid rgb(214, 45, 32); 
+  /* Round the corners slightly */
+  border-radius: 25px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgb(214, 45, 32); /* Text and icon color */
+  background-color: transparent; /* Make the button transparent */
+  font-size: large;
+}
+.buy-button i {
+  margin-left: 4px; /* Add space between icon and text */
   /* object-fit: contain; */
 }
 
