@@ -342,15 +342,18 @@ footer a:not(.nav-link) {
 .project-content-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   justify-content: space-between;
 }
 
 .project-image-container {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  margin-left: 2em;
+  margin-right: 2em;
 }
 
 .iframe-container {
@@ -375,6 +378,14 @@ footer a:not(.nav-link) {
   left: 0;
   bottom: 0;
   right: 0;
+  width: 100%;
+  height: 100%;
+}
+.responsive-portfolio-img {
+  position: absolute;
+  margin-left: 2em;
+  margin-right: 2em;
+  overflow: hidden;
   width: 100%;
   height: 100%;
 }
