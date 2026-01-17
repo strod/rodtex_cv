@@ -223,3 +223,6 @@ $RECYCLE.BIN/
 
 # Documentation/context folder
 doc/
+
+# Private data
+conversations.json
