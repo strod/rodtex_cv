@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote - rodtex.dev Redesign</title>
+    <link rel="icon" href="../images/rodicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #08090d;
+            --card-bg: rgba(255,255,255,0.03);
+            --card-border: rgba(255,255,255,0.06);
+            --accent: #22d3ee;
+            --accent-green: #22c55e;
+            --accent-amber: #f59e0b;
+            --accent-pink: #ec4899;
+            --accent-violet: #8b5cf6;
+            --text: #e2e8f0;
+            --text-muted: #64748b;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Space Grotesk', -apple-system, sans-serif;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* ACCESS DENIED */
+        .access-denied {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .access-denied h1 { font-size: 1.2rem; color: var(--text-muted); }
+
+        /* MAIN VOTING PAGE */
+        .vote-page { display: none; }
+        .vote-page.active { display: block; }
+
+        .header {
+            text-align: center;
+            padding: 3rem 1.5rem 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        .header-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .header h1 {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 0.75rem;
+        }
+        .header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .mockup-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .mockup-card:hover {
+            border-color: rgba(255,255,255,0.12);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+            transform: translateY(-2px);
+        }
+
+        .card-preview {
+            position: relative;
+            height: 340px;
+            overflow: hidden;
+            border-bottom: 1px solid var(--card-border);
+            cursor: pointer;
+        }
+        .card-preview iframe {
+            width: 200%;
+            height: 200%;
+            border: none;
+            transform: scale(0.5);
+            transform-origin: top left;
+            pointer-events: none;
+        }
+        .card-preview-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 60%, rgba(8,9,13,0.8) 100%);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .mockup-card:hover .card-preview-overlay {
+            opacity: 1;
+        }
+        .preview-btn {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            padding: 8px 20px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .preview-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .card-body {
+            padding: 1.25rem 1.5rem;
+        }
+        .card-version {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+        .card-version.a { color: var(--accent); }
+        .card-version.b { color: var(--accent-violet); }
+        .card-version.c { color: var(--accent-amber); }
+        .card-version.d { color: var(--accent-pink); }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            margin-bottom: 0.4rem;
+        }
+        .card-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .vote-btn {
+            width: 100%;
+            padding: 12px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            background: transparent;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .vote-btn:hover {
+            background: rgba(34,211,238,0.08);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .vote-btn.voted {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+            color: #000;
+            pointer-events: none;
+        }
+
+        /* FULLSCREEN PREVIEW */
+        .preview-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: var(--bg);
+        }
+        .preview-modal.active { display: flex; flex-direction: column; }
+        .preview-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background: rgba(8,9,13,0.95);
+            border-bottom: 1px solid var(--card-border);
+            flex-shrink: 0;
+        }
+        .preview-toolbar-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .preview-nav {
+            display: flex;
+            gap: 8px;
+        }
+        .preview-nav-btn {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            padding: 6px 14px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .preview-nav-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+        .preview-nav-btn.active { color: var(--accent); border-color: var(--accent); background: rgba(34,211,238,0.08); }
+        .preview-close {
+            font-size: 1.2rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 4px 8px;
+            transition: color 0.2s;
+        }
+        .preview-close:hover { color: #fff; }
+        .preview-frame-container {
+            flex: 1;
+            overflow: hidden;
+        }
+        .preview-frame-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* THANK YOU STATE */
+        .thank-you {
+            display: none;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        .thank-you.active { display: block; }
+        .thank-you-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-green);
+        }
+        .thank-you h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .thank-you p {
+            color: var(--text-muted);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* NAME INPUT */
+        .name-section {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+        }
+        .name-section label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .name-input {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            padding: 10px 16px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            color: var(--text);
+            outline: none;
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            transition: border-color 0.2s;
+        }
+        .name-input:focus {
+            border-color: var(--accent);
+        }
+        .name-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .card-preview {
+                height: 260px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ACCESS DENIED (shown when no valid token) -->
+    <div class="access-denied" id="accessDenied">
+        <h1>Access denied.</h1>
+    </div>
+
+    <!-- MAIN VOTING PAGE -->
+    <div class="vote-page" id="votePage">
+        <div class="header">
+            <div class="header-label">rodtex.dev redesign</div>
+            <h1>Which version do you like best?</h1>
+            <p>Browse through all 4 design options below. Click the preview to view them full-screen, then vote for your favorite.</p>
+        </div>
+
+        <div class="container">
+            <!-- Name input -->
+            <div class="name-section">
+                <label for="voterName">Your name (so Rodrigo knows who voted)</label>
+                <input type="text" id="voterName" class="name-input" placeholder="Enter your name..." autocomplete="name">
+            </div>
+
+            <div class="cards-grid" id="cardsGrid">
+                <!-- Version A -->
+                <div class="mockup-card">
+                    <div class="card-preview" onclick="openPreview('a')">
+                        <iframe src="a.html" loading="lazy" sandbox="allow-same-origin"></iframe>
+                        <div class="card-preview-overlay">
+                            <button class="preview-btn"><i class="fas fa-expand"></i> Full Preview</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-version a">Version A</div>
+                        <div class="card-title">Glass Terminal</div>
+                        <div class="card-desc">Glassmorphism cards with terminal window chrome, aurora background, typing animations.</div>
+                        <button class="vote-btn" data-version="A" onclick="submitVote('A')">
+                            <i class="fas fa-check-circle"></i> Vote for Version A
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Version B -->
+                <div class="mockup-card">
+                    <div class="card-preview" onclick="openPreview('b')">
+                        <iframe src="b.html" loading="lazy" sandbox="allow-same-origin"></iframe>
+                        <div class="card-preview-overlay">
+                            <button class="preview-btn"><i class="fas fa-expand"></i> Full Preview</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-version b">Version B</div>
+                        <div class="card-title">Code Aurora</div>
+                        <div class="card-desc">VS Code-inspired layout with activity bar, editor tabs, status bar, and aurora gradient blobs.</div>
+                        <button class="vote-btn" data-version="B" onclick="submitVote('B')">
+                            <i class="fas fa-check-circle"></i> Vote for Version B
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Version C -->
+                <div class="mockup-card">
+                    <div class="card-preview" onclick="openPreview('c')">
+                        <iframe src="c.html" loading="lazy" sandbox="allow-same-origin"></iframe>
+                        <div class="card-preview-overlay">
+                            <button class="preview-btn"><i class="fas fa-expand"></i> Full Preview</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-version c">Version C</div>
+                        <div class="card-title">Midnight Dashboard</div>
+                        <div class="card-desc">Data dashboard layout with persistent sidebar, bento grid cards, live clock.</div>
+                        <button class="vote-btn" data-version="C" onclick="submitVote('C')">
+                            <i class="fas fa-check-circle"></i> Vote for Version C
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Version D -->
+                <div class="mockup-card">
+                    <div class="card-preview" onclick="openPreview('d')">
+                        <iframe src="d.html" loading="lazy" sandbox="allow-same-origin"></iframe>
+                        <div class="card-preview-overlay">
+                            <button class="preview-btn"><i class="fas fa-expand"></i> Full Preview</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-version d">Version D</div>
+                        <div class="card-title">Holo Terminal</div>
+                        <div class="card-desc">Sci-fi holographic aesthetic with boot sequence, glitch effects, neon borders, corner brackets.</div>
+                        <button class="vote-btn" data-version="D" onclick="submitVote('D')">
+                            <i class="fas fa-check-circle"></i> Vote for Version D
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thank you message (shown after voting) -->
+            <div class="thank-you" id="thankYou">
+                <div class="thank-you-icon"><i class="fas fa-check-circle"></i></div>
+                <h2>Thanks for voting!</h2>
+                <p>Your vote has been recorded. Rodrigo will review all feedback soon.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FULLSCREEN PREVIEW MODAL -->
+    <div class="preview-modal" id="previewModal">
+        <div class="preview-toolbar">
+            <div class="preview-nav">
+                <button class="preview-nav-btn" data-version="a" onclick="switchPreview('a')">A</button>
+                <button class="preview-nav-btn" data-version="b" onclick="switchPreview('b')">B</button>
+                <button class="preview-nav-btn" data-version="c" onclick="switchPreview('c')">C</button>
+                <button class="preview-nav-btn" data-version="d" onclick="switchPreview('d')">D</button>
+            </div>
+            <span class="preview-toolbar-label" id="previewLabel">Version A - Glass Terminal</span>
+            <button class="preview-close" onclick="closePreview()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="preview-frame-container">
+            <iframe id="previewFrame" src=""></iframe>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // TOKEN VALIDATION
+        // ==========================================
+        var VALID_TOKEN = 'rod2026vote';
+        var params = new URLSearchParams(window.location.search);
+        var token = params.get('token');
+
+        if (token === VALID_TOKEN) {
+            document.getElementById('accessDenied').style.display = 'none';
+            document.getElementById('votePage').classList.add('active');
+        }
+
+        // ==========================================
+        // PREVIEW MODAL
+        // ==========================================
+        var versionNames = {
+            a: 'Version A - Glass Terminal',
+            b: 'Version B - Code Aurora',
+            c: 'Version C - Midnight Dashboard',
+            d: 'Version D - Holo Terminal'
+        };
+
+        function openPreview(version) {
+            var modal = document.getElementById('previewModal');
+            modal.classList.add('active');
+            switchPreview(version);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function switchPreview(version) {
+            document.getElementById('previewFrame').src = version + '.html';
+            document.getElementById('previewLabel').textContent = versionNames[version];
+            document.querySelectorAll('.preview-nav-btn').forEach(function(btn) {
+                btn.classList.toggle('active', btn.dataset.version === version);
+            });
+        }
+
+        function closePreview() {
+            document.getElementById('previewModal').classList.remove('active');
+            document.getElementById('previewFrame').src = '';
+            document.body.style.overflow = '';
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closePreview();
+        });
+
+        // ==========================================
+        // VOTE SUBMISSION (via Formspree)
+        // ==========================================
+        function submitVote(version) {
+            var voterName = document.getElementById('voterName').value.trim() || 'Anonymous';
+
+            // Disable all vote buttons immediately
+            document.querySelectorAll('.vote-btn').forEach(function(btn) {
+                btn.disabled = true;
+                if (btn.dataset.version === version) {
+                    btn.classList.add('voted');
+                    btn.innerHTML = '<i class="fas fa-check"></i> Voted!';
+                } else {
+                    btn.style.opacity = '0.3';
+                }
+            });
+
+            // Submit to Formspree
+            fetch('https://formspree.io/f/xyyqkyoj', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    _subject: 'rodtex.dev Vote: Version ' + version,
+                    name: voterName,
+                    vote: 'Version ' + version,
+                    message: voterName + ' voted for Version ' + version + ' (' + versionNames[version.toLowerCase()] + ')',
+                    timestamp: new Date().toISOString()
+                })
+            }).then(function(response) {
+                if (response.ok) {
+                    setTimeout(function() {
+                        document.getElementById('cardsGrid').style.display = 'none';
+                        document.querySelector('.name-section').style.display = 'none';
+                        document.getElementById('thankYou').classList.add('active');
+                    }, 1000);
+                }
+            }).catch(function() {
+                // Still show thank you even if network fails
+                setTimeout(function() {
+                    document.getElementById('cardsGrid').style.display = 'none';
+                    document.querySelector('.name-section').style.display = 'none';
+                    document.getElementById('thankYou').classList.add('active');
+                }, 1000);
+            });
+        }
+    </script>
+
+</body>
+</html>

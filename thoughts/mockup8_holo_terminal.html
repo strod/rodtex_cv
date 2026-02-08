@@ -1,0 +1,1882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup 8: Holo Terminal - Rodrigo Teixeira</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;500;600;700&family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ============================================
+           CSS RESET & VARIABLES
+           ============================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #05080f;
+            --bg-glass: rgba(5, 8, 15, 0.8);
+            --bg-glass-hover: rgba(5, 8, 15, 0.9);
+            --neon-green: #00ff88;
+            --neon-cyan: #00e5ff;
+            --neon-pink: #ff0080;
+            --neon-purple: #a855f7;
+            --neon-yellow: #facc15;
+            --text-primary: #c8d6e5;
+            --text-bright: #e8f0fe;
+            --text-muted: #4a5568;
+            --border-glow: rgba(0, 255, 136, 0.15);
+            --border-cyan: rgba(0, 229, 255, 0.15);
+            --font-mono: 'Source Code Pro', 'Consolas', 'Courier New', monospace;
+            --font-body: 'Lexend', -apple-system, BlinkMacSystemFont, sans-serif;
+            --glow-green: 0 0 15px rgba(0, 255, 136, 0.3), 0 0 30px rgba(0, 255, 136, 0.1);
+            --glow-cyan: 0 0 15px rgba(0, 229, 255, 0.3), 0 0 30px rgba(0, 229, 255, 0.1);
+            --glow-pink: 0 0 15px rgba(255, 0, 128, 0.3), 0 0 30px rgba(255, 0, 128, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           STAR-FIELD BACKGROUND
+           ============================================ */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background:
+                radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 20% 35%, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1.5px 1.5px at 30% 55%, rgba(255,255,255,0.5), transparent),
+                radial-gradient(1px 1px at 40% 75%, rgba(255,255,255,0.3), transparent),
+                radial-gradient(1px 1px at 50% 20%, rgba(255,255,255,0.5), transparent),
+                radial-gradient(1.5px 1.5px at 60% 45%, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1px 1px at 70% 65%, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 80% 85%, rgba(255,255,255,0.3), transparent),
+                radial-gradient(1px 1px at 90% 10%, rgba(255,255,255,0.5), transparent),
+                radial-gradient(1px 1px at 15% 50%, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1.5px 1.5px at 25% 80%, rgba(255,255,255,0.3), transparent),
+                radial-gradient(1px 1px at 35% 10%, rgba(255,255,255,0.5), transparent),
+                radial-gradient(1px 1px at 45% 40%, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1px 1px at 55% 70%, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 65% 90%, rgba(255,255,255,0.3), transparent),
+                radial-gradient(1px 1px at 75% 30%, rgba(255,255,255,0.5), transparent),
+                radial-gradient(1.5px 1.5px at 85% 60%, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1px 1px at 95% 50%, rgba(255,255,255,0.5), transparent),
+                radial-gradient(1px 1px at 5% 95%, rgba(255,255,255,0.3), transparent),
+                radial-gradient(1px 1px at 12% 70%, rgba(0,255,136,0.3), transparent),
+                radial-gradient(1px 1px at 88% 25%, rgba(0,229,255,0.3), transparent),
+                radial-gradient(1px 1px at 50% 50%, rgba(255,0,128,0.2), transparent);
+            pointer-events: none;
+        }
+
+        /* Scan lines */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 255, 136, 0.01) 2px,
+                rgba(0, 255, 136, 0.01) 4px
+            );
+            pointer-events: none;
+        }
+
+        /* ============================================
+           BOOT SEQUENCE
+           ============================================ */
+        .boot-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 99999;
+            background: var(--bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20% 15%;
+            font-family: var(--font-mono);
+            animation: bootFadeOut 0.5s ease-out 2.8s forwards;
+            pointer-events: none;
+        }
+
+        .boot-line {
+            font-size: 14px;
+            color: var(--neon-green);
+            opacity: 0;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .boot-line:nth-child(1) {
+            animation: bootTypeIn 0.3s steps(30) 0.3s forwards;
+        }
+        .boot-line:nth-child(2) {
+            animation: bootTypeIn 0.3s steps(30) 0.8s forwards;
+        }
+        .boot-line:nth-child(3) {
+            animation: bootTypeIn 0.3s steps(30) 1.3s forwards;
+        }
+        .boot-line:nth-child(4) {
+            animation: bootTypeIn 0.3s steps(30) 1.8s forwards;
+            color: var(--neon-cyan);
+        }
+        .boot-line:nth-child(5) {
+            animation: bootTypeIn 0.3s steps(30) 2.2s forwards;
+            color: var(--neon-cyan);
+            font-weight: 700;
+        }
+
+        @keyframes bootTypeIn {
+            from { opacity: 0; transform: translateX(-5px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes bootFadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+
+        /* Main content fade in after boot */
+        .main-content {
+            opacity: 0;
+            animation: contentFadeIn 0.8s ease-out 2.8s forwards;
+        }
+
+        @keyframes contentFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ============================================
+           MOCKUP BANNER
+           ============================================ */
+        .mockup-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10000;
+            background: linear-gradient(90deg, #003d22, var(--neon-green), #003d22);
+            color: var(--bg);
+            text-align: center;
+            padding: 8px 16px;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        nav {
+            position: fixed;
+            top: 33px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(5, 8, 15, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-glow);
+            box-shadow: 0 1px 20px rgba(0, 255, 136, 0.06);
+            padding: 0 2rem;
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 56px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-mono);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--neon-green);
+            text-decoration: none;
+        }
+
+        .nav-logo .blink {
+            animation: cursorBlink 1s step-end infinite;
+        }
+
+        @keyframes cursorBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--text-muted);
+            text-decoration: none;
+            text-transform: lowercase;
+            transition: color 0.3s, text-shadow 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-green);
+            text-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--neon-green);
+            transition: 0.3s;
+        }
+
+        /* ============================================
+           HOLO GLASS CARD
+           ============================================ */
+        .holo-card {
+            position: relative;
+            background: var(--bg-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glow);
+            border-radius: 4px;
+            padding: 2rem;
+            box-shadow: var(--glow-green);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .holo-card:hover {
+            border-color: rgba(0, 255, 136, 0.3);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.15), 0 0 40px rgba(0, 255, 136, 0.05);
+        }
+
+        /* Corner bracket decorations */
+        .holo-card::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 24px;
+            height: 24px;
+            border-top: 2px solid var(--neon-green);
+            border-left: 2px solid var(--neon-green);
+            border-radius: 2px 0 0 0;
+            pointer-events: none;
+        }
+
+        .holo-card::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            width: 24px;
+            height: 24px;
+            border-bottom: 2px solid var(--neon-green);
+            border-right: 2px solid var(--neon-green);
+            border-radius: 0 0 2px 0;
+            pointer-events: none;
+        }
+
+        /* ============================================
+           SECTION STYLING
+           ============================================ */
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-header {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-family: var(--font-body);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title .accent {
+            color: var(--neon-green);
+        }
+
+        /* ============================================
+           SCROLL REVEAL
+           ============================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 89px;
+            position: relative;
+        }
+
+        /* Profile picture with holographic border */
+        .hero-avatar-wrap {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-avatar-border {
+            position: absolute;
+            inset: -4px;
+            border-radius: 20px;
+            background: conic-gradient(
+                from 0deg,
+                var(--neon-green),
+                var(--neon-cyan),
+                var(--neon-pink),
+                var(--neon-purple),
+                var(--neon-green)
+            );
+            animation: holoBorderSpin 4s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes holoBorderSpin {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .hero-avatar {
+            position: relative;
+            z-index: 1;
+            width: 180px;
+            height: 180px;
+            border-radius: 18px;
+            object-fit: cover;
+            display: block;
+            border: 3px solid var(--bg);
+        }
+
+        /* Holographic shimmer overlay */
+        .hero-avatar-wrap::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 18px;
+            z-index: 2;
+            background: linear-gradient(
+                135deg,
+                rgba(0, 255, 136, 0.1) 0%,
+                transparent 40%,
+                rgba(0, 229, 255, 0.1) 60%,
+                transparent 100%
+            );
+            background-size: 200% 200%;
+            animation: shimmer 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+        }
+
+        /* Glitch effect on name */
+        .hero-name {
+            font-family: var(--font-body);
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-name .glitch {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-name .glitch::before,
+        .hero-name .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .hero-name .glitch::before {
+            color: var(--neon-cyan);
+            animation: glitch1 4s infinite linear;
+            clip-path: inset(0 0 80% 0);
+        }
+
+        .hero-name .glitch::after {
+            color: var(--neon-pink);
+            animation: glitch2 4s infinite linear;
+            clip-path: inset(80% 0 0 0);
+        }
+
+        @keyframes glitch1 {
+            0%, 92%, 100% { transform: translate(0); }
+            93% { transform: translate(-3px, 1px); }
+            94% { transform: translate(3px, -1px); }
+            95% { transform: translate(-2px, 0); }
+        }
+
+        @keyframes glitch2 {
+            0%, 96%, 100% { transform: translate(0); }
+            97% { transform: translate(3px, 1px); }
+            98% { transform: translate(-3px, -1px); }
+            99% { transform: translate(2px, 0); }
+        }
+
+        .hero-role {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--neon-green);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .hero-location {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .hero-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--neon-green);
+            margin-bottom: 2rem;
+            padding: 6px 16px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 20px;
+            background: rgba(0, 255, 136, 0.05);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+            box-shadow: 0 0 6px var(--neon-green);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.85); }
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-neon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            font-family: var(--font-mono);
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-neon-green {
+            color: var(--neon-green);
+            border: 1px solid rgba(0, 255, 136, 0.4);
+            background: rgba(0, 255, 136, 0.06);
+        }
+
+        .btn-neon-green:hover {
+            background: rgba(0, 255, 136, 0.12);
+            box-shadow: var(--glow-green);
+            border-color: var(--neon-green);
+        }
+
+        .btn-neon-cyan {
+            color: var(--neon-cyan);
+            border: 1px solid rgba(0, 229, 255, 0.4);
+            background: rgba(0, 229, 255, 0.06);
+        }
+
+        .btn-neon-cyan:hover {
+            background: rgba(0, 229, 255, 0.12);
+            box-shadow: var(--glow-cyan);
+            border-color: var(--neon-cyan);
+        }
+
+        /* ============================================
+           ABOUT SECTION
+           ============================================ */
+        .about-terminal {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--neon-green);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        .about-text {
+            font-size: 1.05rem;
+            color: var(--text-primary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem 0.5rem;
+            border: 1px solid var(--border-glow);
+            border-radius: 4px;
+            background: rgba(0, 255, 136, 0.02);
+        }
+
+        .stat-value {
+            font-family: var(--font-mono);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--neon-green);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .about-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .about-meta a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .about-meta a:hover {
+            text-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
+        }
+
+        .about-meta i {
+            margin-right: 6px;
+            color: var(--neon-green);
+        }
+
+        /* ============================================
+           SKILLS SECTION
+           ============================================ */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .skill-category h3 {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(0, 229, 255, 0.15);
+        }
+
+        .skill-bar-item {
+            margin-bottom: 1rem;
+        }
+
+        .skill-bar-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+        }
+
+        .skill-bar-name {
+            color: var(--text-primary);
+        }
+
+        .skill-bar-pct {
+            color: var(--neon-green);
+        }
+
+        .skill-bar-track {
+            height: 6px;
+            background: rgba(0, 255, 136, 0.06);
+            border-radius: 3px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 255, 136, 0.08);
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--neon-green), var(--neon-cyan));
+            box-shadow: 0 0 8px rgba(0, 255, 136, 0.3);
+            transition: width 1.2s ease-out;
+            width: 0;
+        }
+
+        .skill-bar-fill.animated {
+            /* width set inline */
+        }
+
+        .skill-bar-fill.pink {
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple));
+            box-shadow: 0 0 8px rgba(255, 0, 128, 0.3);
+        }
+
+        .skill-bar-fill.cyan {
+            background: linear-gradient(90deg, var(--neon-cyan), #00b8d4);
+            box-shadow: 0 0 8px rgba(0, 229, 255, 0.3);
+        }
+
+        /* ============================================
+           EXPERIENCE SECTION - MISSION LOG
+           ============================================ */
+        .mission-log {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .mission-log::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--neon-green), var(--neon-cyan), var(--neon-pink));
+            opacity: 0.3;
+        }
+
+        .mission-entry {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .mission-entry::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 10px;
+            height: 10px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-green);
+            transform: translateX(-4px);
+        }
+
+        .mission-card {
+            position: relative;
+            background: var(--bg-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glow);
+            border-radius: 4px;
+            padding: 1.5rem 2rem;
+            box-shadow: var(--glow-green);
+        }
+
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 18px;
+            height: 18px;
+            border-top: 2px solid var(--neon-green);
+            border-left: 2px solid var(--neon-green);
+            pointer-events: none;
+        }
+
+        .mission-card::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            width: 18px;
+            height: 18px;
+            border-bottom: 2px solid var(--neon-green);
+            border-right: 2px solid var(--neon-green);
+            pointer-events: none;
+        }
+
+        .mission-hash {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .mission-dates {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--neon-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .mission-role {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-bright);
+            margin-bottom: 0.25rem;
+        }
+
+        .mission-company {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            color: var(--neon-green);
+            margin-bottom: 0.75rem;
+        }
+
+        .mission-bullets {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mission-bullets li {
+            position: relative;
+            padding-left: 1.2rem;
+            font-size: 0.92rem;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+            line-height: 1.6;
+        }
+
+        .mission-bullets li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            box-shadow: 0 0 4px var(--neon-green);
+        }
+
+        /* ============================================
+           EDUCATION SECTION
+           ============================================ */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .edu-card {
+            position: relative;
+            background: var(--bg-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glow);
+            border-radius: 4px;
+            padding: 1.5rem;
+            box-shadow: var(--glow-green);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .edu-card:hover {
+            border-color: rgba(0, 255, 136, 0.3);
+        }
+
+        .edu-card::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 18px;
+            height: 18px;
+            border-top: 2px solid var(--neon-green);
+            border-left: 2px solid var(--neon-green);
+            pointer-events: none;
+        }
+
+        .edu-card::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            width: 18px;
+            height: 18px;
+            border-bottom: 2px solid var(--neon-green);
+            border-right: 2px solid var(--neon-green);
+            pointer-events: none;
+        }
+
+        .edu-dates {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--neon-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-degree {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-bright);
+            margin-bottom: 0.25rem;
+        }
+
+        .edu-school {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-note {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--neon-green);
+            opacity: 0.8;
+        }
+
+        /* ============================================
+           PORTFOLIO SECTION
+           ============================================ */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            position: relative;
+            background: var(--bg-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glow);
+            border-radius: 4px;
+            padding: 1.5rem;
+            box-shadow: var(--glow-green);
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: rgba(0, 229, 255, 0.4);
+            box-shadow: var(--glow-cyan);
+            transform: translateY(-3px);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 18px;
+            height: 18px;
+            border-top: 2px solid var(--neon-green);
+            border-left: 2px solid var(--neon-green);
+            pointer-events: none;
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            width: 18px;
+            height: 18px;
+            border-bottom: 2px solid var(--neon-green);
+            border-right: 2px solid var(--neon-green);
+            pointer-events: none;
+        }
+
+        .project-icon {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 20px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            background: rgba(0, 229, 255, 0.05);
+            color: var(--neon-cyan);
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.1);
+        }
+
+        .project-icon.pink {
+            border-color: rgba(255, 0, 128, 0.2);
+            background: rgba(255, 0, 128, 0.05);
+            color: var(--neon-pink);
+            box-shadow: 0 0 12px rgba(255, 0, 128, 0.1);
+        }
+
+        .project-icon.green {
+            border-color: rgba(0, 255, 136, 0.2);
+            background: rgba(0, 255, 136, 0.05);
+            color: var(--neon-green);
+            box-shadow: 0 0 12px rgba(0, 255, 136, 0.1);
+        }
+
+        .project-icon.purple {
+            border-color: rgba(168, 85, 247, 0.2);
+            background: rgba(168, 85, 247, 0.05);
+            color: var(--neon-purple);
+            box-shadow: 0 0 12px rgba(168, 85, 247, 0.1);
+        }
+
+        .project-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-bright);
+            margin-bottom: 0.4rem;
+        }
+
+        .project-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .project-tag {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            padding: 3px 10px;
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: 3px;
+            color: var(--neon-cyan);
+            background: rgba(0, 229, 255, 0.04);
+        }
+
+        /* ============================================
+           CONTACT SECTION
+           ============================================ */
+        .contact-card {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .contact-card .transmission-header {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--neon-cyan);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--neon-green);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            background: rgba(5, 8, 15, 0.9);
+            border: 1px solid var(--border-glow);
+            border-radius: 4px;
+            padding: 12px 16px;
+            font-family: var(--font-mono);
+            font-size: 14px;
+            color: var(--text-primary);
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.15);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .btn-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 32px;
+            font-family: var(--font-mono);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--bg);
+            background: var(--neon-green);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: background 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+        }
+
+        .btn-submit:hover {
+            background: #00e07a;
+            box-shadow: 0 0 25px rgba(0, 255, 136, 0.5);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            border-top: 1px solid var(--border-glow);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            transition: color 0.3s, text-shadow 0.3s;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--neon-green);
+            text-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+        }
+
+        .footer-text {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 56px;
+                left: 0;
+                right: 0;
+                background: rgba(5, 8, 15, 0.96);
+                flex-direction: column;
+                padding: 1rem 2rem;
+                gap: 1rem;
+                border-bottom: 1px solid var(--border-glow);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero-name {
+                font-size: 2.2rem;
+            }
+
+            .about-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-terminal {
+                font-size: 10px;
+                overflow-x: auto;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .edu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-meta {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .boot-screen {
+                padding: 20% 8%;
+            }
+
+            .boot-line {
+                font-size: 11px;
+            }
+
+            section {
+                padding: 3rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-name {
+                font-size: 1.8rem;
+            }
+
+            .hero-role {
+                font-size: 0.95rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-neon {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+         BOOT SEQUENCE
+         ========================================== -->
+    <div class="boot-screen" aria-hidden="true">
+        <div class="boot-line">[BOOT] Initializing holographic display...</div>
+        <div class="boot-line">[LOAD] Loading profile data... OK</div>
+        <div class="boot-line">[SYNC] Connecting to rodtex.dev... OK</div>
+        <div class="boot-line">[OK] All systems nominal</div>
+        <div class="boot-line">> Welcome, Operator.</div>
+    </div>
+
+    <!-- ==========================================
+         MOCKUP BANNER
+         ========================================== -->
+    <div class="mockup-banner">MOCKUP 8: Holo Terminal</div>
+
+    <!-- ==========================================
+         MAIN CONTENT
+         ========================================== -->
+    <div class="main-content">
+
+        <!-- NAV -->
+        <nav>
+            <div class="nav-inner">
+                <a href="#hero" class="nav-logo">&gt; rodrigo.dev<span class="blink">_</span></a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#about">about</a></li>
+                    <li><a href="#skills">skills</a></li>
+                    <li><a href="#experience">experience</a></li>
+                    <li><a href="#education">education</a></li>
+                    <li><a href="#portfolio">portfolio</a></li>
+                </ul>
+                <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- ==========================================
+             HERO
+             ========================================== -->
+        <section class="hero" id="hero">
+            <div class="hero-avatar-wrap">
+                <div class="hero-avatar-border"></div>
+                <img src="../images/profile_pic_website_8bit.png" alt="Rodrigo Teixeira" class="hero-avatar">
+            </div>
+            <h1 class="hero-name">
+                <span class="glitch" data-text="Rodrigo Teixeira">Rodrigo Teixeira</span>
+            </h1>
+            <p class="hero-role">Marketing Science &amp; Ad-Tech Developer</p>
+            <p class="hero-location"><i class="fas fa-map-marker-alt"></i> S&atilde;o Paulo, Brazil</p>
+            <div class="hero-status">
+                <span class="status-dot" data-availability-dot></span>
+                <span data-availability>Available! Leave a message</span>
+            </div>
+            <div class="hero-ctas">
+                <a href="mailto:rodrigo@rodtex.dev" class="btn-neon btn-neon-green">[get_in_touch]</a>
+                <a href="#portfolio" class="btn-neon btn-neon-cyan">[view_projects]</a>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             ABOUT
+             ========================================== -->
+        <section id="about">
+            <div class="reveal">
+                <p class="section-header">// system.profile</p>
+                <h2 class="section-title">About <span class="accent">Me</span></h2>
+                <div class="holo-card">
+                    <div class="about-terminal">&gt; SYSTEM.profile
+&#9556;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9559;
+&#9553; Rodrigo Teixeira                      &#9553;
+&#9553; Marketing Science &amp; Ad-Tech Developer           &#9553;
+&#9553; S&#227;o Paulo, Brazil | Age: 38            &#9553;
+&#9562;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9552;&#9565;</div>
+                    <p class="about-text">
+                        Marketing Science &amp; Ad-Tech Developer with 8+ years building end-to-end MarTech solutions, data infrastructure, and measurement systems. Combines deep technical skill in Python, SQL, GCP, and AWS with strategic marketing analytics expertise. Career spans WMcCann, IPG Mediabrands, Rede Globo, MINT, and Filterbuy.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-value">8+</span>
+                            <span class="stat-label">Years</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">6+</span>
+                            <span class="stat-label">Companies</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">4</span>
+                            <span class="stat-label">Degrees</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">50+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                    </div>
+                    <div class="about-meta">
+                        <span><i class="fas fa-envelope"></i> <a href="mailto:rodrigo@rodtex.dev">rodrigo@rodtex.dev</a></span>
+                        <span><i class="fas fa-globe"></i> <a href="https://rodtex.dev" target="_blank">rodtex.dev</a></span>
+                        <span><i class="fas fa-language"></i> PT (Native) &bull; EN (Fluent) &bull; ES (Intermediate)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             SKILLS
+             ========================================== -->
+        <section id="skills">
+            <div class="reveal">
+                <p class="section-header">// system.resources</p>
+                <h2 class="section-title">Technical <span class="accent">Skills</span></h2>
+                <div class="holo-card">
+                    <div class="skills-grid">
+                        <!-- Programming & Data -->
+                        <div class="skill-category">
+                            <h3>Programming &amp; Data</h3>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label"><span class="skill-bar-name">Python</span><span class="skill-bar-pct">95%</span></div>
+                                <div class="skill-bar-track"><div class="skill-bar-fill" style="--target-width: 95%;"></div></div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label"><span class="skill-bar-name">SQL (BigQuery, Redshift)</span><span class="skill-bar-pct">92%</span></div>
+                                <div class="skill-bar-track"><div class="skill-bar-fill" style="--target-width: 92%;"></div></div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label"><span class="skill-bar-name">JavaScript</span><span class="skill-bar-pct">70%</span></div>
+                                <div class="skill-bar-track"><div class="skill-bar-fill" style="--target-width: 70%;"></div></div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label"><span class="skill-bar-name">Git / CI-CD</span><span class="skill-bar-pct">85%</span></div>
+                                <div class="skill-bar-track"><div class="skill-bar-fill" style="--target-width: 85%;"></div></div>
+                            </div>
+                        </div>
+
+                        <!-- Cloud & Infrastructure -->
+                        <div class="skill-category">
+                            <h3>Cloud &amp; Infrastructure</h3>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label"><span class="skill-bar-name">Google Cloud Platform</span><span class="skill-bar-pct">90%</span></div>
+                                <div class="skill-bar-track"><div class="skill-bar-fill cyan" style="--target-width: 90%;"></div></div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label"><span class="skill-bar-name">AWS</span><span class="skill-bar-pct">80%</span></div>
+                                <div class="skill-bar-track"><div class="skill-bar-fill cyan" style="--target-width: 80%;"></div></div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label"><span class="skill-bar-name">Docker / Kubernetes</span><span class="skill-bar-pct">75%</span></div>
+                                <div class="skill-bar-track"><div class="skill-bar-fill cyan" style="--target-width: 75%;"></div></div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label"><span class="skill-bar-name">Terraform / IaC</span><span class="skill-bar-pct">65%</span></div>
+                                <div class="skill-bar-track"><div class="skill-bar-fill cyan" style="--target-width: 65%;"></div></div>
+                            </div>
+                        </div>
+
+                        <!-- Web Analytics & Marketing -->
+                        <div class="skill-category">
+                            <h3>Web Analytics &amp; Marketing</h3>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label"><span class="skill-bar-name">Google Analytics (GA4)</span><span class="skill-bar-pct">95%</span></div>
+                                <div class="skill-bar-track"><div class="skill-bar-fill pink" style="--target-width: 95%;"></div></div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label"><span class="skill-bar-name">GTM (Client + Server)</span><span class="skill-bar-pct">90%</span></div>
+                                <div class="skill-bar-track"><div class="skill-bar-fill pink" style="--target-width: 90%;"></div></div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label"><span class="skill-bar-name">Google Ads / DV360 / SA360</span><span class="skill-bar-pct">88%</span></div>
+                                <div class="skill-bar-track"><div class="skill-bar-fill pink" style="--target-width: 88%;"></div></div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label"><span class="skill-bar-name">Meta / TikTok / Amazon Ads</span><span class="skill-bar-pct">82%</span></div>
+                                <div class="skill-bar-track"><div class="skill-bar-fill pink" style="--target-width: 82%;"></div></div>
+                            </div>
+                        </div>
+
+                        <!-- AI/ML & Visualization -->
+                        <div class="skill-category">
+                            <h3>AI/ML &amp; Visualization</h3>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label"><span class="skill-bar-name">LLM Engineering</span><span class="skill-bar-pct">85%</span></div>
+                                <div class="skill-bar-track"><div class="skill-bar-fill" style="--target-width: 85%;"></div></div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label"><span class="skill-bar-name">Scikit-learn / Pandas</span><span class="skill-bar-pct">88%</span></div>
+                                <div class="skill-bar-track"><div class="skill-bar-fill" style="--target-width: 88%;"></div></div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label"><span class="skill-bar-name">Looker / LookML</span><span class="skill-bar-pct">82%</span></div>
+                                <div class="skill-bar-track"><div class="skill-bar-fill" style="--target-width: 82%;"></div></div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label"><span class="skill-bar-name">DBT</span><span class="skill-bar-pct">78%</span></div>
+                                <div class="skill-bar-track"><div class="skill-bar-fill" style="--target-width: 78%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             EXPERIENCE
+             ========================================== -->
+        <section id="experience">
+            <div class="reveal">
+                <p class="section-header">// mission.log</p>
+                <h2 class="section-title">Work <span class="accent">Experience</span></h2>
+                <div class="mission-log">
+
+                    <!-- Filterbuy -->
+                    <div class="mission-entry reveal">
+                        <div class="mission-card">
+                            <div class="mission-hash">#MIS-006 // active_deployment</div>
+                            <div class="mission-dates">2022 &mdash; Present</div>
+                            <h3 class="mission-role">Marketing Science &amp; Ad-Tech Developer</h3>
+                            <p class="mission-company">Filterbuy &mdash; Fort Lauderdale, FL (Remote)</p>
+                            <ul class="mission-bullets">
+                                <li>Lead management and optimization of the company's data warehouse (Redshift to BigQuery migration)</li>
+                                <li>Marketing Mix Model using Google's Meridian open-source framework</li>
+                                <li>Amazon bid optimization engine with automated budget and bid management via Lambda</li>
+                                <li>Built ETL pipelines consolidating data from Amazon, TikTok, Google Ads, Pipedrive CRM, and web analytics</li>
+                                <li>RFM Modeling for predictive inbound marketing (churn prediction, upsell)</li>
+                                <li>Manage website tracking via GTM (client and server-side)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- IPG Mediabrands -->
+                    <div class="mission-entry reveal">
+                        <div class="mission-card">
+                            <div class="mission-hash">#MIS-005 // latam_ops</div>
+                            <div class="mission-dates">2022 &mdash; 2023</div>
+                            <h3 class="mission-role">Head of Data LATAM</h3>
+                            <p class="mission-company">IPG Mediabrands &mdash; S&atilde;o Paulo, Brazil</p>
+                            <ul class="mission-bullets">
+                                <li>Built end-to-end MarTech solutions and data-driven applications for Nestl&eacute; across Latin America</li>
+                                <li>1st Party Data Activation across all Nestl&eacute; media efforts</li>
+                                <li>GTM Server-Side implementation across 8 LATAM markets</li>
+                                <li>Speedboat: 6-month digital acceleration project integrating CRM, Cloud, and Digital Advertising</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- MINT -->
+                    <div class="mission-entry reveal">
+                        <div class="mission-card">
+                            <div class="mission-hash">#MIS-004 // ai_startup</div>
+                            <div class="mission-dates">2020 &mdash; 2022</div>
+                            <h3 class="mission-role">Data Manager</h3>
+                            <p class="mission-company">MINT &mdash; S&atilde;o Paulo, Brazil</p>
+                            <ul class="mission-bullets">
+                                <li>AIRE: AI Recommendation Engine using Linear Optimization for budget reallocation (increased ROI by 25%+)</li>
+                                <li>Predictive Planning Algorithm based on Markowitz Portfolio Optimization</li>
+                                <li>Megalista: Smart Audience Generation using ML models fed with web traffic data</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- WMcCann -->
+                    <div class="mission-entry reveal">
+                        <div class="mission-card">
+                            <div class="mission-hash">#MIS-003 // agency_ops</div>
+                            <div class="mission-dates">2019</div>
+                            <h3 class="mission-role">Data Analytics Manager</h3>
+                            <p class="mission-company">WMcCann (McCann Worldgroup) &mdash; S&atilde;o Paulo, Brazil</p>
+                            <ul class="mission-bullets">
+                                <li>GM Marketing Mix Strategy: comprehensive MMM study for General Motors ($100M+ spend)</li>
+                                <li>Continuous automated reporting of GM marketing efforts</li>
+                                <li>Built measurement frameworks and reporting pipelines (SQL, BigQuery)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Rede Globo -->
+                    <div class="mission-entry reveal">
+                        <div class="mission-card">
+                            <div class="mission-hash">#MIS-002 // media_ops</div>
+                            <div class="mission-dates">2018</div>
+                            <h3 class="mission-role">Data Scientist</h3>
+                            <p class="mission-company">Rede Globo &mdash; Rio de Janeiro, Brazil</p>
+                            <ul class="mission-bullets">
+                                <li>Complete automation of Gshow reporting process (reduced manual time by 80%)</li>
+                                <li>Churn Optimization Algorithm for content engagement at Latin America's largest media company</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Bridge Consulting -->
+                    <div class="mission-entry reveal">
+                        <div class="mission-card">
+                            <div class="mission-hash">#MIS-001 // first_deploy</div>
+                            <div class="mission-dates">2017</div>
+                            <h3 class="mission-role">Data Science Consultant</h3>
+                            <p class="mission-company">Bridge Consulting &mdash; Rio de Janeiro, Brazil</p>
+                            <ul class="mission-bullets">
+                                <li>Target Stock Calculating Algorithm for retail optimization</li>
+                                <li>Outlier Detection on Business Expenses</li>
+                                <li>Custom dashboards and automated reporting solutions</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             EDUCATION
+             ========================================== -->
+        <section id="education">
+            <div class="reveal">
+                <p class="section-header">// system.credentials</p>
+                <h2 class="section-title">Education <span class="accent">&amp; Training</span></h2>
+                <div class="edu-grid">
+
+                    <div class="edu-card reveal">
+                        <div class="edu-dates">2020 &mdash; 2021</div>
+                        <h3 class="edu-degree">MBA in Data Science &amp; Analytics</h3>
+                        <p class="edu-school">USP &mdash; Universidade de S&atilde;o Paulo</p>
+                        <p class="edu-note">Thesis: "ML Applied to Audience Generation in Digital Marketing"</p>
+                    </div>
+
+                    <div class="edu-card reveal">
+                        <div class="edu-dates">2018 &mdash; 2019</div>
+                        <h3 class="edu-degree">M.Sc. in Industrial Engineering</h3>
+                        <p class="edu-school">COPPE-UFRJ</p>
+                        <p class="edu-note">Research: "Non-Linear Programming Methods to Media Mix Modeling"</p>
+                    </div>
+
+                    <div class="edu-card reveal">
+                        <div class="edu-dates">2010 &mdash; 2015</div>
+                        <h3 class="edu-degree">B.Sc. in Mechanical Engineering</h3>
+                        <p class="edu-school">UFF &mdash; Universidade Federal Fluminense</p>
+                    </div>
+
+                    <div class="edu-card reveal">
+                        <div class="edu-dates">2006 &mdash; 2010</div>
+                        <h3 class="edu-degree">B.Sc. in Physics</h3>
+                        <p class="edu-school">UFF &mdash; Universidade Federal Fluminense</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             PORTFOLIO
+             ========================================== -->
+        <section id="portfolio">
+            <div class="reveal">
+                <p class="section-header">// project.database</p>
+                <h2 class="section-title">Featured <span class="accent">Projects</span></h2>
+                <div class="portfolio-grid">
+
+                    <!-- Amazon Bid Optimization Engine -->
+                    <div class="project-card reveal">
+                        <div class="project-icon green"><i class="fas fa-chart-line"></i></div>
+                        <h3 class="project-name">Amazon Bid Optimization Engine</h3>
+                        <p class="project-desc">Lambda-based automated bid and budget optimization for Amazon Advertising campaigns with real-time adjustments.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">AWS Lambda</span>
+                            <span class="project-tag">Amazon Ads API</span>
+                        </div>
+                    </div>
+
+                    <!-- AI Media Planner -->
+                    <div class="project-card reveal">
+                        <div class="project-icon pink"><i class="fas fa-brain"></i></div>
+                        <h3 class="project-name">AI Media Planner</h3>
+                        <p class="project-desc">AI-powered digital media planning assistant leveraging large language models for strategic media recommendations.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Flask</span>
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">LLM</span>
+                        </div>
+                    </div>
+
+                    <!-- Vertex AI Recommendations -->
+                    <div class="project-card reveal">
+                        <div class="project-icon purple"><i class="fas fa-robot"></i></div>
+                        <h3 class="project-name">Vertex AI Recommendations</h3>
+                        <p class="project-desc">Product recommendation engine built on Google Vertex AI with BigQuery integration for e-commerce personalization.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Vertex AI</span>
+                            <span class="project-tag">BigQuery</span>
+                        </div>
+                    </div>
+
+                    <!-- Marketing Mix Model -->
+                    <div class="project-card reveal">
+                        <div class="project-icon green"><i class="fas fa-chart-pie"></i></div>
+                        <h3 class="project-name">Marketing Mix Model</h3>
+                        <p class="project-desc">Marketing Mix Modeling implementation using Google's Meridian open-source Bayesian framework for budget optimization.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Meridian</span>
+                            <span class="project-tag">Bayesian</span>
+                        </div>
+                    </div>
+
+                    <!-- TikTok API Client -->
+                    <div class="project-card reveal">
+                        <div class="project-icon"><i class="fab fa-tiktok"></i></div>
+                        <h3 class="project-name">TikTok API Client</h3>
+                        <p class="project-desc">Python handler for TikTok Marketing API with OAuth authentication, campaign management, and reporting extraction.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">REST API</span>
+                            <span class="project-tag">OAuth2</span>
+                        </div>
+                    </div>
+
+                    <!-- DV360 API Client -->
+                    <div class="project-card reveal">
+                        <div class="project-icon"><i class="fas fa-display"></i></div>
+                        <h3 class="project-name">DV360 API Client</h3>
+                        <p class="project-desc">Client library for Display &amp; Video 360 API enabling programmatic campaign management and reporting.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Google Ads</span>
+                            <span class="project-tag">DV360</span>
+                        </div>
+                    </div>
+
+                    <!-- Google Ads Automation -->
+                    <div class="project-card reveal">
+                        <div class="project-icon pink"><i class="fab fa-google"></i></div>
+                        <h3 class="project-name">Google Ads Automation</h3>
+                        <p class="project-desc">Automated Google Ads campaign management scripts for daily optimization, bidding, and GAQL-based reporting.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Google Ads API</span>
+                            <span class="project-tag">GAQL</span>
+                        </div>
+                    </div>
+
+                    <!-- Adagio AI Chatbot -->
+                    <div class="project-card reveal">
+                        <div class="project-icon purple"><i class="fas fa-comments"></i></div>
+                        <h3 class="project-name">Adagio AI Chatbot</h3>
+                        <p class="project-desc">E-commerce chatbot with semantic product search, multi-LLM support, and vector database for intelligent recommendations.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">LLM</span>
+                            <span class="project-tag">Vector DB</span>
+                            <span class="project-tag">FastAPI</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             FOOTER
+             ========================================== -->
+        <footer>
+            <div class="footer-links">
+                <a href="https://github.com/strod" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/strodrigo" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://instagram.com/rodtex" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="footer-text">&copy; 2026 Rodrigo Teixeira &mdash; Signal transmitted successfully.</p>
+        </footer>
+
+    </div><!-- /.main-content -->
+
+    <!-- ==========================================
+         JAVASCRIPT
+         ========================================== -->
+    <script>
+        // ==========================================
+        // AVAILABILITY STATUS
+        // ==========================================
+        function getSPTime() {
+            return new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }));
+        }
+        function getNextAvailableWindow() {
+            var now = getSPTime();
+            var day = now.getDay();
+            var h = now.getHours();
+            var target = new Date(now);
+            if (day >= 1 && day <= 5 && h < 19) {
+                if (h < 8) { target.setHours(8,0,0,0); }
+                else { return 0; }
+            } else {
+                target.setHours(8,0,0,0);
+                if (day === 0) { target.setDate(target.getDate() + 1); }
+                else if (day === 6) { target.setDate(target.getDate() + 2); }
+                else if (day >= 1 && day <= 5 && h >= 19) {
+                    if (day === 5) { target.setDate(target.getDate() + 3); }
+                    else { target.setDate(target.getDate() + 1); }
+                }
+            }
+            return Math.max(0, Math.floor((target - now) / 1000));
+        }
+        function isAvailable() {
+            var now = getSPTime();
+            var day = now.getDay(), h = now.getHours();
+            return day >= 1 && day <= 5 && h >= 8 && h < 19;
+        }
+        function formatCountdown(totalSec) {
+            var h = Math.floor(totalSec / 3600);
+            var m = Math.floor((totalSec % 3600) / 60);
+            var s = totalSec % 60;
+            return String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+        }
+        function updateAvailabilityElements() {
+            var els = document.querySelectorAll('[data-availability]');
+            var dots = document.querySelectorAll('[data-availability-dot]');
+            var avail = isAvailable();
+            els.forEach(function(el) {
+                if (avail) {
+                    el.textContent = 'Available! Leave a message';
+                } else {
+                    var sec = getNextAvailableWindow();
+                    el.textContent = 'Unavailable. Come back in ' + formatCountdown(sec);
+                }
+            });
+            dots.forEach(function(dot) {
+                dot.style.background = avail ? '' : '#ff5555';
+                dot.style.animation = avail ? '' : 'none';
+            });
+        }
+        updateAvailabilityElements();
+        setInterval(updateAvailabilityElements, 1000);
+
+        // Hamburger toggle
+        document.getElementById('hamburger').addEventListener('click', function () {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+
+        // Close mobile nav on link click
+        document.querySelectorAll('.nav-links a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                document.getElementById('navLinks').classList.remove('open');
+            });
+        });
+
+        // IntersectionObserver for scroll reveals
+        var revealObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
+        });
+
+        document.querySelectorAll('.reveal').forEach(function (el) {
+            revealObserver.observe(el);
+        });
+
+        // Skill bar animation on scroll
+        var skillObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    var fills = entry.target.querySelectorAll('.skill-bar-fill');
+                    fills.forEach(function (fill) {
+                        var targetWidth = getComputedStyle(fill).getPropertyValue('--target-width');
+                        fill.style.width = targetWidth;
+                        fill.classList.add('animated');
+                    });
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+
+        var skillsSection = document.getElementById('skills');
+        if (skillsSection) {
+            skillObserver.observe(skillsSection);
+        }
+
+        // Active nav link highlighting on scroll
+        var sections = document.querySelectorAll('section[id]');
+        var navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', function () {
+            var scrollY = window.scrollY + 120;
+            sections.forEach(function (section) {
+                var top = section.offsetTop;
+                var height = section.offsetHeight;
+                var id = section.getAttribute('id');
+                if (scrollY >= top && scrollY < top + height) {
+                    navLinks.forEach(function (link) {
+                        link.style.color = '';
+                        link.style.textShadow = '';
+                        if (link.getAttribute('href') === '#' + id) {
+                            link.style.color = 'var(--neon-green)';
+                            link.style.textShadow = '0 0 8px rgba(0, 255, 136, 0.4)';
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

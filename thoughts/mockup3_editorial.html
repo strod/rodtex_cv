@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup 3: Clean Editorial - Rodrigo Teixeira</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ============================================
+           MOCKUP 3: CLEAN EDITORIAL
+           Magazine-inspired, typography-forward design
+           ============================================ */
+
+        /* --- Reset & Base --- */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #faf9f7;
+            --bg-white: #ffffff;
+            --bg-offwhite: #f5f4f1;
+            --bg-subtle: #f0efec;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-tertiary: #7a7a7a;
+            --text-light: #9a9a9a;
+            --accent-teal: #0d9488;
+            --accent-teal-light: #14b8a6;
+            --accent-teal-soft: rgba(13, 148, 136, 0.08);
+            --accent-coral: #f97316;
+            --accent-coral-light: #fb923c;
+            --border-light: #e8e6e1;
+            --border-medium: #d4d1cb;
+            --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            --font-sans: 'Source Sans 3', 'Segoe UI', Roboto, sans-serif;
+            --max-width: 1200px;
+            --section-padding: clamp(80px, 10vw, 140px);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- Mockup Banner --- */
+        .mockup-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            text-align: center;
+            padding: 10px 20px;
+            font-family: var(--font-sans);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .mockup-banner span {
+            color: var(--accent-teal-light);
+        }
+
+        body {
+            padding-top: 40px;
+        }
+
+        /* --- Navigation --- */
+        .nav {
+            position: fixed;
+            top: 40px;
+            left: 0;
+            right: 0;
+            z-index: 900;
+            background: rgba(250, 249, 247, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 clamp(24px, 4vw, 60px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-serif);
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent-teal);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-teal);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile nav toggle */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: var(--text-primary);
+            margin: 6px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* --- Container --- */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 clamp(24px, 4vw, 60px);
+        }
+
+        /* --- Section Titles --- */
+        .section-header {
+            margin-bottom: clamp(40px, 5vw, 72px);
+        }
+
+        .section-number {
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent-teal);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .section-number::after {
+            content: '';
+            flex: 1;
+            max-width: 120px;
+            height: 1px;
+            background: var(--accent-teal);
+            opacity: 0.4;
+        }
+
+        /* Ornamental divider between sections */
+        .section-divider {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--border-medium);
+            font-family: var(--font-serif);
+            font-size: 24px;
+            letter-spacing: 12px;
+            user-select: none;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 500;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+            line-height: 1.15;
+        }
+
+        /* ========================
+           HERO SECTION
+           ======================== */
+        .hero {
+            min-height: calc(100vh - 104px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: clamp(100px, 15vw, 160px) 0 clamp(60px, 8vw, 100px);
+        }
+
+        .hero-name {
+            font-family: var(--font-serif);
+            font-size: clamp(48px, 10vw, 120px);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -3px;
+            color: var(--text-primary);
+            margin-bottom: 0;
+        }
+
+        .hero-rule {
+            width: 100%;
+            height: 1px;
+            background: var(--text-primary);
+            margin: clamp(20px, 3vw, 36px) 0;
+            opacity: 0.2;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-sans);
+            font-size: clamp(12px, 1.4vw, 16px);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: clamp(4px, 0.8vw, 10px);
+            color: var(--text-secondary);
+            margin-bottom: clamp(32px, 4vw, 56px);
+        }
+
+        .hero-meta {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: clamp(24px, 4vw, 60px);
+            margin-bottom: clamp(40px, 5vw, 64px);
+            flex-wrap: wrap;
+        }
+
+        .hero-meta-item {
+            font-family: var(--font-sans);
+            font-size: 14px;
+            color: var(--text-tertiary);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-meta-dot {
+            width: 4px;
+            height: 4px;
+            background: var(--accent-teal);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 16px 36px;
+            border: 1.5px solid var(--text-primary);
+            color: var(--text-primary);
+            background: transparent;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-outline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--text-primary);
+            transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: -1;
+        }
+
+        .btn-outline:hover {
+            color: var(--bg-primary);
+            border-color: var(--text-primary);
+        }
+
+        .btn-outline:hover::before {
+            left: 0;
+        }
+
+        .btn-outline.teal {
+            border-color: var(--accent-teal);
+            color: var(--accent-teal);
+        }
+
+        .btn-outline.teal::before {
+            background: var(--accent-teal);
+        }
+
+        .btn-outline.teal:hover {
+            color: #fff;
+            border-color: var(--accent-teal);
+        }
+
+        /* Scroll indicator */
+        .hero-scroll {
+            margin-top: auto;
+            padding-top: 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-light);
+        }
+
+        .hero-scroll-line {
+            width: 40px;
+            height: 1px;
+            background: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-scroll-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-teal);
+            animation: scrollLine 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollLine {
+            0% { left: -100%; }
+            50% { left: 0; }
+            100% { left: 100%; }
+        }
+
+        /* ========================
+           ABOUT SECTION
+           ======================== */
+        .about {
+            padding: var(--section-padding) 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 0.65fr;
+            gap: clamp(40px, 6vw, 100px);
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: clamp(17px, 1.3vw, 20px);
+            line-height: 1.85;
+            color: var(--text-secondary);
+        }
+
+        .about-text p:first-of-type::first-letter {
+            font-family: var(--font-serif);
+            font-size: clamp(52px, 5vw, 72px);
+            float: left;
+            line-height: 0.8;
+            margin-right: 12px;
+            margin-top: 6px;
+            color: var(--accent-teal);
+            font-weight: 700;
+        }
+
+        .about-text p + p {
+            margin-top: 24px;
+        }
+
+        .about-sidebar {
+            position: sticky;
+            top: 140px;
+        }
+
+        .about-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            padding: clamp(28px, 3vw, 40px);
+        }
+
+        .about-card-title {
+            font-family: var(--font-serif);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 28px;
+            color: var(--text-primary);
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .about-card-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(228, 226, 221, 0.5);
+        }
+
+        .about-card-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .about-card-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-light);
+        }
+
+        .about-card-value {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-align: right;
+        }
+
+        .about-card-value a {
+            color: var(--accent-teal);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .about-card-value a:hover {
+            color: var(--accent-coral);
+        }
+
+        /* ========================
+           SKILLS SECTION
+           ======================== */
+        .skills {
+            padding: var(--section-padding) 0;
+            background: var(--bg-white);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(40px, 5vw, 72px);
+        }
+
+        .skill-category {
+            padding: clamp(20px, 2vw, 32px) 0;
+        }
+
+        .skill-category-name {
+            font-family: var(--font-serif);
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 28px;
+            color: var(--text-primary);
+        }
+
+        .skill-item {
+            margin-bottom: 22px;
+        }
+
+        .skill-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+        }
+
+        .skill-item-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            letter-spacing: 0.3px;
+        }
+
+        .skill-item-pct {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-light);
+            letter-spacing: 0.5px;
+        }
+
+        .skill-line {
+            position: relative;
+            width: 100%;
+            height: 2px;
+            background: var(--bg-subtle);
+            border-radius: 1px;
+        }
+
+        .skill-line-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: var(--accent-teal);
+            border-radius: 1px;
+            transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .skill-line-dot {
+            position: absolute;
+            top: 50%;
+            transform: translate(50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: var(--accent-teal);
+            border-radius: 50%;
+            border: 2px solid var(--bg-white);
+            box-shadow: 0 0 0 1px var(--accent-teal);
+            right: 0;
+        }
+
+        /* ========================
+           EXPERIENCE SECTION
+           ======================== */
+        .experience {
+            padding: var(--section-padding) 0;
+        }
+
+        .exp-list {
+            border-top: 1px solid var(--border-light);
+        }
+
+        .exp-item {
+            display: grid;
+            grid-template-columns: 180px 1px 1fr 1.2fr;
+            gap: clamp(20px, 3vw, 40px);
+            padding: clamp(28px, 3vw, 40px) 0;
+            border-bottom: 1px solid var(--border-light);
+            align-items: start;
+            transition: background 0.3s ease;
+        }
+
+        .exp-item:nth-child(even) {
+            background: var(--bg-offwhite);
+            margin: 0 calc(-1 * clamp(24px, 4vw, 60px));
+            padding-left: clamp(24px, 4vw, 60px);
+            padding-right: clamp(24px, 4vw, 60px);
+        }
+
+        .exp-year {
+            font-family: var(--font-serif);
+            font-size: clamp(20px, 2vw, 28px);
+            font-weight: 500;
+            color: var(--text-primary);
+            line-height: 1.3;
+            letter-spacing: -0.5px;
+        }
+
+        .exp-separator {
+            width: 1px;
+            background: var(--accent-teal);
+            opacity: 0.3;
+            align-self: stretch;
+            min-height: 60px;
+        }
+
+        .exp-role {
+            padding-top: 2px;
+        }
+
+        .exp-company {
+            font-family: var(--font-serif);
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .exp-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--accent-teal);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .exp-desc {
+            font-size: 15px;
+            line-height: 1.75;
+            color: var(--text-tertiary);
+            padding-top: 4px;
+        }
+
+        /* ========================
+           EDUCATION SECTION
+           ======================== */
+        .education {
+            padding: var(--section-padding) 0;
+            background: var(--bg-white);
+        }
+
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: clamp(24px, 3vw, 40px);
+        }
+
+        .edu-card {
+            padding: clamp(28px, 3vw, 40px);
+            border-left: 2px solid var(--accent-teal);
+            background: var(--bg-primary);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .edu-card:hover {
+            border-left-color: var(--accent-coral);
+            transform: translateY(-4px);
+        }
+
+        .edu-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -2px;
+            right: 0;
+            height: 0;
+            background: var(--accent-teal-soft);
+            transition: height 0.4s ease;
+            z-index: 0;
+        }
+
+        .edu-card:hover::after {
+            height: 100%;
+        }
+
+        .edu-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .edu-year {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent-teal);
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .edu-degree {
+            font-family: var(--font-serif);
+            font-size: clamp(18px, 1.5vw, 22px);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .edu-field {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .edu-school {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-light);
+        }
+
+        /* ========================
+           PORTFOLIO SECTION
+           ======================== */
+        .portfolio {
+            padding: var(--section-padding) 0;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+
+        .portfolio-item {
+            display: grid;
+            grid-template-columns: 0.4fr 1fr;
+            gap: clamp(24px, 4vw, 60px);
+            padding: clamp(40px, 5vw, 64px) 0;
+            border-bottom: 1px solid var(--border-light);
+            align-items: center;
+        }
+
+        .portfolio-item:first-child {
+            border-top: 1px solid var(--border-light);
+        }
+
+        .portfolio-number {
+            font-family: var(--font-serif);
+            font-size: clamp(48px, 6vw, 80px);
+            font-weight: 300;
+            color: var(--border-light);
+            line-height: 1;
+        }
+
+        .portfolio-content {
+            max-width: 640px;
+        }
+
+        .portfolio-tag {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-coral);
+            margin-bottom: 12px;
+        }
+
+        .portfolio-name {
+            font-family: var(--font-serif);
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            line-height: 1.2;
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+        }
+
+        .portfolio-name::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-teal);
+            transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .portfolio-item:hover .portfolio-name::after {
+            width: 100%;
+        }
+
+        .portfolio-desc {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-tertiary);
+            margin-bottom: 20px;
+        }
+
+        .portfolio-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .portfolio-tech span {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 6px 14px;
+            border: 1px solid var(--border-light);
+            color: var(--text-tertiary);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-tech span {
+            border-color: var(--accent-teal);
+            color: var(--accent-teal);
+        }
+
+        /* ========================
+           CONTACT SECTION
+           ======================== */
+        .contact {
+            padding: var(--section-padding) 0;
+            background: var(--bg-white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(40px, 6vw, 100px);
+            align-items: start;
+        }
+
+        .contact-heading {
+            font-family: var(--font-serif);
+            font-size: clamp(36px, 4vw, 56px);
+            font-weight: 500;
+            color: var(--text-primary);
+            line-height: 1.15;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .contact-heading em {
+            color: var(--accent-teal);
+            font-style: italic;
+        }
+
+        .contact-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-tertiary);
+            margin-bottom: 32px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .contact-info-item i {
+            width: 20px;
+            color: var(--accent-teal);
+            font-size: 14px;
+        }
+
+        .contact-info-item a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info-item a:hover {
+            color: var(--accent-teal);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 36px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            font-family: var(--font-sans);
+            font-size: 16px;
+            color: var(--text-primary);
+            padding: 12px 0;
+            border: none;
+            border-bottom: 1px solid var(--border-medium);
+            background: transparent;
+            outline: none;
+            transition: border-color 0.3s ease;
+            resize: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-bottom-color: var(--accent-teal);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            line-height: 1.6;
+        }
+
+        .form-group .focus-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-teal);
+            transition: width 0.4s ease;
+        }
+
+        .form-group input:focus ~ .focus-line,
+        .form-group textarea:focus ~ .focus-line {
+            width: 100%;
+        }
+
+        .btn-submit {
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            padding: 18px 48px;
+            background: var(--accent-teal);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            align-self: flex-start;
+        }
+
+        .btn-submit:hover {
+            background: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        /* ========================
+           FOOTER
+           ======================== */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-copy {
+            font-size: 13px;
+            color: var(--text-light);
+            letter-spacing: 0.5px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-socials a {
+            font-size: 16px;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .footer-socials a:hover {
+            color: var(--accent-teal);
+            transform: translateY(-2px);
+        }
+
+        /* ========================
+           RESPONSIVE
+           ======================== */
+        @media (max-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-sidebar {
+                position: static;
+            }
+
+            .exp-item {
+                grid-template-columns: 140px 1px 1fr;
+            }
+
+            .exp-item:nth-child(even) {
+                margin: 0 -24px;
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            .exp-desc {
+                grid-column: 3;
+                padding-top: 12px;
+            }
+
+            .edu-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: rgba(250, 249, 247, 0.98);
+                flex-direction: column;
+                padding: 24px clamp(24px, 4vw, 60px);
+                gap: 20px;
+                border-bottom: 1px solid var(--border-light);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero-name {
+                letter-spacing: -1px;
+            }
+
+            .hero-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .hero-meta-dot {
+                display: none;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .exp-item {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .exp-separator {
+                display: none;
+            }
+
+            .exp-year {
+                font-size: 16px;
+                color: var(--accent-teal);
+            }
+
+            .exp-item:nth-child(even) {
+                margin: 0 -24px;
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            .exp-desc {
+                grid-column: 1;
+            }
+
+            .edu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-item {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .portfolio-number {
+                font-size: 36px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn-outline {
+                text-align: center;
+                justify-content: center;
+            }
+        }
+
+        /* ========================
+           PRINT STYLES
+           ======================== */
+        @media print {
+            .mockup-banner,
+            .nav,
+            .hero-scroll,
+            .contact-form,
+            .footer-socials {
+                display: none;
+            }
+
+            body {
+                padding-top: 0;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 40px 0;
+            }
+
+            section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mockup Banner -->
+    <div class="mockup-banner">
+        MOCKUP 3: <span>Clean Editorial</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">R.T.</a>
+            <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="mailto:rodrigo@rodtex.dev">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ========================
+         HERO SECTION
+         ======================== -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-name">Rodrigo<br>Teixeira</h1>
+            <div class="hero-rule"></div>
+            <p class="hero-subtitle">Marketing Analytics Director</p>
+            <div class="hero-meta">
+                <span class="hero-meta-item"><i class="fas fa-map-marker-alt" style="color: var(--accent-teal); margin-right: 6px;"></i> Based in S&atilde;o Paulo, Brazil</span>
+                <span class="hero-meta-dot"></span>
+                <span class="hero-meta-item"><i class="fas fa-circle" style="color: var(--accent-teal); font-size: 6px; margin-right: 6px;"></i> Available for Projects</span>
+                <span class="hero-meta-dot"></span>
+                <span class="hero-meta-item"><i class="fas fa-code" style="color: var(--accent-teal); margin-right: 6px;"></i> Python, JavaScript, Cloud</span>
+            </div>
+            <div class="hero-cta">
+                <a href="mailto:rodrigo@rodtex.dev" class="btn-outline teal">Get in Touch</a>
+                <a href="#portfolio" class="btn-outline">View Work</a>
+            </div>
+            <div class="hero-scroll">
+                <div class="hero-scroll-line"></div>
+                <span>Scroll to explore</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================
+         ABOUT SECTION
+         ======================== -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">00 &mdash; About</div>
+                <h2 class="section-title">A few words<br>about myself</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>With 8+ years of experience at the intersection of marketing and technology, I have built a career around turning raw data into strategic insight. From writing Python pipelines that process millions of ad impressions to architecting cloud-based analytics platforms on GCP and AWS, my work sits precisely where engineering discipline meets marketing intuition.</p>
+                    <p>My journey has taken me through some of Brazil's leading agencies and media companies, including Rede Globo, WMcCann (McCann Worldgroup), and IPG Mediabrands, as well as AI startups (MINT) and international e-commerce (Filterbuy). Along the way I earned an MBA in Data Science from USP, pursued an MSc in Industrial Engineering at COPPE-UFRJ, and hold dual Bachelor's degrees in Mechanical Engineering and Physics from UFF.</p>
+                    <p>I believe the best analytics work is invisible: clean data, clear dashboards, and decisions that feel obvious in hindsight. When I'm not writing code or digging into campaign data, you'll find me exploring new JavaScript frameworks, contributing to open-source projects, or thinking about the next thing to automate.</p>
+                </div>
+                <aside class="about-sidebar">
+                    <div class="about-card">
+                        <h3 class="about-card-title">Quick Facts</h3>
+                        <div class="about-card-row">
+                            <span class="about-card-label">Name</span>
+                            <span class="about-card-value">Rodrigo Teixeira</span>
+                        </div>
+                        <div class="about-card-row">
+                            <span class="about-card-label">Location</span>
+                            <span class="about-card-value">S&atilde;o Paulo, BR</span>
+                        </div>
+                        <div class="about-card-row">
+                            <span class="about-card-label">Email</span>
+                            <span class="about-card-value"><a href="mailto:rodstex@gmail.com">rodstex@gmail.com</a></span>
+                        </div>
+                        <div class="about-card-row">
+                            <span class="about-card-label">Degree</span>
+                            <span class="about-card-value">MBA, MSc, 2x BSc</span>
+                        </div>
+                        <div class="about-card-row">
+                            <span class="about-card-label">Focus</span>
+                            <span class="about-card-value">Marketing Analytics</span>
+                        </div>
+                        <div class="about-card-row">
+                            <span class="about-card-label">Experience</span>
+                            <span class="about-card-value">10+ Years</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="section-divider">&mdash;&mdash;&mdash;</div></div>
+
+    <!-- ========================
+         SKILLS SECTION
+         ======================== -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">01 &mdash; Skills</div>
+                <h2 class="section-title">Tools &amp; technologies</h2>
+            </div>
+            <div class="skills-grid">
+                <!-- Programming -->
+                <div class="skill-category">
+                    <h3 class="skill-category-name">Programming</h3>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-item-name">Python</span>
+                            <span class="skill-item-pct">90%</span>
+                        </div>
+                        <div class="skill-line">
+                            <div class="skill-line-fill" style="width: 90%;">
+                                <span class="skill-line-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-item-name">JavaScript</span>
+                            <span class="skill-item-pct">80%</span>
+                        </div>
+                        <div class="skill-line">
+                            <div class="skill-line-fill" style="width: 80%;">
+                                <span class="skill-line-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-item-name">SQL</span>
+                            <span class="skill-item-pct">88%</span>
+                        </div>
+                        <div class="skill-line">
+                            <div class="skill-line-fill" style="width: 88%;">
+                                <span class="skill-line-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-item-name">GIT</span>
+                            <span class="skill-item-pct">70%</span>
+                        </div>
+                        <div class="skill-line">
+                            <div class="skill-line-fill" style="width: 70%;">
+                                <span class="skill-line-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web Analytics -->
+                <div class="skill-category">
+                    <h3 class="skill-category-name">Web Analytics</h3>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-item-name">Google Analytics</span>
+                            <span class="skill-item-pct">95%</span>
+                        </div>
+                        <div class="skill-line">
+                            <div class="skill-line-fill" style="width: 95%;">
+                                <span class="skill-line-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-item-name">Google Tag Manager</span>
+                            <span class="skill-item-pct">90%</span>
+                        </div>
+                        <div class="skill-line">
+                            <div class="skill-line-fill" style="width: 90%;">
+                                <span class="skill-line-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-item-name">App Scripts</span>
+                            <span class="skill-item-pct">85%</span>
+                        </div>
+                        <div class="skill-line">
+                            <div class="skill-line-fill" style="width: 85%;">
+                                <span class="skill-line-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DevOps / Cloud -->
+                <div class="skill-category">
+                    <h3 class="skill-category-name">DevOps &amp; Cloud</h3>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-item-name">Google Cloud Platform</span>
+                            <span class="skill-item-pct">90%</span>
+                        </div>
+                        <div class="skill-line">
+                            <div class="skill-line-fill" style="width: 90%;">
+                                <span class="skill-line-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-item-name">AWS</span>
+                            <span class="skill-item-pct">75%</span>
+                        </div>
+                        <div class="skill-line">
+                            <div class="skill-line-fill" style="width: 75%;">
+                                <span class="skill-line-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div class="skill-category">
+                    <h3 class="skill-category-name">Languages</h3>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-item-name">Portuguese</span>
+                            <span class="skill-item-pct">100%</span>
+                        </div>
+                        <div class="skill-line">
+                            <div class="skill-line-fill" style="width: 100%;">
+                                <span class="skill-line-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-item-name">English</span>
+                            <span class="skill-item-pct">90%</span>
+                        </div>
+                        <div class="skill-line">
+                            <div class="skill-line-fill" style="width: 90%;">
+                                <span class="skill-line-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-item-name">Spanish</span>
+                            <span class="skill-item-pct">60%</span>
+                        </div>
+                        <div class="skill-line">
+                            <div class="skill-line-fill" style="width: 60%;">
+                                <span class="skill-line-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================
+         EXPERIENCE SECTION
+         ======================== -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">02 &mdash; Experience</div>
+                <h2 class="section-title">Professional journey</h2>
+            </div>
+            <div class="exp-list">
+                <!-- Filterbuy -->
+                <div class="exp-item">
+                    <div class="exp-year">2022 &mdash;<br>Present</div>
+                    <div class="exp-separator"></div>
+                    <div class="exp-role">
+                        <div class="exp-company">Filterbuy</div>
+                        <div class="exp-title">Marketing Analytics Director</div>
+                    </div>
+                    <div class="exp-desc">Leading both Data Engineering and Data Science fronts. Built Marketing Mix Model (Google Meridian), Markov Chain Attribution, RFM modeling for predictive marketing, and ETL pipelines consolidating data from Amazon, TikTok, Google Ads, and web analytics.</div>
+                </div>
+
+                <!-- Media Brands -->
+                <div class="exp-item">
+                    <div class="exp-year">2022 &mdash;<br>2023</div>
+                    <div class="exp-separator"></div>
+                    <div class="exp-role">
+                        <div class="exp-company">IPG Mediabrands</div>
+                        <div class="exp-title">Head of Data LATAM</div>
+                    </div>
+                    <div class="exp-desc">Built end-to-end MarTech solutions for Nestl&eacute; across Latin America. Led 1st Party Data activation, GTM Server-Side implementation across 8 LATAM markets, and Speedboat digital acceleration project integrating CRM, Cloud, and Advertising Platforms.</div>
+                </div>
+
+                <!-- MINT -->
+                <div class="exp-item">
+                    <div class="exp-year">2020 &mdash;<br>2022</div>
+                    <div class="exp-separator"></div>
+                    <div class="exp-role">
+                        <div class="exp-company">MINT</div>
+                        <div class="exp-title">Data Manager</div>
+                    </div>
+                    <div class="exp-desc">Algorithm and software design for marketing challenges. Built AIRE (AI Recommendation Engine using Linear Optimization), Predictive Planning Algorithm based on Markowitz Portfolio Optimization, and Megalista smart audience generation using ML models.</div>
+                </div>
+
+                <!-- WMcCann -->
+                <div class="exp-item">
+                    <div class="exp-year">2019</div>
+                    <div class="exp-separator"></div>
+                    <div class="exp-role">
+                        <div class="exp-company">WMcCann</div>
+                        <div class="exp-title">Data Analytics Manager</div>
+                    </div>
+                    <div class="exp-desc">Comprehensive Marketing Mix Modeling study defining optimal annual budget allocation for General Motors ($100M+ spend). Built measurement frameworks and continuous automated reporting of GM marketing efforts.</div>
+                </div>
+
+                <!-- Globo -->
+                <div class="exp-item">
+                    <div class="exp-year">2018</div>
+                    <div class="exp-separator"></div>
+                    <div class="exp-role">
+                        <div class="exp-company">Globo</div>
+                        <div class="exp-title">Data Scientist</div>
+                    </div>
+                    <div class="exp-desc">Business Analytics and AI at Gshow, Globo's entertainment content portal. Automated reporting process reducing manual time by 80%. Developed Churn Optimization Algorithm for content engagement.</div>
+                </div>
+
+                <!-- Bridge Consulting -->
+                <div class="exp-item">
+                    <div class="exp-year">2017</div>
+                    <div class="exp-separator"></div>
+                    <div class="exp-role">
+                        <div class="exp-company">Bridge Consulting</div>
+                        <div class="exp-title">Data Science Consultant</div>
+                    </div>
+                    <div class="exp-desc">Data Science consulting focused on retail solutions. Built Target Stock Calculating Algorithm, Outlier Detection on Business Expenses, and custom dashboards with automated reporting.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================
+         EDUCATION SECTION
+         ======================== -->
+    <section class="education" id="education">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">03 &mdash; Education</div>
+                <h2 class="section-title">Academic background</h2>
+            </div>
+            <div class="edu-grid">
+                <div class="edu-card">
+                    <div class="edu-year">2020 &mdash; 2021</div>
+                    <h3 class="edu-degree">MBA</h3>
+                    <p class="edu-field">Data Science &amp; Analytics</p>
+                    <p class="edu-school">USP</p>
+                </div>
+                <div class="edu-card">
+                    <div class="edu-year">2018 &mdash; 2019</div>
+                    <h3 class="edu-degree">MSc (Interrupted)</h3>
+                    <p class="edu-field">Industrial Engineering</p>
+                    <p class="edu-school">COPPE-UFRJ</p>
+                </div>
+                <div class="edu-card">
+                    <div class="edu-year">2010 &mdash; 2015</div>
+                    <h3 class="edu-degree">BSc</h3>
+                    <p class="edu-field">Mechanical Engineering</p>
+                    <p class="edu-school">UFF</p>
+                </div>
+                <div class="edu-card">
+                    <div class="edu-year">2006 &mdash; 2010</div>
+                    <h3 class="edu-degree">BSc</h3>
+                    <p class="edu-field">Physics</p>
+                    <p class="edu-school">UFF</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="section-divider">&mdash;&mdash;&mdash;</div></div>
+
+    <!-- ========================
+         PORTFOLIO SECTION
+         ======================== -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">04 &mdash; Portfolio</div>
+                <h2 class="section-title">Selected projects</h2>
+            </div>
+            <div class="portfolio-grid">
+                <!-- TikTok API Handler -->
+                <div class="portfolio-item">
+                    <div class="portfolio-number">01</div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-tag">API Integration</div>
+                        <h3 class="portfolio-name">TikTok API Handler</h3>
+                        <p class="portfolio-desc">A comprehensive Python-based tool for interacting with TikTok's Marketing API. Handles authentication via OAuth 2.0, manages campaign data retrieval, and automates reporting workflows for advertising performance analysis.</p>
+                        <div class="portfolio-tech">
+                            <span>Python</span>
+                            <span>OAuth 2.0</span>
+                            <span>REST API</span>
+                            <span>TikTok Ads</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- My Online Courses -->
+                <div class="portfolio-item">
+                    <div class="portfolio-number">02</div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-tag">Education Platform</div>
+                        <h3 class="portfolio-name">My Online Courses</h3>
+                        <p class="portfolio-desc">A curated platform showcasing professional development courses and certifications in data science, web analytics, and cloud computing. Built as a reference for continuous learning and skill validation.</p>
+                        <div class="portfolio-tech">
+                            <span>HTML/CSS</span>
+                            <span>JavaScript</span>
+                            <span>Responsive Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google App Script Projects -->
+                <div class="portfolio-item">
+                    <div class="portfolio-number">03</div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-tag">Automation</div>
+                        <h3 class="portfolio-name">Google App Script Projects</h3>
+                        <p class="portfolio-desc">A collection of Google Apps Script solutions for automating workflows within the Google Workspace ecosystem. Includes tools for data extraction, spreadsheet automation, and custom integrations between Google services.</p>
+                        <div class="portfolio-tech">
+                            <span>Apps Script</span>
+                            <span>Google Sheets</span>
+                            <span>Automation</span>
+                            <span>APIs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================
+         CONTACT SECTION
+         ======================== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">05 &mdash; Contact</div>
+                <h2 class="section-title">Get in touch</h2>
+            </div>
+            <div class="contact-grid">
+                <div>
+                    <h3 class="contact-heading">Let's <em>connect</em><br>and create together.</h3>
+                    <p class="contact-text">Whether you have a project in mind, need marketing analytics expertise, or just want to say hello, I'd love to hear from you. I'm always open to discussing new opportunities and interesting challenges.</p>
+                    <div class="contact-info">
+                        <div class="contact-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:rodstex@gmail.com">rodstex@gmail.com</a>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>S&atilde;o Paulo, Brazil</span>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fab fa-linkedin-in"></i>
+                            <a href="https://linkedin.com/in/strodrigo" target="_blank">linkedin.com/in/strodrigo</a>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fab fa-github"></i>
+                            <a href="https://github.com/strod" target="_blank">github.com/strod</a>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('This is a mockup. Form submission is disabled.');">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" autocomplete="name">
+                        <span class="focus-line"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" autocomplete="email">
+                        <span class="focus-line"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Project Inquiry">
+                        <span class="focus-line"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell me about your project..."></textarea>
+                        <span class="focus-line"></span>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================
+         FOOTER
+         ======================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <p class="footer-copy">&copy; 2026 Rodrigo Teixeira. All rights reserved.</p>
+                <div class="footer-socials">
+                    <a href="https://linkedin.com/in/strodrigo" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/strod" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="mailto:rodstex@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Minimal JS for nav toggle only -->
+    <script>
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = document.querySelector('.nav').offsetHeight + 40; // banner + nav
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    // Close mobile nav if open
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
+            });
+        });
+
+        // Animate skill bars on scroll
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.skill-line-fill');
+                    fills.forEach(fill => {
+                        const width = fill.style.width;
+                        fill.style.width = '0%';
+                        requestAnimationFrame(() => {
+                            requestAnimationFrame(() => {
+                                fill.style.width = width;
+                            });
+                        });
+                    });
+                    skillObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-category').forEach(cat => {
+            skillObserver.observe(cat);
+        });
+    </script>
+
+</body>
+</html>

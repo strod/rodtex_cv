@@ -1,0 +1,2279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup 6: Code Aurora - Rodrigo Teixeira</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ============================================
+           CSS RESET & VARIABLES
+           ============================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0a0e17;
+            --bg-raised: #0f1520;
+            --aurora-green: #4ade80;
+            --aurora-purple: #a78bfa;
+            --aurora-amber: #fbbf24;
+            --aurora-emerald: #34d399;
+            --aurora-pink: #f472b6;
+            --text: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: rgba(255,255,255,0.06);
+            --border-bright: rgba(255,255,255,0.12);
+            --glass: rgba(15,23,42,0.7);
+            --glass-lighter: rgba(15,23,42,0.5);
+            --dot-red: #ff5f56;
+            --dot-yellow: #ffbd2e;
+            --dot-green: #27c93f;
+            --sidebar-width: 50px;
+            --status-height: 28px;
+            --tab-height: 40px;
+            --mockup-banner-height: 36px;
+            --font-mono: 'Fira Code', 'Consolas', 'Monaco', monospace;
+            --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* ============================================
+           AURORA BACKGROUND
+           ============================================ */
+        .aurora-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .aurora-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.3;
+            will-change: transform;
+        }
+
+        .aurora-blob-1 {
+            width: 800px;
+            height: 600px;
+            background: radial-gradient(ellipse, var(--aurora-green), transparent 70%);
+            top: -200px;
+            left: -200px;
+            animation: auroraFloat1 20s ease-in-out infinite;
+        }
+
+        .aurora-blob-2 {
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(ellipse, var(--aurora-purple), transparent 70%);
+            top: 30%;
+            right: -200px;
+            animation: auroraFloat2 25s ease-in-out infinite;
+        }
+
+        .aurora-blob-3 {
+            width: 600px;
+            height: 500px;
+            background: radial-gradient(ellipse, var(--aurora-amber), transparent 70%);
+            bottom: -100px;
+            left: 30%;
+            animation: auroraFloat3 22s ease-in-out infinite;
+        }
+
+        .aurora-blob-4 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(ellipse, var(--aurora-emerald), transparent 70%);
+            top: 60%;
+            left: -100px;
+            animation: auroraFloat4 18s ease-in-out infinite;
+        }
+
+        .aurora-blob-5 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(ellipse, var(--aurora-pink), transparent 70%);
+            top: 10%;
+            right: 20%;
+            animation: auroraFloat5 28s ease-in-out infinite;
+            opacity: 0.15;
+        }
+
+        @keyframes auroraFloat1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(100px, 80px) scale(1.1); }
+            50% { transform: translate(50px, 150px) scale(0.9); }
+            75% { transform: translate(-50px, 60px) scale(1.05); }
+        }
+
+        @keyframes auroraFloat2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(-80px, -60px) scale(1.15); }
+            50% { transform: translate(-150px, 50px) scale(0.95); }
+            75% { transform: translate(-30px, -80px) scale(1.1); }
+        }
+
+        @keyframes auroraFloat3 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(120px, -100px) scale(1.2); }
+            66% { transform: translate(-80px, -50px) scale(0.85); }
+        }
+
+        @keyframes auroraFloat4 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            30% { transform: translate(60px, -120px) scale(1.1); }
+            60% { transform: translate(150px, -60px) scale(0.9); }
+        }
+
+        @keyframes auroraFloat5 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            40% { transform: translate(-100px, 80px) scale(1.3); }
+            70% { transform: translate(50px, 120px) scale(0.8); }
+        }
+
+        /* ============================================
+           MOCKUP BANNER
+           ============================================ */
+        .mockup-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--mockup-banner-height);
+            background: linear-gradient(90deg, var(--aurora-green), var(--aurora-purple), var(--aurora-amber));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--bg);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            z-index: 9999;
+        }
+
+        /* ============================================
+           TAB BAR (Navigation)
+           ============================================ */
+        .tab-bar {
+            position: fixed;
+            top: var(--mockup-banner-height);
+            left: var(--sidebar-width);
+            right: 0;
+            height: var(--tab-height);
+            background: rgba(10, 14, 23, 0.95);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: stretch;
+            z-index: 100;
+            overflow-x: auto;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            backdrop-filter: blur(10px);
+        }
+
+        .tab-bar::-webkit-scrollbar { display: none; }
+
+        .tab {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0 16px;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-right: 1px solid var(--border);
+            white-space: nowrap;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: transparent;
+        }
+
+        .tab:hover {
+            color: var(--text-secondary);
+            background: rgba(255,255,255,0.02);
+        }
+
+        .tab.active {
+            color: var(--text);
+            background: rgba(255,255,255,0.03);
+        }
+
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--aurora-amber);
+        }
+
+        .tab .tab-icon {
+            font-size: 0.65rem;
+            opacity: 0.6;
+        }
+
+        .tab .tab-close {
+            font-size: 0.6rem;
+            opacity: 0;
+            transition: opacity 0.2s;
+            margin-left: 8px;
+        }
+
+        .tab:hover .tab-close { opacity: 0.4; }
+
+        /* ============================================
+           LEFT SIDEBAR (Activity Bar)
+           ============================================ */
+        .activity-bar {
+            position: fixed;
+            top: var(--mockup-banner-height);
+            left: 0;
+            width: var(--sidebar-width);
+            height: calc(100vh - var(--mockup-banner-height) - var(--status-height));
+            background: rgba(10, 14, 23, 0.98);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 8px;
+            gap: 4px;
+            z-index: 101;
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-left: 2px solid transparent;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .activity-icon:hover {
+            color: var(--text);
+            background: rgba(255,255,255,0.04);
+        }
+
+        .activity-icon.active {
+            color: var(--text);
+            border-left-color: var(--aurora-amber);
+            background: rgba(255,255,255,0.04);
+        }
+
+        .activity-spacer { flex: 1; }
+
+        .activity-icon.bottom-icon {
+            margin-bottom: 8px;
+        }
+
+        /* ============================================
+           MAIN CONTENT
+           ============================================ */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            margin-top: calc(var(--mockup-banner-height) + var(--tab-height));
+            margin-bottom: var(--status-height);
+            padding: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            padding: 60px 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* ============================================
+           EDITOR PANEL COMPONENT
+           ============================================ */
+        .editor-panel {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            transition: all 0.4s ease;
+        }
+
+        .editor-panel:hover {
+            border-color: var(--border-bright);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+        }
+
+        .editor-titlebar {
+            display: flex;
+            align-items: center;
+            padding: 10px 14px;
+            background: rgba(0,0,0,0.3);
+            border-bottom: 1px solid var(--border);
+            gap: 8px;
+        }
+
+        .editor-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .editor-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .editor-dot.red { background: var(--dot-red); }
+        .editor-dot.yellow { background: var(--dot-yellow); }
+        .editor-dot.green { background: var(--dot-green); }
+
+        .editor-filename {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-left: 4px;
+        }
+
+        .editor-filename .ext {
+            color: var(--aurora-amber);
+        }
+
+        .editor-body {
+            padding: 20px 24px;
+        }
+
+        /* ============================================
+           CODE STYLING
+           ============================================ */
+        .code-block {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .code-block .keyword { color: var(--aurora-purple); }
+        .code-block .type { color: var(--aurora-amber); }
+        .code-block .string { color: var(--aurora-green); }
+        .code-block .property { color: #7dd3fc; }
+        .code-block .bracket { color: var(--text-muted); }
+        .code-block .comment { color: var(--text-muted); font-style: italic; }
+        .code-block .number { color: var(--aurora-amber); }
+        .code-block .method { color: #c4b5fd; }
+        .code-block .operator { color: var(--aurora-purple); }
+        .code-block .line-number {
+            display: inline-block;
+            width: 32px;
+            color: rgba(100, 116, 139, 0.4);
+            text-align: right;
+            margin-right: 16px;
+            user-select: none;
+        }
+
+        /* ============================================
+           SECTION TITLES
+           ============================================ */
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-family: var(--font-sans);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 32px;
+        }
+
+        .section-title .accent {
+            background: linear-gradient(135deg, var(--aurora-green), var(--aurora-amber));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            min-height: calc(100vh - var(--mockup-banner-height) - var(--tab-height) - var(--status-height));
+            display: flex;
+            align-items: center;
+            padding: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-photo-wrapper {
+            position: relative;
+        }
+
+        .hero-photo-glow {
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            right: -30px;
+            bottom: -30px;
+            background: radial-gradient(ellipse, var(--aurora-green) 0%, var(--aurora-purple) 40%, transparent 70%);
+            opacity: 0.25;
+            filter: blur(40px);
+            border-radius: 20px;
+            z-index: 0;
+            animation: heroGlow 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroGlow {
+            0% { opacity: 0.2; transform: scale(1); }
+            100% { opacity: 0.35; transform: scale(1.05); }
+        }
+
+        .hero-photo {
+            position: relative;
+            z-index: 1;
+            width: 280px;
+            height: 350px;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: 14px;
+            border: 2px solid var(--border-bright);
+            display: block;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .hero-photo-label {
+            position: relative;
+            z-index: 1;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        .hero-right {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .hero-greeting {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--aurora-green);
+        }
+
+        .hero-name {
+            font-size: 2.6rem;
+            font-weight: 700;
+            line-height: 1.15;
+        }
+
+        .hero-name .gradient {
+            background: linear-gradient(135deg, var(--aurora-green), var(--aurora-amber));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--aurora-green), var(--aurora-emerald));
+            color: var(--bg);
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(74, 222, 128, 0.3);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: transparent;
+            color: var(--text);
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 8px;
+            border: 1px solid var(--border-bright);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--aurora-purple);
+            color: var(--aurora-purple);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================
+           ABOUT SECTION
+           ============================================ */
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--aurora-green);
+            transform: translateY(-2px);
+        }
+
+        .stat-value {
+            font-family: var(--font-mono);
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--aurora-green), var(--aurora-amber));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        .about-prose {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-top: 20px;
+            font-size: 0.92rem;
+        }
+
+        /* ============================================
+           SKILLS SECTION
+           ============================================ */
+        .skills-category {
+            margin-bottom: 24px;
+        }
+
+        .skills-category-title {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--aurora-amber);
+            margin-bottom: 14px;
+            padding-left: 4px;
+        }
+
+        .skill-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            padding: 4px 0;
+        }
+
+        .skill-name {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            width: 180px;
+            flex-shrink: 0;
+        }
+
+        .skill-bar-bg {
+            flex: 1;
+            height: 6px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--aurora-green), var(--aurora-emerald));
+            transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            width: 0;
+        }
+
+        .skill-bar-fill.purple {
+            background: linear-gradient(90deg, var(--aurora-purple), #c4b5fd);
+        }
+
+        .skill-bar-fill.amber {
+            background: linear-gradient(90deg, var(--aurora-amber), #fcd34d);
+        }
+
+        .skill-bar-fill.pink {
+            background: linear-gradient(90deg, var(--aurora-pink), #f9a8d4);
+        }
+
+        .skill-percent {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            width: 35px;
+            text-align: right;
+        }
+
+        /* ============================================
+           EXPERIENCE SECTION
+           ============================================ */
+        .git-log-entry {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .git-log-entry:last-child { border-bottom: none; }
+
+        .git-log-entry:hover {
+            background: rgba(255,255,255,0.01);
+            padding-left: 8px;
+        }
+
+        .git-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+        }
+
+        .git-hash {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--aurora-amber);
+        }
+
+        .git-branch {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: rgba(167, 139, 250, 0.15);
+            color: var(--aurora-purple);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+        }
+
+        .git-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-left: auto;
+        }
+
+        .git-message {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .git-author {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .git-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+        }
+
+        .git-log-entry.expanded .git-details {
+            max-height: 600px;
+            padding-top: 16px;
+        }
+
+        .git-detail-list {
+            list-style: none;
+            padding-left: 4px;
+        }
+
+        .git-detail-list li {
+            position: relative;
+            padding: 6px 0 6px 20px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .git-detail-list li::before {
+            content: '+';
+            position: absolute;
+            left: 0;
+            color: var(--aurora-green);
+            font-family: var(--font-mono);
+            font-weight: 600;
+        }
+
+        .git-expand-hint {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* ============================================
+           EDUCATION SECTION
+           ============================================ */
+        .education-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .edu-card .editor-body {
+            padding: 20px;
+        }
+
+        .edu-degree {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .edu-school {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--aurora-green);
+            margin-bottom: 8px;
+        }
+
+        .edu-year {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .edu-note {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .edu-tag {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: rgba(251, 191, 36, 0.1);
+            color: var(--aurora-amber);
+            border: 1px solid rgba(251, 191, 36, 0.15);
+            margin-top: 8px;
+        }
+
+        /* ============================================
+           PORTFOLIO SECTION
+           ============================================ */
+        .portfolio-layout {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 24px;
+        }
+
+        .file-tree {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            position: sticky;
+            top: calc(var(--mockup-banner-height) + var(--tab-height) + 20px);
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .file-tree-title {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .file-tree-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 8px;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .file-tree-item:hover {
+            color: var(--text);
+            background: rgba(255,255,255,0.04);
+        }
+
+        .file-tree-item.active {
+            color: var(--text);
+            background: rgba(255,255,255,0.06);
+        }
+
+        .file-tree-item i {
+            font-size: 0.72rem;
+            width: 16px;
+            text-align: center;
+        }
+
+        .file-tree-item .folder-icon { color: var(--aurora-amber); }
+        .file-tree-item .file-icon { color: var(--aurora-green); }
+
+        .portfolio-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .portfolio-card .editor-body {
+            padding: 20px 24px;
+        }
+
+        .portfolio-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-card-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .portfolio-card-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .portfolio-tag {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            padding: 3px 10px;
+            border-radius: 4px;
+            background: rgba(74, 222, 128, 0.08);
+            color: var(--aurora-green);
+            border: 1px solid rgba(74, 222, 128, 0.12);
+        }
+
+        .portfolio-tag.purple {
+            background: rgba(167, 139, 250, 0.08);
+            color: var(--aurora-purple);
+            border-color: rgba(167, 139, 250, 0.12);
+        }
+
+        .portfolio-tag.amber {
+            background: rgba(251, 191, 36, 0.08);
+            color: var(--aurora-amber);
+            border-color: rgba(251, 191, 36, 0.12);
+        }
+
+        /* ============================================
+           CONTACT SECTION
+           ============================================ */
+        .terminal-form {
+            padding: 24px;
+        }
+
+        .terminal-prompt {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .terminal-prompt .user { color: var(--aurora-green); }
+        .terminal-prompt .path { color: var(--aurora-purple); }
+        .terminal-prompt .cmd { color: var(--aurora-amber); }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .form-group label .required { color: var(--aurora-amber); }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            border-color: var(--aurora-green);
+            box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.08);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-submit {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            background: linear-gradient(135deg, var(--aurora-green), var(--aurora-emerald));
+            color: var(--bg);
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(74, 222, 128, 0.3);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            padding: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+        }
+
+        .footer-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            transition: color 0.3s;
+        }
+
+        .footer-link:hover { color: var(--aurora-green); }
+
+        .footer-copy {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           STATUS BAR
+           ============================================ */
+        .status-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: var(--status-height);
+            background: rgba(10, 14, 23, 0.97);
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 12px;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            z-index: 200;
+        }
+
+        .status-left,
+        .status-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status-item .branch-icon { color: var(--aurora-green); }
+        .status-item .check-icon { color: var(--aurora-green); }
+        .status-item .error-icon { color: var(--dot-red); }
+
+        /* ============================================
+           SCROLL ANIMATIONS
+           ============================================ */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 900px) {
+            .activity-bar { display: none; }
+            .main-content { margin-left: 0; }
+            .tab-bar { left: 0; }
+
+            section { padding: 40px 20px; }
+            .hero { padding: 40px 20px; }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                text-align: center;
+            }
+
+            .hero-photo-wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-photo { width: 220px; height: 280px; }
+
+            .hero-buttons { justify-content: center; }
+
+            .hero-name { font-size: 2rem; }
+
+            .about-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .file-tree {
+                position: static;
+                max-height: none;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-name {
+                width: 140px;
+                font-size: 0.72rem;
+            }
+
+            .git-date {
+                margin-left: 0;
+                width: 100%;
+                margin-top: 4px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .tab {
+                padding: 0 10px;
+                font-size: 0.65rem;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-name { font-size: 1.7rem; }
+
+            .status-bar {
+                font-size: 0.58rem;
+            }
+
+            .status-right {
+                display: none;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+
+            .skill-name { width: 110px; }
+        }
+
+        /* ============================================
+           CUSTOM SCROLLBAR
+           ============================================ */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.08);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255,255,255,0.14);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Aurora Background -->
+    <div class="aurora-bg">
+        <div class="aurora-blob aurora-blob-1"></div>
+        <div class="aurora-blob aurora-blob-2"></div>
+        <div class="aurora-blob aurora-blob-3"></div>
+        <div class="aurora-blob aurora-blob-4"></div>
+        <div class="aurora-blob aurora-blob-5"></div>
+    </div>
+
+    <!-- Mockup Banner -->
+    <div class="mockup-banner">MOCKUP 6: Code Aurora</div>
+
+    <!-- Left Sidebar / Activity Bar -->
+    <nav class="activity-bar">
+        <a href="#hero" class="activity-icon active" title="Explorer"><i class="fas fa-user"></i></a>
+        <a href="#about" class="activity-icon" title="About"><i class="fas fa-code"></i></a>
+        <a href="#skills" class="activity-icon" title="Skills"><i class="fas fa-cubes"></i></a>
+        <a href="#experience" class="activity-icon" title="Experience"><i class="fas fa-briefcase"></i></a>
+        <a href="#education" class="activity-icon" title="Education"><i class="fas fa-graduation-cap"></i></a>
+        <a href="#portfolio" class="activity-icon" title="Portfolio"><i class="fas fa-folder"></i></a>
+        <div class="activity-spacer"></div>
+        <a href="https://github.com/strod" class="activity-icon bottom-icon" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+    </nav>
+
+    <!-- Tab Bar (Navigation) -->
+    <nav class="tab-bar" id="tabBar">
+        <a href="#hero" class="tab active" data-section="hero">
+            <span class="tab-icon"><i class="fas fa-home"></i></span>
+            index.ts
+            <span class="tab-close"><i class="fas fa-times"></i></span>
+        </a>
+        <a href="#about" class="tab" data-section="about">
+            <span class="tab-icon"><i class="fas fa-file-code"></i></span>
+            about.ts
+            <span class="tab-close"><i class="fas fa-times"></i></span>
+        </a>
+        <a href="#skills" class="tab" data-section="skills">
+            <span class="tab-icon"><i class="fas fa-file-code"></i></span>
+            skills.json
+            <span class="tab-close"><i class="fas fa-times"></i></span>
+        </a>
+        <a href="#experience" class="tab" data-section="experience">
+            <span class="tab-icon"><i class="fas fa-file-alt"></i></span>
+            experience.log
+            <span class="tab-close"><i class="fas fa-times"></i></span>
+        </a>
+        <a href="#education" class="tab" data-section="education">
+            <span class="tab-icon"><i class="fas fa-file-alt"></i></span>
+            education.md
+            <span class="tab-close"><i class="fas fa-times"></i></span>
+        </a>
+        <a href="#portfolio" class="tab" data-section="portfolio">
+            <span class="tab-icon"><i class="fas fa-folder"></i></span>
+            portfolio/
+            <span class="tab-close"><i class="fas fa-times"></i></span>
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- ============ HERO ============ -->
+        <section class="hero" id="hero">
+            <div class="hero-grid">
+                <div class="hero-photo-wrapper fade-in-left">
+                    <div class="hero-photo-glow"></div>
+                    <img src="../images/profile_pic_website_8bit.png" alt="Rodrigo Teixeira" class="hero-photo">
+                    <div class="hero-photo-label">// profile_pic_website_8bit.png &mdash; 280x350</div>
+                </div>
+                <div class="hero-right fade-in-right">
+                    <div class="hero-greeting">// Hello world, I'm</div>
+                    <h1 class="hero-name">Rodrigo <span class="gradient">Teixeira</span></h1>
+                    <div class="editor-panel" style="margin: 0;">
+                        <div class="editor-titlebar">
+                            <div class="editor-dots">
+                                <span class="editor-dot red"></span>
+                                <span class="editor-dot yellow"></span>
+                                <span class="editor-dot green"></span>
+                            </div>
+                            <span class="editor-filename">hero.<span class="ext">ts</span></span>
+                        </div>
+                        <div class="editor-body">
+                            <div class="code-block">
+                                <div><span class="line-number">1</span><span class="keyword">const</span> <span class="property">rodrigo</span>: <span class="type">Developer</span> <span class="operator">=</span> <span class="bracket">{</span></div>
+                                <div><span class="line-number">2</span>  <span class="property">name</span>: <span class="string">"Rodrigo Teixeira"</span>,</div>
+                                <div><span class="line-number">3</span>  <span class="property">role</span>: <span class="string">"Marketing Science &amp; Ad-Tech Developer"</span>,</div>
+                                <div><span class="line-number">4</span>  <span class="property">location</span>: <span class="string">"S&atilde;o Paulo, Brazil"</span>,</div>
+                                <div><span class="line-number">5</span>  <span class="property">experience</span>: <span class="string">"8+ years"</span>,</div>
+                                <div><span class="line-number">6</span>  <span class="property">stack</span>: <span class="bracket">[</span><span class="string">"Python"</span>, <span class="string">"SQL"</span>, <span class="string">"GCP"</span>, <span class="string">"AWS"</span><span class="bracket">]</span>,</div>
+                                <div><span class="line-number">7</span>  <span class="property">passion</span>: <span class="string">"Building end-to-end MarTech solutions"</span></div>
+                                <div><span class="line-number">8</span><span class="bracket">}</span>;</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="font-family:var(--font-mono);font-size:13px;margin-bottom:20px;display:flex;align-items:center;gap:8px;">
+                        <span style="width:8px;height:8px;border-radius:50%;background:var(--aurora-green);display:inline-block;" data-availability-dot></span>
+                        <span style="color:var(--text-secondary);" data-availability>Available! Leave a message</span>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="mailto:rodrigo@rodtex.dev" class="btn-primary">[hire_me]</a>
+                        <a href="#portfolio" class="btn-secondary">[view_portfolio]</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ ABOUT ============ -->
+        <section id="about">
+            <div class="section-label fade-in">// 01</div>
+            <h2 class="section-title fade-in">About <span class="accent">Me</span></h2>
+
+            <div class="editor-panel fade-in">
+                <div class="editor-titlebar">
+                    <div class="editor-dots">
+                        <span class="editor-dot red"></span>
+                        <span class="editor-dot yellow"></span>
+                        <span class="editor-dot green"></span>
+                    </div>
+                    <span class="editor-filename">about.<span class="ext">ts</span></span>
+                </div>
+                <div class="editor-body">
+                    <div class="code-block">
+                        <div><span class="line-number">1</span><span class="keyword">interface</span> <span class="type">Profile</span> <span class="bracket">{</span></div>
+                        <div><span class="line-number">2</span>  <span class="property">title</span>: <span class="string">"Marketing Science &amp; Ad-Tech Developer"</span>;</div>
+                        <div><span class="line-number">3</span>  <span class="property">company</span>: <span class="string">"Filterbuy"</span>;</div>
+                        <div><span class="line-number">4</span>  <span class="property">location</span>: <span class="string">"S&atilde;o Paulo, Brazil (Remote US)"</span>;</div>
+                        <div><span class="line-number">5</span>  <span class="property">email</span>: <span class="string">"rodrigo@rodtex.dev"</span>;</div>
+                        <div><span class="line-number">6</span>  <span class="property">languages</span>: <span class="bracket">[</span><span class="string">"Portuguese"</span>, <span class="string">"English"</span>, <span class="string">"Spanish"</span><span class="bracket">]</span>;</div>
+                        <div><span class="line-number">7</span><span class="bracket">}</span></div>
+                    </div>
+                    <div class="about-prose">
+                        <div class="code-block" style="margin-top: 20px;">
+                            <div><span class="line-number">8</span></div>
+                            <div><span class="line-number">9</span><span class="comment">/*</span></div>
+                            <div><span class="line-number">10</span><span class="comment"> * Marketing Science &amp; Ad-Tech Developer with 8+ years of experience building</span></div>
+                            <div><span class="line-number">11</span><span class="comment"> * end-to-end MarTech solutions, data infrastructure, and measurement</span></div>
+                            <div><span class="line-number">12</span><span class="comment"> * systems. Combines deep technical skill in Python, SQL, GCP, and AWS</span></div>
+                            <div><span class="line-number">13</span><span class="comment"> * with strategic marketing analytics expertise.</span></div>
+                            <div><span class="line-number">14</span><span class="comment"> *</span></div>
+                            <div><span class="line-number">15</span><span class="comment"> * Career spans WMcCann, IPG Mediabrands, Rede Globo, MINT, and Filterbuy.</span></div>
+                            <div><span class="line-number">16</span><span class="comment"> * Holds MBA from USP, MSc from COPPE-UFRJ, and dual BSc in Mechanical</span></div>
+                            <div><span class="line-number">17</span><span class="comment"> * Engineering and Physics from UFF.</span></div>
+                            <div><span class="line-number">18</span><span class="comment"> */</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-stats">
+                <div class="stat-card fade-in">
+                    <div class="stat-value">8+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-value">6+</div>
+                    <div class="stat-label">Companies</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-value">4</div>
+                    <div class="stat-label">Degrees</div>
+                </div>
+                <div class="stat-card fade-in">
+                    <div class="stat-value">50+</div>
+                    <div class="stat-label">Projects</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SKILLS ============ -->
+        <section id="skills">
+            <div class="section-label fade-in">// 02</div>
+            <h2 class="section-title fade-in">Technical <span class="accent">Skills</span></h2>
+
+            <div class="editor-panel fade-in">
+                <div class="editor-titlebar">
+                    <div class="editor-dots">
+                        <span class="editor-dot red"></span>
+                        <span class="editor-dot yellow"></span>
+                        <span class="editor-dot green"></span>
+                    </div>
+                    <span class="editor-filename">skills.<span class="ext">json</span></span>
+                </div>
+                <div class="editor-body">
+
+                    <!-- Programming -->
+                    <div class="skills-category">
+                        <div class="skills-category-title">"programming":</div>
+                        <div class="skill-row">
+                            <span class="skill-name">Python</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="95"></div></div>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                        <div class="skill-row">
+                            <span class="skill-name">SQL</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92"></div></div>
+                            <span class="skill-percent">92%</span>
+                        </div>
+                        <div class="skill-row">
+                            <span class="skill-name">JavaScript</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="70"></div></div>
+                            <span class="skill-percent">70%</span>
+                        </div>
+                        <div class="skill-row">
+                            <span class="skill-name">Git / CI/CD</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                    </div>
+
+                    <!-- Analytics & Marketing -->
+                    <div class="skills-category">
+                        <div class="skills-category-title">"analytics_marketing":</div>
+                        <div class="skill-row">
+                            <span class="skill-name">Google Analytics</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill purple" data-width="95"></div></div>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                        <div class="skill-row">
+                            <span class="skill-name">GTM (Client + Server)</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill purple" data-width="92"></div></div>
+                            <span class="skill-percent">92%</span>
+                        </div>
+                        <div class="skill-row">
+                            <span class="skill-name">Google Ads / SA360</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill purple" data-width="88"></div></div>
+                            <span class="skill-percent">88%</span>
+                        </div>
+                        <div class="skill-row">
+                            <span class="skill-name">DV360 / CM360</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill purple" data-width="85"></div></div>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-row">
+                            <span class="skill-name">Meta / TikTok / Amazon</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill purple" data-width="82"></div></div>
+                            <span class="skill-percent">82%</span>
+                        </div>
+                        <div class="skill-row">
+                            <span class="skill-name">Looker / QuickSight</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill purple" data-width="88"></div></div>
+                            <span class="skill-percent">88%</span>
+                        </div>
+                    </div>
+
+                    <!-- Cloud & Infrastructure -->
+                    <div class="skills-category">
+                        <div class="skills-category-title">"cloud_infrastructure":</div>
+                        <div class="skill-row">
+                            <span class="skill-name">GCP (BigQuery, etc.)</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill amber" data-width="90"></div></div>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-row">
+                            <span class="skill-name">AWS (Redshift, S3, etc.)</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill amber" data-width="82"></div></div>
+                            <span class="skill-percent">82%</span>
+                        </div>
+                        <div class="skill-row">
+                            <span class="skill-name">Docker / Kubernetes</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill amber" data-width="72"></div></div>
+                            <span class="skill-percent">72%</span>
+                        </div>
+                        <div class="skill-row">
+                            <span class="skill-name">Terraform / IaC</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill amber" data-width="65"></div></div>
+                            <span class="skill-percent">65%</span>
+                        </div>
+                    </div>
+
+                    <!-- AI/ML -->
+                    <div class="skills-category">
+                        <div class="skills-category-title">"ai_ml":</div>
+                        <div class="skill-row">
+                            <span class="skill-name">LLM Engineering</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill pink" data-width="85"></div></div>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-row">
+                            <span class="skill-name">Scikit-learn / Pandas</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill pink" data-width="88"></div></div>
+                            <span class="skill-percent">88%</span>
+                        </div>
+                        <div class="skill-row">
+                            <span class="skill-name">Vertex AI</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill pink" data-width="75"></div></div>
+                            <span class="skill-percent">75%</span>
+                        </div>
+                        <div class="skill-row">
+                            <span class="skill-name">Marketing Mix Models</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill pink" data-width="82"></div></div>
+                            <span class="skill-percent">82%</span>
+                        </div>
+                    </div>
+
+                    <!-- Languages -->
+                    <div class="skills-category">
+                        <div class="skills-category-title">"languages":</div>
+                        <div class="skill-row">
+                            <span class="skill-name">Portuguese</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="100"></div></div>
+                            <span class="skill-percent">Native</span>
+                        </div>
+                        <div class="skill-row">
+                            <span class="skill-name">English</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92"></div></div>
+                            <span class="skill-percent">Fluent</span>
+                        </div>
+                        <div class="skill-row">
+                            <span class="skill-name">Spanish</span>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" data-width="55"></div></div>
+                            <span class="skill-percent">Interm.</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ EXPERIENCE ============ -->
+        <section id="experience">
+            <div class="section-label fade-in">// 03</div>
+            <h2 class="section-title fade-in">Work <span class="accent">Experience</span></h2>
+
+            <div class="editor-panel fade-in">
+                <div class="editor-titlebar">
+                    <div class="editor-dots">
+                        <span class="editor-dot red"></span>
+                        <span class="editor-dot yellow"></span>
+                        <span class="editor-dot green"></span>
+                    </div>
+                    <span class="editor-filename">git log --career</span>
+                </div>
+                <div class="editor-body" style="padding: 8px 24px;">
+
+                    <!-- Filterbuy -->
+                    <div class="git-log-entry" onclick="toggleExpand(this)">
+                        <div class="git-header">
+                            <span class="git-hash">a1b2c3d</span>
+                            <span class="git-branch">HEAD -> main</span>
+                            <span class="git-date">2022 - Present</span>
+                        </div>
+                        <div class="git-message">feat(career): Marketing Science &amp; Ad-Tech Developer @ Filterbuy</div>
+                        <div class="git-author">Author: Rodrigo Teixeira &lt;rodrigo@rodtex.dev&gt; | Fort Lauderdale, FL (Remote)</div>
+                        <div class="git-expand-hint">click to expand diff +</div>
+                        <div class="git-details">
+                            <ul class="git-detail-list">
+                                <li>Lead data warehouse management and migration (Redshift to BigQuery)</li>
+                                <li>Develop and manage advanced reporting dashboards (QuickSight, Looker)</li>
+                                <li>Manage website tracking via GTM (client and server-side)</li>
+                                <li>RFM Modeling for predictive inbound marketing (churn, upsell)</li>
+                                <li>Markov Chain Attribution model for channel simulation</li>
+                                <li>Marketing Mix Model using Google's Meridian framework</li>
+                                <li>Amazon bid optimization engine (automated budget/bid management)</li>
+                                <li>Built ETL pipelines from Amazon, TikTok, Google Ads, Pipedrive CRM</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- IPG Mediabrands -->
+                    <div class="git-log-entry" onclick="toggleExpand(this)">
+                        <div class="git-header">
+                            <span class="git-hash">e4f5g6h</span>
+                            <span class="git-branch">origin/latam</span>
+                            <span class="git-date">2022 - 2023</span>
+                        </div>
+                        <div class="git-message">feat(career): Head of Data LATAM @ IPG Mediabrands</div>
+                        <div class="git-author">Author: Rodrigo Teixeira &lt;rodrigo@rodtex.dev&gt; | S&atilde;o Paulo, Brazil</div>
+                        <div class="git-expand-hint">click to expand diff +</div>
+                        <div class="git-details">
+                            <ul class="git-detail-list">
+                                <li>End-to-end MarTech solutions for Nestl&eacute; across Latin America</li>
+                                <li>1st Party Data Activation across all Nestl&eacute; media efforts</li>
+                                <li>GTM Server-Side implementation across 8 LATAM markets</li>
+                                <li>Facebook Brilliant Basics &mdash; best media buying practices across Meta accounts</li>
+                                <li>Speedboat &mdash; 6-month digital acceleration integrating CRM, Cloud, and Ad Platforms</li>
+                                <li>Designed first-party data ingestion and unification pipeline</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- MINT -->
+                    <div class="git-log-entry" onclick="toggleExpand(this)">
+                        <div class="git-header">
+                            <span class="git-hash">i7j8k9l</span>
+                            <span class="git-branch">feature/ai-startup</span>
+                            <span class="git-date">2020 - 2022</span>
+                        </div>
+                        <div class="git-message">feat(career): Data Manager @ MINT</div>
+                        <div class="git-author">Author: Rodrigo Teixeira &lt;rodrigo@rodtex.dev&gt; | S&atilde;o Paulo, Brazil</div>
+                        <div class="git-expand-hint">click to expand diff +</div>
+                        <div class="git-details">
+                            <ul class="git-detail-list">
+                                <li>AIRE &mdash; AI Recommendation Engine using Linear Optimization (ROI +25%)</li>
+                                <li>Predictive Planning Algorithm based on Markowitz Portfolio Optimization</li>
+                                <li>Megalista &mdash; Smart Audience Generation using ML models with web traffic data</li>
+                                <li>Down Detector Monitor &mdash; event-based trigger for competitor outage targeting</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- WMcCann -->
+                    <div class="git-log-entry" onclick="toggleExpand(this)">
+                        <div class="git-header">
+                            <span class="git-hash">m0n1o2p</span>
+                            <span class="git-branch">feature/agency</span>
+                            <span class="git-date">2019</span>
+                        </div>
+                        <div class="git-message">feat(career): Data Analytics Manager @ WMcCann</div>
+                        <div class="git-author">Author: Rodrigo Teixeira &lt;rodrigo@rodtex.dev&gt; | S&atilde;o Paulo, Brazil</div>
+                        <div class="git-expand-hint">click to expand diff +</div>
+                        <div class="git-details">
+                            <ul class="git-detail-list">
+                                <li>GM Marketing Mix Strategy &mdash; comprehensive MMM for General Motors ($100M+ spend)</li>
+                                <li>Continuous automated reporting of GM marketing efforts</li>
+                                <li>Built measurement frameworks and reporting pipelines (SQL, BigQuery)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Rede Globo -->
+                    <div class="git-log-entry" onclick="toggleExpand(this)">
+                        <div class="git-header">
+                            <span class="git-hash">q3r4s5t</span>
+                            <span class="git-branch">feature/media</span>
+                            <span class="git-date">2018</span>
+                        </div>
+                        <div class="git-message">feat(career): Data Scientist @ Rede Globo</div>
+                        <div class="git-author">Author: Rodrigo Teixeira &lt;rodrigo@rodtex.dev&gt; | Rio de Janeiro, Brazil</div>
+                        <div class="git-expand-hint">click to expand diff +</div>
+                        <div class="git-details">
+                            <ul class="git-detail-list">
+                                <li>Complete automation of Gshow reporting process (reduced manual time by 80%)</li>
+                                <li>Churn Optimization Algorithm for content engagement</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Bridge -->
+                    <div class="git-log-entry" onclick="toggleExpand(this)">
+                        <div class="git-header">
+                            <span class="git-hash">u6v7w8x</span>
+                            <span class="git-branch">feature/consulting</span>
+                            <span class="git-date">2017</span>
+                        </div>
+                        <div class="git-message">feat(career): Data Science Consultant @ Bridge Consulting</div>
+                        <div class="git-author">Author: Rodrigo Teixeira &lt;rodrigo@rodtex.dev&gt; | Rio de Janeiro, Brazil</div>
+                        <div class="git-expand-hint">click to expand diff +</div>
+                        <div class="git-details">
+                            <ul class="git-detail-list">
+                                <li>Target Stock Calculating Algorithm for retail optimization</li>
+                                <li>Outlier Detection on Business Expenses</li>
+                                <li>Custom dashboards and automated reporting</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ EDUCATION ============ -->
+        <section id="education">
+            <div class="section-label fade-in">// 04</div>
+            <h2 class="section-title fade-in">Education <span class="accent">&amp; Research</span></h2>
+
+            <div class="education-grid">
+
+                <div class="editor-panel edu-card fade-in">
+                    <div class="editor-titlebar">
+                        <div class="editor-dots">
+                            <span class="editor-dot red"></span>
+                            <span class="editor-dot yellow"></span>
+                            <span class="editor-dot green"></span>
+                        </div>
+                        <span class="editor-filename">mba_usp.<span class="ext">md</span></span>
+                    </div>
+                    <div class="editor-body">
+                        <div class="edu-degree">MBA in Data Science &amp; Analytics</div>
+                        <div class="edu-school">USP &mdash; Universidade de S&atilde;o Paulo</div>
+                        <div class="edu-year">2020 &ndash; 2021</div>
+                        <div class="edu-note">"Machine Learning Applied to Audience Generation in the Context of Digital Marketing"</div>
+                        <span class="edu-tag">Brazil's #1 University</span>
+                    </div>
+                </div>
+
+                <div class="editor-panel edu-card fade-in">
+                    <div class="editor-titlebar">
+                        <div class="editor-dots">
+                            <span class="editor-dot red"></span>
+                            <span class="editor-dot yellow"></span>
+                            <span class="editor-dot green"></span>
+                        </div>
+                        <span class="editor-filename">msc_ufrj.<span class="ext">md</span></span>
+                    </div>
+                    <div class="editor-body">
+                        <div class="edu-degree">M.Sc. in Industrial Engineering</div>
+                        <div class="edu-school">COPPE-UFRJ</div>
+                        <div class="edu-year">2018 &ndash; 2019</div>
+                        <div class="edu-note">"Non-Linear Programming Methods to Media Mix Modeling"</div>
+                        <span class="edu-tag">Interrupted</span>
+                    </div>
+                </div>
+
+                <div class="editor-panel edu-card fade-in">
+                    <div class="editor-titlebar">
+                        <div class="editor-dots">
+                            <span class="editor-dot red"></span>
+                            <span class="editor-dot yellow"></span>
+                            <span class="editor-dot green"></span>
+                        </div>
+                        <span class="editor-filename">bsc_mecheng.<span class="ext">md</span></span>
+                    </div>
+                    <div class="editor-body">
+                        <div class="edu-degree">B.Sc. in Mechanical Engineering</div>
+                        <div class="edu-school">UFF &mdash; Universidade Federal Fluminense</div>
+                        <div class="edu-year">2010 &ndash; 2015</div>
+                        <div class="edu-note">Engineering fundamentals: optimization, numerical methods, systems thinking</div>
+                    </div>
+                </div>
+
+                <div class="editor-panel edu-card fade-in">
+                    <div class="editor-titlebar">
+                        <div class="editor-dots">
+                            <span class="editor-dot red"></span>
+                            <span class="editor-dot yellow"></span>
+                            <span class="editor-dot green"></span>
+                        </div>
+                        <span class="editor-filename">bsc_physics.<span class="ext">md</span></span>
+                    </div>
+                    <div class="editor-body">
+                        <div class="edu-degree">B.Sc. in Physics</div>
+                        <div class="edu-school">UFF &mdash; Universidade Federal Fluminense</div>
+                        <div class="edu-year">2006 &ndash; 2010</div>
+                        <div class="edu-note">Analytical reasoning, mathematical modeling, scientific methodology</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============ PORTFOLIO ============ -->
+        <section id="portfolio">
+            <div class="section-label fade-in">// 05</div>
+            <h2 class="section-title fade-in">Portfolio <span class="accent">Projects</span></h2>
+
+            <div class="portfolio-layout">
+
+                <!-- File Tree Sidebar -->
+                <div class="file-tree fade-in-left">
+                    <div class="file-tree-title">Explorer</div>
+                    <a href="#proj-amazon" class="file-tree-item active">
+                        <i class="fas fa-chevron-right" style="font-size:0.5rem;"></i>
+                        <i class="fas fa-file-code file-icon"></i>
+                        amazon_bids.py
+                    </a>
+                    <a href="#proj-ai-planner" class="file-tree-item">
+                        <i class="fas fa-chevron-right" style="font-size:0.5rem;"></i>
+                        <i class="fas fa-file-code file-icon"></i>
+                        ai_media_planner.py
+                    </a>
+                    <a href="#proj-vertex" class="file-tree-item">
+                        <i class="fas fa-chevron-right" style="font-size:0.5rem;"></i>
+                        <i class="fas fa-file-code file-icon"></i>
+                        vertex_recs.py
+                    </a>
+                    <a href="#proj-mmm" class="file-tree-item">
+                        <i class="fas fa-chevron-right" style="font-size:0.5rem;"></i>
+                        <i class="fas fa-file-code file-icon"></i>
+                        mmm_meridian.py
+                    </a>
+                    <a href="#proj-tiktok" class="file-tree-item">
+                        <i class="fas fa-chevron-right" style="font-size:0.5rem;"></i>
+                        <i class="fas fa-file-code file-icon"></i>
+                        tiktok_api.py
+                    </a>
+                    <a href="#proj-dv360" class="file-tree-item">
+                        <i class="fas fa-chevron-right" style="font-size:0.5rem;"></i>
+                        <i class="fas fa-file-code file-icon"></i>
+                        dv360_client.py
+                    </a>
+                    <a href="#proj-gads" class="file-tree-item">
+                        <i class="fas fa-chevron-right" style="font-size:0.5rem;"></i>
+                        <i class="fas fa-file-code file-icon"></i>
+                        google_ads.py
+                    </a>
+                    <a href="#proj-adagio" class="file-tree-item">
+                        <i class="fas fa-chevron-right" style="font-size:0.5rem;"></i>
+                        <i class="fas fa-file-code file-icon"></i>
+                        adagio_chatbot.py
+                    </a>
+                </div>
+
+                <!-- Project Cards -->
+                <div class="portfolio-cards">
+
+                    <!-- Amazon Bid Optimization -->
+                    <div class="editor-panel portfolio-card fade-in" id="proj-amazon">
+                        <div class="editor-titlebar">
+                            <div class="editor-dots">
+                                <span class="editor-dot red"></span>
+                                <span class="editor-dot yellow"></span>
+                                <span class="editor-dot green"></span>
+                            </div>
+                            <span class="editor-filename">amazon_bids.<span class="ext">py</span></span>
+                        </div>
+                        <div class="editor-body">
+                            <div class="portfolio-card-header">
+                                <div class="portfolio-card-title">Amazon Bid Optimization Engine</div>
+                            </div>
+                            <div class="portfolio-card-desc">Lambda-based automated bid and budget optimization for Amazon Advertising. Analyzes campaign performance metrics and programmatically adjusts bids to maximize ROAS while respecting budget constraints.</div>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Python</span>
+                                <span class="portfolio-tag amber">AWS Lambda</span>
+                                <span class="portfolio-tag purple">Amazon Ads API</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Media Planner -->
+                    <div class="editor-panel portfolio-card fade-in" id="proj-ai-planner">
+                        <div class="editor-titlebar">
+                            <div class="editor-dots">
+                                <span class="editor-dot red"></span>
+                                <span class="editor-dot yellow"></span>
+                                <span class="editor-dot green"></span>
+                            </div>
+                            <span class="editor-filename">ai_media_planner.<span class="ext">py</span></span>
+                        </div>
+                        <div class="editor-body">
+                            <div class="portfolio-card-header">
+                                <div class="portfolio-card-title">AI Media Planner</div>
+                            </div>
+                            <div class="portfolio-card-desc">AI-powered digital media planning assistant leveraging Large Language Models. Flask backend with React frontend that helps strategists generate data-driven media plans, budget allocations, and audience targeting recommendations.</div>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Python</span>
+                                <span class="portfolio-tag amber">Flask</span>
+                                <span class="portfolio-tag purple">React</span>
+                                <span class="portfolio-tag">LLM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vertex AI Recommendations -->
+                    <div class="editor-panel portfolio-card fade-in" id="proj-vertex">
+                        <div class="editor-titlebar">
+                            <div class="editor-dots">
+                                <span class="editor-dot red"></span>
+                                <span class="editor-dot yellow"></span>
+                                <span class="editor-dot green"></span>
+                            </div>
+                            <span class="editor-filename">vertex_recs.<span class="ext">py</span></span>
+                        </div>
+                        <div class="editor-body">
+                            <div class="portfolio-card-header">
+                                <div class="portfolio-card-title">Vertex AI Recommendations</div>
+                            </div>
+                            <div class="portfolio-card-desc">Product recommendation engine built on Google Vertex AI. Processes user behavior and product catalog data from BigQuery to generate personalized recommendations using collaborative filtering and content-based approaches.</div>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Python</span>
+                                <span class="portfolio-tag amber">Vertex AI</span>
+                                <span class="portfolio-tag purple">BigQuery</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Marketing Mix Model -->
+                    <div class="editor-panel portfolio-card fade-in" id="proj-mmm">
+                        <div class="editor-titlebar">
+                            <div class="editor-dots">
+                                <span class="editor-dot red"></span>
+                                <span class="editor-dot yellow"></span>
+                                <span class="editor-dot green"></span>
+                            </div>
+                            <span class="editor-filename">mmm_meridian.<span class="ext">py</span></span>
+                        </div>
+                        <div class="editor-body">
+                            <div class="portfolio-card-header">
+                                <div class="portfolio-card-title">Marketing Mix Model</div>
+                            </div>
+                            <div class="portfolio-card-desc">Marketing Mix Modeling implementation using Google's Meridian open-source Bayesian framework. Quantifies the impact of each marketing channel on revenue to optimize budget allocation and forecast ROI scenarios.</div>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Python</span>
+                                <span class="portfolio-tag amber">Meridian</span>
+                                <span class="portfolio-tag purple">Bayesian</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TikTok API Client -->
+                    <div class="editor-panel portfolio-card fade-in" id="proj-tiktok">
+                        <div class="editor-titlebar">
+                            <div class="editor-dots">
+                                <span class="editor-dot red"></span>
+                                <span class="editor-dot yellow"></span>
+                                <span class="editor-dot green"></span>
+                            </div>
+                            <span class="editor-filename">tiktok_api.<span class="ext">py</span></span>
+                        </div>
+                        <div class="editor-body">
+                            <div class="portfolio-card-header">
+                                <div class="portfolio-card-title">TikTok API Client</div>
+                            </div>
+                            <div class="portfolio-card-desc">Python handler for the TikTok Marketing API with OAuth authentication, campaign management, and automated reporting extraction. Handles pagination, rate limiting, and async report generation.</div>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Python</span>
+                                <span class="portfolio-tag amber">REST API</span>
+                                <span class="portfolio-tag purple">OAuth2</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DV360 API Client -->
+                    <div class="editor-panel portfolio-card fade-in" id="proj-dv360">
+                        <div class="editor-titlebar">
+                            <div class="editor-dots">
+                                <span class="editor-dot red"></span>
+                                <span class="editor-dot yellow"></span>
+                                <span class="editor-dot green"></span>
+                            </div>
+                            <span class="editor-filename">dv360_client.<span class="ext">py</span></span>
+                        </div>
+                        <div class="editor-body">
+                            <div class="portfolio-card-header">
+                                <div class="portfolio-card-title">DV360 API Client</div>
+                            </div>
+                            <div class="portfolio-card-desc">Python client library for the Display &amp; Video 360 API. Provides programmatic access to campaign data, line items, insertion orders, and custom reporting with Google Ads ecosystem integration.</div>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Python</span>
+                                <span class="portfolio-tag amber">Google Ads</span>
+                                <span class="portfolio-tag purple">DV360</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Google Ads Automation -->
+                    <div class="editor-panel portfolio-card fade-in" id="proj-gads">
+                        <div class="editor-titlebar">
+                            <div class="editor-dots">
+                                <span class="editor-dot red"></span>
+                                <span class="editor-dot yellow"></span>
+                                <span class="editor-dot green"></span>
+                            </div>
+                            <span class="editor-filename">google_ads.<span class="ext">py</span></span>
+                        </div>
+                        <div class="editor-body">
+                            <div class="portfolio-card-header">
+                                <div class="portfolio-card-title">Google Ads Automation</div>
+                            </div>
+                            <div class="portfolio-card-desc">Automated Google Ads campaign management scripts using the Google Ads API with GAQL (Google Ads Query Language). Handles daily bid adjustments, budget pacing, keyword management, and performance alerts.</div>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Python</span>
+                                <span class="portfolio-tag amber">Google Ads API</span>
+                                <span class="portfolio-tag purple">GAQL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Adagio AI Chatbot -->
+                    <div class="editor-panel portfolio-card fade-in" id="proj-adagio">
+                        <div class="editor-titlebar">
+                            <div class="editor-dots">
+                                <span class="editor-dot red"></span>
+                                <span class="editor-dot yellow"></span>
+                                <span class="editor-dot green"></span>
+                            </div>
+                            <span class="editor-filename">adagio_chatbot.<span class="ext">py</span></span>
+                        </div>
+                        <div class="editor-body">
+                            <div class="portfolio-card-header">
+                                <div class="portfolio-card-title">Adagio AI Chatbot</div>
+                            </div>
+                            <div class="portfolio-card-desc">AI-powered e-commerce chatbot with semantic product search. Uses vector database embeddings for product similarity, multi-LLM support for natural conversation, and FastAPI backend for real-time customer assistance.</div>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Python</span>
+                                <span class="portfolio-tag amber">LLM</span>
+                                <span class="portfolio-tag purple">Vector DB</span>
+                                <span class="portfolio-tag">FastAPI</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ FOOTER ============ -->
+        <div class="footer">
+            <div class="footer-links">
+                <a href="https://github.com/strod" target="_blank" class="footer-link">
+                    <i class="fab fa-github"></i> github.com/strod
+                </a>
+                <a href="https://linkedin.com/in/strodrigo" target="_blank" class="footer-link">
+                    <i class="fab fa-linkedin"></i> linkedin.com/in/strodrigo
+                </a>
+                <a href="https://instagram.com/rodtex" target="_blank" class="footer-link">
+                    <i class="fab fa-instagram"></i> instagram.com/rodtex
+                </a>
+            </div>
+            <div class="footer-copy">
+                &copy; 2025 Rodrigo Teixeira &mdash; Built with code &amp; northern lights
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <div class="status-left">
+            <div class="status-item">
+                <i class="fas fa-code-branch branch-icon"></i>
+                main
+                <i class="fas fa-check check-icon"></i>
+            </div>
+            <div class="status-item">
+                <i class="fas fa-circle" style="font-size:0.4rem; color: var(--aurora-green);"></i>
+                0 errors
+            </div>
+            <div class="status-item">
+                <i class="fas fa-exclamation-triangle" style="font-size:0.55rem; color: var(--aurora-amber);"></i>
+                0 warnings
+            </div>
+        </div>
+        <div class="status-right">
+            <div class="status-item">UTF-8</div>
+            <div class="status-item">TypeScript</div>
+            <div class="status-item">Ln 42, Col 8</div>
+            <div class="status-item"><i class="fas fa-map-marker-alt" style="font-size:0.55rem;"></i> S&atilde;o Paulo, BR</div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         JAVASCRIPT
+         ============================================ -->
+    <script>
+        // ---- Availability Status ----
+        function getSPTime() {
+            return new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }));
+        }
+        function getNextAvailableWindow() {
+            var now = getSPTime();
+            var day = now.getDay();
+            var h = now.getHours();
+            var target = new Date(now);
+            if (day >= 1 && day <= 5 && h < 19) {
+                if (h < 8) { target.setHours(8,0,0,0); }
+                else { return 0; }
+            } else {
+                target.setHours(8,0,0,0);
+                if (day === 0) { target.setDate(target.getDate() + 1); }
+                else if (day === 6) { target.setDate(target.getDate() + 2); }
+                else if (day >= 1 && day <= 5 && h >= 19) {
+                    if (day === 5) { target.setDate(target.getDate() + 3); }
+                    else { target.setDate(target.getDate() + 1); }
+                }
+            }
+            return Math.max(0, Math.floor((target - now) / 1000));
+        }
+        function isAvailable() {
+            var now = getSPTime();
+            var day = now.getDay(), h = now.getHours();
+            return day >= 1 && day <= 5 && h >= 8 && h < 19;
+        }
+        function formatCountdown(totalSec) {
+            var h = Math.floor(totalSec / 3600);
+            var m = Math.floor((totalSec % 3600) / 60);
+            var s = totalSec % 60;
+            return String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+        }
+        function updateAvailabilityElements() {
+            var els = document.querySelectorAll('[data-availability]');
+            var dots = document.querySelectorAll('[data-availability-dot]');
+            var avail = isAvailable();
+            els.forEach(function(el) {
+                el.textContent = avail ? 'Available! Leave a message' : 'Unavailable. Come back in ' + formatCountdown(getNextAvailableWindow());
+            });
+            dots.forEach(function(dot) {
+                dot.style.background = avail ? '' : '#ff5555';
+                dot.style.animation = avail ? '' : 'none';
+            });
+        }
+        updateAvailabilityElements();
+        setInterval(updateAvailabilityElements, 1000);
+
+        // ---- Scroll Animations (IntersectionObserver) ----
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -60px 0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
+                observer.observe(el);
+            });
+
+            // ---- Skill Bar Animation ----
+            const skillObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const bars = entry.target.querySelectorAll('.skill-bar-fill');
+                        bars.forEach((bar, i) => {
+                            setTimeout(() => {
+                                bar.style.width = bar.dataset.width + '%';
+                            }, i * 80);
+                        });
+                        skillObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            const skillsSection = document.getElementById('skills');
+            if (skillsSection) {
+                skillObserver.observe(skillsSection);
+            }
+
+            // ---- Tab Active State on Scroll ----
+            const sections = document.querySelectorAll('section[id], .hero');
+            const tabs = document.querySelectorAll('.tab');
+            const activityIcons = document.querySelectorAll('.activity-icon[href^="#"]');
+
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.id || 'hero';
+
+                        tabs.forEach(tab => {
+                            tab.classList.toggle('active', tab.dataset.section === id);
+                        });
+
+                        activityIcons.forEach(icon => {
+                            icon.classList.toggle('active', icon.getAttribute('href') === '#' + id);
+                        });
+                    }
+                });
+            }, {
+                rootMargin: '-20% 0px -60% 0px',
+                threshold: 0
+            });
+
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            // ---- Smooth scroll for tabs and activity icons ----
+            document.querySelectorAll('.tab, .activity-icon[href^="#"]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--mockup-banner-height')) +
+                                           parseInt(getComputedStyle(document.documentElement).getPropertyValue('--tab-height')) + 10;
+                            const top = target.getBoundingClientRect().top + window.pageYOffset - 80;
+                            window.scrollTo({ top, behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+
+            // ---- File tree active state ----
+            const fileTreeItems = document.querySelectorAll('.file-tree-item');
+            fileTreeItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    fileTreeItems.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                    const href = item.getAttribute('href');
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const top = target.getBoundingClientRect().top + window.pageYOffset - 100;
+                        window.scrollTo({ top, behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+
+        // ---- Toggle Git Log Entries ----
+        function toggleExpand(el) {
+            el.classList.toggle('expanded');
+            const hint = el.querySelector('.git-expand-hint');
+            if (hint) {
+                hint.textContent = el.classList.contains('expanded')
+                    ? 'click to collapse diff -'
+                    : 'click to expand diff +';
+            }
+        }
+    </script>
+
+</body>
+</html>

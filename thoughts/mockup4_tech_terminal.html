@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup 4: Tech Terminal - Rodrigo Teixeira</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ============================================
+           CSS RESET & BASE
+           ============================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #1a1b26;
+            --bg-secondary: #24283b;
+            --bg-tertiary: #1f2335;
+            --bg-card: #292e42;
+            --bg-input: #1a1b26;
+            --text-primary: #c0caf5;
+            --text-secondary: #9aa5ce;
+            --text-muted: #565f89;
+            --accent-green: #50fa7b;
+            --accent-cyan: #8be9fd;
+            --accent-yellow: #f1fa8c;
+            --accent-red: #ff5555;
+            --accent-orange: #ffb86c;
+            --accent-pink: #ff79c6;
+            --accent-purple: #bd93f9;
+            --dot-red: #ff5f56;
+            --dot-yellow: #ffbd2e;
+            --dot-green: #27c93f;
+            --border-color: #3b4261;
+            --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+            --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --line-number-color: #3b4261;
+            --gutter-width: 50px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           MOCKUP BANNER
+           ============================================ */
+        .mockup-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan));
+            color: var(--bg-primary);
+            text-align: center;
+            padding: 8px 16px;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+        nav {
+            position: fixed;
+            top: 33px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(26, 27, 38, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0 2rem;
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 56px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-mono);
+            font-size: 16px;
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .nav-logo .prompt {
+            color: var(--text-muted);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 6px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-green);
+            background: rgba(80, 250, 123, 0.08);
+        }
+
+        .nav-hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        /* ============================================
+           LAYOUT
+           ============================================ */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 130px 1.5rem 4rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+        }
+
+        .section-header {
+            font-family: var(--font-mono);
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-header .accent {
+            color: var(--accent-cyan);
+        }
+
+        /* ============================================
+           TERMINAL WINDOW COMPONENT
+           ============================================ */
+        .terminal-window {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .terminal-titlebar {
+            background: var(--bg-tertiary);
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot.red { background: var(--dot-red); }
+        .terminal-dot.yellow { background: var(--dot-yellow); }
+        .terminal-dot.green { background: var(--dot-green); }
+
+        .terminal-title {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-left: 8px;
+        }
+
+        .terminal-body {
+            padding: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        /* ============================================
+           CODE EDITOR PANEL COMPONENT
+           ============================================ */
+        .editor-panel {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .editor-titlebar {
+            background: var(--bg-tertiary);
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .editor-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .editor-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .editor-dot.red { background: var(--dot-red); }
+        .editor-dot.yellow { background: var(--dot-yellow); }
+        .editor-dot.green { background: var(--dot-green); }
+
+        .editor-filename {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-left: 6px;
+        }
+
+        .editor-body {
+            padding: 1.5rem;
+        }
+
+        /* Line numbers */
+        .code-block {
+            display: flex;
+            gap: 0;
+        }
+
+        .line-numbers {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--line-number-color);
+            text-align: right;
+            padding-right: 1.2rem;
+            border-right: 1px solid var(--border-color);
+            margin-right: 1.2rem;
+            user-select: none;
+            line-height: 1.9;
+        }
+
+        .code-content {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            line-height: 1.9;
+            overflow-x: auto;
+        }
+
+        /* Syntax colors */
+        .syn-keyword { color: var(--accent-pink); }
+        .syn-variable { color: var(--accent-cyan); }
+        .syn-string { color: var(--accent-green); }
+        .syn-number { color: var(--accent-yellow); }
+        .syn-comment { color: var(--text-muted); font-style: italic; }
+        .syn-bracket { color: var(--text-secondary); }
+        .syn-key { color: var(--accent-cyan); }
+        .syn-punctuation { color: var(--text-secondary); }
+        .syn-type { color: var(--accent-purple); }
+        .syn-func { color: var(--accent-green); }
+        .syn-bool { color: var(--accent-orange); }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        #hero {
+            margin-bottom: 5rem;
+        }
+
+        .hero-terminal .terminal-body {
+            min-height: 260px;
+        }
+
+        .terminal-line {
+            display: flex;
+            align-items: baseline;
+            gap: 0;
+            white-space: nowrap;
+        }
+
+        .terminal-prompt {
+            color: var(--accent-green);
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+
+        .terminal-command {
+            color: var(--accent-yellow);
+            margin-right: 0;
+        }
+
+        .terminal-output {
+            color: var(--text-primary);
+            padding-left: 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .terminal-output .chevron {
+            color: var(--accent-cyan);
+            margin-right: 4px;
+        }
+
+        /* Typing animation */
+        .typing-line {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid var(--accent-green);
+            width: 0;
+            animation: typing 1.2s steps(30, end) forwards, blink-caret 0.75s step-end infinite;
+        }
+
+        .typing-line.line-1 { animation-delay: 0s, 0s; width: 0; animation: typing-name 1.5s steps(20, end) 0.3s forwards, blink-caret 0.75s step-end infinite; }
+        .typing-line.line-2 { animation-delay: 2s, 2s; width: 0; animation: typing-role 1.5s steps(35, end) 2s forwards, blink-caret 0.75s step-end 2s infinite; }
+        .typing-line.line-3 { animation-delay: 4s, 4s; width: 0; animation: typing-loc 1.5s steps(20, end) 3.8s forwards, blink-caret 0.75s step-end 3.8s infinite; }
+        .typing-line.line-4 { animation-delay: 6s, 6s; width: 0; animation: typing-status 1.5s steps(25, end) 5.5s forwards, blink-caret 0.75s step-end 5.5s infinite; }
+
+        @keyframes typing-name {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes typing-role {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes typing-loc {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes typing-status {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--accent-green); }
+        }
+
+        /* Status dot pulse */
+        .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(80, 250, 123, 0.5); }
+            50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(80, 250, 123, 0); }
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-terminal {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 12px 28px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-terminal.primary {
+            background: var(--accent-green);
+            color: var(--bg-primary);
+            border-color: var(--accent-green);
+        }
+
+        .btn-terminal.primary:hover {
+            background: transparent;
+            color: var(--accent-green);
+            box-shadow: 0 0 20px rgba(80, 250, 123, 0.15);
+        }
+
+        .btn-terminal.secondary {
+            background: transparent;
+            color: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+        }
+
+        .btn-terminal.secondary:hover {
+            background: rgba(139, 233, 253, 0.1);
+            box-shadow: 0 0 20px rgba(139, 233, 253, 0.15);
+        }
+
+        /* ============================================
+           ABOUT SECTION
+           ============================================ */
+        #about .code-content {
+            font-size: 13px;
+        }
+
+        /* ============================================
+           SKILLS SECTION
+           ============================================ */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .skill-category-title {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .skill-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 0.7rem;
+            font-family: var(--font-mono);
+            font-size: 13px;
+        }
+
+        .skill-name {
+            color: var(--accent-cyan);
+            min-width: 140px;
+            flex-shrink: 0;
+        }
+
+        .skill-bar-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-bar {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: -1px;
+            color: var(--accent-green);
+            white-space: nowrap;
+        }
+
+        .skill-bar .empty {
+            color: var(--border-color);
+        }
+
+        .skill-percent {
+            color: var(--accent-yellow);
+            font-size: 12px;
+            min-width: 32px;
+            text-align: right;
+        }
+
+        /* ============================================
+           EXPERIENCE SECTION
+           ============================================ */
+        .git-log-entry {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(59, 66, 97, 0.4);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .git-log-entry:last-child {
+            border-bottom: none;
+        }
+
+        .git-log-entry:hover {
+            background: rgba(80, 250, 123, 0.03);
+        }
+
+        .git-log-main {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 4px;
+        }
+
+        .git-hash {
+            color: var(--accent-yellow);
+        }
+
+        .git-branch {
+            color: var(--accent-green);
+        }
+
+        .git-message {
+            color: var(--text-primary);
+        }
+
+        .git-date {
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        .git-details {
+            margin-top: 0.8rem;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--border-color);
+            margin-left: 0.5rem;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .git-details ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .git-details ul li {
+            padding: 0.15rem 0;
+        }
+
+        .git-details ul li::before {
+            content: "+ ";
+            color: var(--accent-green);
+            font-family: var(--font-mono);
+            font-weight: 700;
+        }
+
+        /* HEAD tag styling */
+        .git-head-tag {
+            display: inline-block;
+            background: rgba(80, 250, 123, 0.12);
+            color: var(--accent-green);
+            padding: 1px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            border: 1px solid rgba(80, 250, 123, 0.25);
+        }
+
+        /* ============================================
+           EDUCATION SECTION
+           ============================================ */
+        .edu-cards {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .edu-card .editor-body {
+            padding: 1.2rem 1.5rem;
+        }
+
+        .edu-degree {
+            font-family: var(--font-mono);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--accent-green);
+            margin-bottom: 0.25rem;
+        }
+
+        .edu-school {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--accent-cyan);
+            margin-bottom: 0.15rem;
+        }
+
+        .edu-date {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .edu-desc {
+            margin-top: 0.6rem;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* ============================================
+           PORTFOLIO SECTION
+           ============================================ */
+        .portfolio-ls {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .portfolio-ls .ls-header {
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-ls .ls-line {
+            display: flex;
+            gap: 16px;
+            padding: 2px 0;
+        }
+
+        .portfolio-ls .ls-perms { color: var(--text-muted); }
+        .portfolio-ls .ls-size { color: var(--accent-yellow); min-width: 40px; text-align: right; }
+        .portfolio-ls .ls-date { color: var(--text-muted); }
+        .portfolio-ls .ls-name { color: var(--accent-cyan); font-weight: 600; }
+        .portfolio-ls .ls-name.dir { color: var(--accent-green); }
+        .portfolio-ls .ls-name.dir::after { content: "/"; }
+
+        .portfolio-cards {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .portfolio-card .editor-body {
+            padding: 1.2rem 1.5rem;
+        }
+
+        .portfolio-title {
+            font-family: var(--font-mono);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--accent-green);
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .portfolio-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            color: var(--accent-cyan);
+            background: rgba(139, 233, 253, 0.06);
+        }
+
+        /* ============================================
+           CONTACT SECTION
+           ============================================ */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-label {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .form-label .prompt-char {
+            color: var(--accent-green);
+        }
+
+        .form-input,
+        .form-textarea {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 12px 16px;
+            color: var(--text-primary);
+            outline: none;
+            transition: all 0.25s;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            border-color: var(--accent-green);
+            box-shadow: 0 0 0 3px rgba(80, 250, 123, 0.1), 0 0 15px rgba(80, 250, 123, 0.05);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .btn-submit {
+            align-self: flex-start;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-link {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            padding: 4px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .footer-link:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+            background: rgba(80, 250, 123, 0.06);
+        }
+
+        .footer-copy {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* ============================================
+           SCROLLBAR
+           ============================================ */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+
+        /* ============================================
+           CURSOR BLINK UTILITY
+           ============================================ */
+        .cursor-blink {
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background: var(--accent-green);
+            vertical-align: text-bottom;
+            animation: cursor-blink-anim 1s step-end infinite;
+            margin-left: 2px;
+        }
+
+        @keyframes cursor-blink-anim {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            main {
+                padding: 120px 1rem 3rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 56px;
+                left: 0;
+                right: 0;
+                background: rgba(26, 27, 38, 0.98);
+                flex-direction: column;
+                padding: 1rem;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-hamburger {
+                display: block;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-name {
+                min-width: 100px;
+                font-size: 12px;
+            }
+
+            .skill-bar {
+                font-size: 10px;
+            }
+
+            .terminal-body {
+                font-size: 12px;
+                padding: 1rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn-terminal {
+                text-align: center;
+                justify-content: center;
+            }
+
+            .git-log-main {
+                font-size: 12px;
+            }
+
+            .portfolio-ls {
+                font-size: 11px;
+                overflow-x: auto;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .terminal-line {
+                font-size: 11px;
+            }
+
+            .terminal-output {
+                padding-left: 16px;
+                font-size: 12px;
+            }
+
+            .code-content, .line-numbers {
+                font-size: 11px;
+            }
+
+            .skill-bar-container {
+                display: none;
+            }
+
+            .skill-percent {
+                margin-left: auto;
+            }
+        }
+
+        /* ============================================
+           CRT SCANLINE OVERLAY
+           ============================================ */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.03) 2px,
+                rgba(0, 0, 0, 0.03) 4px
+            );
+        }
+
+        /* ============================================
+           SELECTION
+           ============================================ */
+        ::selection {
+            background: rgba(80, 250, 123, 0.25);
+            color: var(--text-primary);
+        }
+
+        /* ============================================
+           SMOOTH SECTION FADE-IN (no JS needed)
+           ============================================ */
+        section {
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stagger sections */
+        #hero { animation-delay: 0.1s; }
+        #about { animation-delay: 0.15s; }
+        #skills { animation-delay: 0.2s; }
+        #experience { animation-delay: 0.25s; }
+        #education { animation-delay: 0.3s; }
+        #portfolio { animation-delay: 0.35s; }
+        #contact { animation-delay: 0.4s; }
+
+        /* ============================================
+           GLOW EFFECTS
+           ============================================ */
+        .terminal-window:hover,
+        .editor-panel:hover {
+            border-color: rgba(80, 250, 123, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 40px rgba(80, 250, 123, 0.03);
+            transition: all 0.4s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MOCKUP BANNER -->
+    <div class="mockup-banner">MOCKUP 4: Tech Terminal</div>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo"><span class="prompt">~/</span>rodrigo.dev</a>
+            <button class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('active')" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#about">about</a></li>
+                <li><a href="#skills">skills</a></li>
+                <li><a href="#experience">experience</a></li>
+                <li><a href="#education">education</a></li>
+                <li><a href="#portfolio">portfolio</a></li>
+                <li><a href="mailto:rodrigo@rodtex.dev">contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- ========================================
+             HERO SECTION
+             ======================================== -->
+        <section id="hero">
+            <div class="terminal-window hero-terminal">
+                <div class="terminal-titlebar">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <span class="terminal-title">rodrigo@dev ~ zsh</span>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">$</span>
+                        <span class="terminal-command">whoami</span>
+                    </div>
+                    <div class="terminal-output">
+                        <span class="chevron">&gt;</span>
+                        <span class="typing-line line-1">Rodrigo Teixeira</span>
+                    </div>
+
+                    <div class="terminal-line" style="margin-top: 0.3rem;">
+                        <span class="terminal-prompt">$</span>
+                        <span class="terminal-command">role</span>
+                    </div>
+                    <div class="terminal-output">
+                        <span class="chevron">&gt;</span>
+                        <span class="typing-line line-2">Marketing Analytics Director</span>
+                    </div>
+
+                    <div class="terminal-line" style="margin-top: 0.3rem;">
+                        <span class="terminal-prompt">$</span>
+                        <span class="terminal-command">location</span>
+                    </div>
+                    <div class="terminal-output">
+                        <span class="chevron">&gt;</span>
+                        <span class="typing-line line-3">S&atilde;o Paulo, Brazil</span>
+                    </div>
+
+                    <div class="terminal-line" style="margin-top: 0.3rem;">
+                        <span class="terminal-prompt">$</span>
+                        <span class="terminal-command">status</span>
+                    </div>
+                    <div class="terminal-output">
+                        <span class="chevron">&gt;</span>
+                        <span class="typing-line line-4">Available for hire <span class="status-dot"></span></span>
+                    </div>
+
+                    <div class="terminal-line" style="margin-top: 0.8rem;">
+                        <span class="terminal-prompt">$</span>
+                        <span class="cursor-blink"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-cta">
+                <a href="#" class="btn-terminal primary">
+                    <i class="fas fa-download"></i> [download_cv]
+                </a>
+                <a href="mailto:rodrigo@rodtex.dev" class="btn-terminal secondary">
+                    <i class="fas fa-terminal"></i> [hire_me]
+                </a>
+            </div>
+        </section>
+
+        <!-- ========================================
+             ABOUT SECTION
+             ======================================== -->
+        <section id="about">
+            <div class="section-header">
+                <span class="accent">//</span> about.ts
+            </div>
+            <div class="editor-panel">
+                <div class="editor-titlebar">
+                    <div class="editor-dots">
+                        <div class="editor-dot red"></div>
+                        <div class="editor-dot yellow"></div>
+                        <div class="editor-dot green"></div>
+                    </div>
+                    <span class="editor-filename">about.ts</span>
+                </div>
+                <div class="editor-body">
+                    <div class="code-block">
+                        <div class="line-numbers">
+                            1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18
+                        </div>
+                        <div class="code-content">
+                            <span class="syn-keyword">const</span> <span class="syn-variable">about</span><span class="syn-punctuation">:</span> <span class="syn-type">Developer</span> <span class="syn-punctuation">=</span> <span class="syn-bracket">{</span><br>
+                            &nbsp;&nbsp;<span class="syn-key">name</span><span class="syn-punctuation">:</span> <span class="syn-string">"Rodrigo Teixeira"</span><span class="syn-punctuation">,</span><br>
+                            &nbsp;&nbsp;<span class="syn-key">age</span><span class="syn-punctuation">:</span> <span class="syn-number">38</span><span class="syn-punctuation">,</span><br>
+                            &nbsp;&nbsp;<span class="syn-key">location</span><span class="syn-punctuation">:</span> <span class="syn-string">"S&atilde;o Paulo, Brazil"</span><span class="syn-punctuation">,</span><br>
+                            &nbsp;&nbsp;<span class="syn-key">email</span><span class="syn-punctuation">:</span> <span class="syn-string">"rodstex@gmail.com"</span><span class="syn-punctuation">,</span><br>
+                            &nbsp;&nbsp;<span class="syn-key">passion</span><span class="syn-punctuation">:</span> <span class="syn-string">"Building data-driven solutions"</span><span class="syn-punctuation">,</span><br>
+                            <span class="syn-bracket">}</span><span class="syn-punctuation">;</span><br>
+                            <br>
+                            <span class="syn-comment">// Marketing Analytics Director with 8+ years building</span><br>
+                            <span class="syn-comment">// end-to-end MarTech solutions, data infrastructure,</span><br>
+                            <span class="syn-comment">// and measurement systems. Combines deep technical</span><br>
+                            <span class="syn-comment">// skill in Python, SQL, GCP, and AWS with strategic</span><br>
+                            <span class="syn-comment">// marketing analytics expertise. Career spans agencies,</span><br>
+                            <span class="syn-comment">// AI startups, and international e-commerce.</span><br>
+                            <br>
+                            <span class="syn-keyword">export</span> <span class="syn-keyword">default</span> <span class="syn-variable">about</span><span class="syn-punctuation">;</span><br>
+                            <br>
+                            <span class="syn-comment">// EOF</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SKILLS SECTION
+             ======================================== -->
+        <section id="skills">
+            <div class="section-header">
+                <span class="accent">//</span> skills.config
+            </div>
+            <div class="editor-panel">
+                <div class="editor-titlebar">
+                    <div class="editor-dots">
+                        <div class="editor-dot red"></div>
+                        <div class="editor-dot yellow"></div>
+                        <div class="editor-dot green"></div>
+                    </div>
+                    <span class="editor-filename">skills.config.json</span>
+                </div>
+                <div class="editor-body" style="padding: 1.5rem 2rem;">
+                    <div class="skills-grid">
+                        <!-- Programming -->
+                        <div>
+                            <div class="skill-category-title">/* Programming */</div>
+                            <div class="skill-row">
+                                <span class="skill-name">Python</span>
+                                <div class="skill-bar-container">
+                                    <span class="skill-bar">[<span>██████████████████</span><span class="empty">██</span>]</span>
+                                </div>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="skill-row">
+                                <span class="skill-name">JavaScript</span>
+                                <div class="skill-bar-container">
+                                    <span class="skill-bar">[<span>████████████████</span><span class="empty">████</span>]</span>
+                                </div>
+                                <span class="skill-percent">80%</span>
+                            </div>
+                            <div class="skill-row">
+                                <span class="skill-name">SQL</span>
+                                <div class="skill-bar-container">
+                                    <span class="skill-bar">[<span>█████████████████</span><span class="empty">███</span>]</span>
+                                </div>
+                                <span class="skill-percent">88%</span>
+                            </div>
+                            <div class="skill-row">
+                                <span class="skill-name">GIT</span>
+                                <div class="skill-bar-container">
+                                    <span class="skill-bar">[<span>██████████████</span><span class="empty">██████</span>]</span>
+                                </div>
+                                <span class="skill-percent">70%</span>
+                            </div>
+                        </div>
+
+                        <!-- Web Analytics -->
+                        <div>
+                            <div class="skill-category-title">/* Web Analytics */</div>
+                            <div class="skill-row">
+                                <span class="skill-name">Google Analytics</span>
+                                <div class="skill-bar-container">
+                                    <span class="skill-bar">[<span>███████████████████</span><span class="empty">█</span>]</span>
+                                </div>
+                                <span class="skill-percent">95%</span>
+                            </div>
+                            <div class="skill-row">
+                                <span class="skill-name">GTM</span>
+                                <div class="skill-bar-container">
+                                    <span class="skill-bar">[<span>██████████████████</span><span class="empty">██</span>]</span>
+                                </div>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="skill-row">
+                                <span class="skill-name">App Scripts</span>
+                                <div class="skill-bar-container">
+                                    <span class="skill-bar">[<span>█████████████████</span><span class="empty">███</span>]</span>
+                                </div>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                        </div>
+
+                        <!-- Cloud / DevOps -->
+                        <div>
+                            <div class="skill-category-title">/* Cloud / DevOps */</div>
+                            <div class="skill-row">
+                                <span class="skill-name">GCP</span>
+                                <div class="skill-bar-container">
+                                    <span class="skill-bar">[<span>██████████████████</span><span class="empty">██</span>]</span>
+                                </div>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="skill-row">
+                                <span class="skill-name">AWS</span>
+                                <div class="skill-bar-container">
+                                    <span class="skill-bar">[<span>███████████████</span><span class="empty">█████</span>]</span>
+                                </div>
+                                <span class="skill-percent">75%</span>
+                            </div>
+                        </div>
+
+                        <!-- Languages -->
+                        <div>
+                            <div class="skill-category-title">/* Languages */</div>
+                            <div class="skill-row">
+                                <span class="skill-name">Portuguese</span>
+                                <div class="skill-bar-container">
+                                    <span class="skill-bar">[<span>████████████████████</span>]</span>
+                                </div>
+                                <span class="skill-percent">100%</span>
+                            </div>
+                            <div class="skill-row">
+                                <span class="skill-name">English</span>
+                                <div class="skill-bar-container">
+                                    <span class="skill-bar">[<span>██████████████████</span><span class="empty">██</span>]</span>
+                                </div>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="skill-row">
+                                <span class="skill-name">Spanish</span>
+                                <div class="skill-bar-container">
+                                    <span class="skill-bar">[<span>████████████</span><span class="empty">████████</span>]</span>
+                                </div>
+                                <span class="skill-percent">60%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             EXPERIENCE SECTION
+             ======================================== -->
+        <section id="experience">
+            <div class="section-header">
+                <span class="accent">$</span> git log --oneline
+            </div>
+            <div class="terminal-window">
+                <div class="terminal-titlebar">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <span class="terminal-title">git log --career</span>
+                </div>
+                <div class="terminal-body" style="padding: 1rem 1.5rem;">
+
+                    <!-- Entry 1: Filterbuy -->
+                    <div class="git-log-entry">
+                        <div class="git-log-main">
+                            <span class="git-hash">a1b2c3d</span>
+                            <span class="git-head-tag">HEAD -&gt; present</span>
+                            <span class="git-message">Marketing Analytics Director @ <strong>Filterbuy</strong></span>
+                            <span class="git-date">(2022 - Present)</span>
+                        </div>
+                        <div class="git-details">
+                            <ul>
+                                <li>Built Marketing Mix Model (Google Meridian), Markov Chain Attribution</li>
+                                <li>RFM modeling for predictive inbound marketing (churn, upsell)</li>
+                                <li>Built ETL pipelines from Amazon, TikTok, Google Ads, Pipedrive CRM</li>
+                                <li>Led Redshift → BigQuery migration and warehouse management</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Entry 2: Media Brands -->
+                    <div class="git-log-entry">
+                        <div class="git-log-main">
+                            <span class="git-hash">d4e5f6g</span>
+                            <span class="git-message">Head of Data LATAM @ <strong>Media Brands</strong></span>
+                            <span class="git-date">(2022 - 2023)</span>
+                        </div>
+                        <div class="git-details">
+                            <ul>
+                                <li>1st Party Data Activation across all Nestlé media efforts</li>
+                                <li>GTM Server-Side implementation across 8 LATAM markets</li>
+                                <li>Speedboat digital acceleration project (CRM + Cloud + Ads)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Entry 3: MINT -->
+                    <div class="git-log-entry">
+                        <div class="git-log-main">
+                            <span class="git-hash">h7i8j9k</span>
+                            <span class="git-message">Data Manager @ <strong>MINT</strong></span>
+                            <span class="git-date">(2020 - 2022)</span>
+                        </div>
+                        <div class="git-details">
+                            <ul>
+                                <li>Built AIRE: AI Recommendation Engine for budget reallocation</li>
+                                <li>Megalista smart audience generation using ML models</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Entry 4: WMcCann -->
+                    <div class="git-log-entry">
+                        <div class="git-log-main">
+                            <span class="git-hash">l0m1n2o</span>
+                            <span class="git-message">Data Analytics Manager @ <strong>WMcCann</strong></span>
+                            <span class="git-date">(2019)</span>
+                        </div>
+                        <div class="git-details">
+                            <ul>
+                                <li>GM Marketing Mix Strategy ($100M+ annual budget allocation)</li>
+                                <li>Continuous automated reporting of GM marketing efforts</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Entry 5: Globo -->
+                    <div class="git-log-entry">
+                        <div class="git-log-main">
+                            <span class="git-hash">p3q4r5s</span>
+                            <span class="git-message">Data Scientist @ <strong>Globo</strong></span>
+                            <span class="git-date">(2018)</span>
+                        </div>
+                        <div class="git-details">
+                            <ul>
+                                <li>Complete automation of Gshow reporting (reduced manual time 80%)</li>
+                                <li>Churn Optimization Algorithm for content engagement</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Entry 6: Bridge Consulting -->
+                    <div class="git-log-entry">
+                        <div class="git-log-main">
+                            <span class="git-hash">t6u7v8w</span>
+                            <span class="git-message">Data Science Consultant @ <strong>Bridge Consulting</strong></span>
+                            <span class="git-date">(2017)</span>
+                        </div>
+                        <div class="git-details">
+                            <ul>
+                                <li>Target Stock Calculating Algorithm for retail</li>
+                                <li>Outlier Detection on Business Expenses</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             EDUCATION SECTION
+             ======================================== -->
+        <section id="education">
+            <div class="section-header">
+                <span class="accent">//</span> education.md
+            </div>
+            <div class="edu-cards">
+
+                <!-- MBA -->
+                <div class="editor-panel edu-card">
+                    <div class="editor-titlebar">
+                        <div class="editor-dots">
+                            <div class="editor-dot red"></div>
+                            <div class="editor-dot yellow"></div>
+                            <div class="editor-dot green"></div>
+                        </div>
+                        <span class="editor-filename">mba_usp.md</span>
+                    </div>
+                    <div class="editor-body">
+                        <div class="edu-degree"><i class="fas fa-graduation-cap" style="color: var(--accent-yellow); margin-right: 6px;"></i>MBA in Data Science &amp; Analytics</div>
+                        <div class="edu-school">USP</div>
+                        <div class="edu-date">2020 - 2021</div>
+                        <div class="edu-desc">Thesis: Machine Learning Applied to Audience Generation in Digital Marketing. Focused on ML, statistical modeling, and data-driven business strategy.</div>
+                    </div>
+                </div>
+
+                <!-- MSc -->
+                <div class="editor-panel edu-card">
+                    <div class="editor-titlebar">
+                        <div class="editor-dots">
+                            <div class="editor-dot red"></div>
+                            <div class="editor-dot yellow"></div>
+                            <div class="editor-dot green"></div>
+                        </div>
+                        <span class="editor-filename">msc_coppe.md</span>
+                    </div>
+                    <div class="editor-body">
+                        <div class="edu-degree"><i class="fas fa-graduation-cap" style="color: var(--accent-yellow); margin-right: 6px;"></i>MSc in Industrial Engineering (Interrupted)</div>
+                        <div class="edu-school">COPPE-UFRJ</div>
+                        <div class="edu-date">2018 - 2019</div>
+                        <div class="edu-desc">Research: Non-Linear Programming Methods to Media Mix Modeling. Applied quantitative optimization methods to marketing challenges.</div>
+                    </div>
+                </div>
+
+                <!-- BSc Mechanical Engineering -->
+                <div class="editor-panel edu-card">
+                    <div class="editor-titlebar">
+                        <div class="editor-dots">
+                            <div class="editor-dot red"></div>
+                            <div class="editor-dot yellow"></div>
+                            <div class="editor-dot green"></div>
+                        </div>
+                        <span class="editor-filename">bsc_mech_uff.md</span>
+                    </div>
+                    <div class="editor-body">
+                        <div class="edu-degree"><i class="fas fa-graduation-cap" style="color: var(--accent-yellow); margin-right: 6px;"></i>BSc in Mechanical Engineering</div>
+                        <div class="edu-school">UFF</div>
+                        <div class="edu-date">2010 - 2015</div>
+                        <div class="edu-desc">Foundation in engineering mathematics, thermodynamics, and systems thinking.</div>
+                    </div>
+                </div>
+
+                <!-- BSc Physics -->
+                <div class="editor-panel edu-card">
+                    <div class="editor-titlebar">
+                        <div class="editor-dots">
+                            <div class="editor-dot red"></div>
+                            <div class="editor-dot yellow"></div>
+                            <div class="editor-dot green"></div>
+                        </div>
+                        <span class="editor-filename">bsc_physics_uff.md</span>
+                    </div>
+                    <div class="editor-body">
+                        <div class="edu-degree"><i class="fas fa-graduation-cap" style="color: var(--accent-yellow); margin-right: 6px;"></i>BSc in Physics</div>
+                        <div class="edu-school">UFF</div>
+                        <div class="edu-date">2006 - 2010</div>
+                        <div class="edu-desc">Foundation in mathematical physics, statistical mechanics, and analytical problem solving.</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================
+             PORTFOLIO SECTION
+             ======================================== -->
+        <section id="portfolio">
+            <div class="section-header">
+                <span class="accent">$</span> ls -la ~/projects/
+            </div>
+
+            <!-- ls output decoration -->
+            <div class="terminal-window" style="margin-bottom: 2rem;">
+                <div class="terminal-titlebar">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <span class="terminal-title">~/projects</span>
+                </div>
+                <div class="terminal-body" style="padding: 1rem 1.5rem;">
+                    <div class="portfolio-ls">
+                        <div class="ls-header">total 3</div>
+                        <div class="ls-line">
+                            <span class="ls-perms">drwxr-xr-x</span>
+                            <span class="ls-size">4.2K</span>
+                            <span class="ls-date">Jan 15</span>
+                            <span class="ls-name dir">tiktok-api-handler</span>
+                        </div>
+                        <div class="ls-line">
+                            <span class="ls-perms">drwxr-xr-x</span>
+                            <span class="ls-size">3.8K</span>
+                            <span class="ls-date">Dec 08</span>
+                            <span class="ls-name dir">my-online-courses</span>
+                        </div>
+                        <div class="ls-line">
+                            <span class="ls-perms">drwxr-xr-x</span>
+                            <span class="ls-size">5.1K</span>
+                            <span class="ls-date">Nov 22</span>
+                            <span class="ls-name dir">google-app-script-projects</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-cards">
+
+                <!-- TikTok API -->
+                <div class="editor-panel">
+                    <div class="editor-titlebar">
+                        <div class="editor-dots">
+                            <div class="editor-dot red"></div>
+                            <div class="editor-dot yellow"></div>
+                            <div class="editor-dot green"></div>
+                        </div>
+                        <span class="editor-filename">tiktok-api-handler/README.md</span>
+                    </div>
+                    <div class="editor-body" style="padding: 1.2rem 1.5rem;">
+                        <div class="portfolio-title">
+                            <i class="fab fa-tiktok"></i>
+                            TikTok API Handler
+                        </div>
+                        <div class="portfolio-desc">
+                            A Python-based application for authenticating and interacting with TikTok's Marketing API. Handles OAuth2 flow, data extraction, and campaign reporting automation.
+                        </div>
+                        <div class="portfolio-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">REST API</span>
+                            <span class="tag">OAuth2</span>
+                            <span class="tag">Marketing Data</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Online Courses -->
+                <div class="editor-panel">
+                    <div class="editor-titlebar">
+                        <div class="editor-dots">
+                            <div class="editor-dot red"></div>
+                            <div class="editor-dot yellow"></div>
+                            <div class="editor-dot green"></div>
+                        </div>
+                        <span class="editor-filename">my-online-courses/README.md</span>
+                    </div>
+                    <div class="editor-body" style="padding: 1.2rem 1.5rem;">
+                        <div class="portfolio-title">
+                            <i class="fas fa-book-open"></i>
+                            My Online Courses
+                        </div>
+                        <div class="portfolio-desc">
+                            A curated showcase of completed online courses and certifications in data science, analytics, cloud computing, and software development.
+                        </div>
+                        <div class="portfolio-tags">
+                            <span class="tag">Data Science</span>
+                            <span class="tag">Cloud</span>
+                            <span class="tag">Certifications</span>
+                            <span class="tag">Continuous Learning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google App Scripts -->
+                <div class="editor-panel">
+                    <div class="editor-titlebar">
+                        <div class="editor-dots">
+                            <div class="editor-dot red"></div>
+                            <div class="editor-dot yellow"></div>
+                            <div class="editor-dot green"></div>
+                        </div>
+                        <span class="editor-filename">google-app-script-projects/README.md</span>
+                    </div>
+                    <div class="editor-body" style="padding: 1.2rem 1.5rem;">
+                        <div class="portfolio-title">
+                            <i class="fab fa-google"></i>
+                            Google App Script Projects
+                        </div>
+                        <div class="portfolio-desc">
+                            A collection of Google App Script tools for automating Google Workspace workflows, including Sheets integrations, automated reporting, and custom add-ons.
+                        </div>
+                        <div class="portfolio-tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Google Workspace</span>
+                            <span class="tag">Automation</span>
+                            <span class="tag">App Scripts</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================
+             CONTACT SECTION
+             ======================================== -->
+        <section id="contact">
+            <div class="section-header">
+                <span class="accent">$</span> mailto rodrigo
+            </div>
+            <div class="terminal-window">
+                <div class="terminal-titlebar">
+                    <div class="terminal-dot red"></div>
+                    <div class="terminal-dot yellow"></div>
+                    <div class="terminal-dot green"></div>
+                    <span class="terminal-title">compose-message</span>
+                </div>
+                <div class="terminal-body">
+                    <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent! (mockup)');">
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span class="prompt-char">&gt;_</span> name:
+                            </label>
+                            <input type="text" class="form-input" placeholder="Enter your name..." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span class="prompt-char">&gt;_</span> email:
+                            </label>
+                            <input type="email" class="form-input" placeholder="Enter your email..." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">
+                                <span class="prompt-char">&gt;_</span> message:
+                            </label>
+                            <textarea class="form-textarea" placeholder="Type your message..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-terminal primary btn-submit">
+                            <i class="fas fa-paper-plane"></i> [send_message]
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================
+         FOOTER
+         ======================================== -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-links">
+                <a href="https://github.com/strod" class="footer-link" target="_blank" rel="noopener">
+                    <i class="fab fa-github"></i> [github]
+                </a>
+                <a href="https://linkedin.com/in/strodrigo" class="footer-link" target="_blank" rel="noopener">
+                    <i class="fab fa-linkedin"></i> [linkedin]
+                </a>
+                <a href="https://instagram.com/rodtex" class="footer-link" target="_blank" rel="noopener">
+                    <i class="fab fa-instagram"></i> [instagram]
+                </a>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 Rodrigo Teixeira &nbsp;|&nbsp; Built with &lt;code&gt; and &#9749;
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
