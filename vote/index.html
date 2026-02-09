@@ -456,14 +456,8 @@
         // ==========================================
         // TOKEN VALIDATION
         // ==========================================
-        var VALID_TOKEN = 'rod2026vote';
-        var params = new URLSearchParams(window.location.search);
-        var token = params.get('token');
-
-        if (token === VALID_TOKEN) {
-            document.getElementById('accessDenied').style.display = 'none';
-            document.getElementById('votePage').classList.add('active');
-        }
+        // Voting is closed — always show access denied
+        // (no token validation needed)
 
         // ==========================================
         // PREVIEW MODAL
