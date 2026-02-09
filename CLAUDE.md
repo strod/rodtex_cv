@@ -6,6 +6,27 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Static personal portfolio/CV website for Rodrigo Teixeira, hosted on GitHub Pages at **rodtex.dev**. No build system, no bundler, no package manager — pure HTML/CSS/JS served directly.
 
+## Git & SSH Authentication
+
+This repo is owned by the **strod** GitHub account. The default SSH config (`~/.ssh/config`) maps `github.com` to the `rodstex` key, which does **not** have access.
+
+Always push using the `github.com-strod` host alias:
+
+```bash
+# The remote must use the strod host alias
+git remote set-url origin git@github.com-strod:strod/rodtex_cv.git
+
+# SSH key: ~/.ssh/id_ed25519_personal  →  GitHub account: strod
+# Requires Host entry in ~/.ssh/config:
+#   Host github.com-strod
+#     HostName github.com
+#     User git
+#     IdentityFile ~/.ssh/id_ed25519_personal
+#     IdentitiesOnly yes
+```
+
+If a push fails with "Permission denied to rodstex", the remote URL is wrong — fix it with the `set-url` command above.
+
 ## Development
 
 ```bash
