@@ -43,7 +43,6 @@ There are no tests, linters, or CI pipelines. Changes are deployed by pushing to
 
 ### Pages
 - `index.html` — Main CV page (About, Skills, Work Experience, Education, Portfolio, Contact)
-- `hire_me/index.html` — Freelance contact page with Foucault pendulum animation
 - `portfolio/*/index.html` — Individual portfolio project pages (TikTok API, DV360 API, Google App Scripts, Online Courses)
 - Portfolio apps under `portfolio/*/` also have `callback/`, `privacy_policy/`, and `terms_of_service/` sub-pages for OAuth app compliance
 
@@ -51,8 +50,7 @@ There are no tests, linters, or CI pipelines. Changes are deployed by pushing to
 - `main.js` — AOS (Animate On Scroll) initialization
 - `scroller.js` — Custom scroll-based card navigation for Work Experience, Education, and Portfolio timeline sections
 - `ageCalculator.js` — Dynamically calculates and displays age from hardcoded birthdate
-- `navigate.js` — Navigation helper functions for portfolio/hire_me pages
-- `foucault13-2.js` — Foucault pendulum canvas animation on the hire_me page
+- `navigate.js` — Navigation helper functions for portfolio pages
 - `markdownRender_PP.js` / `markdownRender_TS.js` — Render markdown content for privacy policy and terms of service pages using `marked.js`
 
 ### CSS

@@ -51,7 +51,6 @@ I'm a Marketing Analytics Director with 8+ years of experience designing data in
 ```
 rodtex_cv/
 ├── index.html              # Main CV/resume page
-├── hire_me/                # Freelance contact page
 ├── portfolio/              # Project showcases
 │   ├── tiktokapi/          # TikTok API Handler project
 │   ├── dv360api/           # DV360 API project
