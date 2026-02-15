@@ -1138,6 +1138,237 @@
         .glass-card {
             transition: opacity 0.6s ease, transform 0.6s ease, background 0.3s ease, border-color 0.3s ease;
         }
+
+        /* ============================================
+           PORTFOLIO CARD AFFORDANCE
+           ============================================ */
+        .portfolio-card[data-project] {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .portfolio-card-expand {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 11px;
+            opacity: 0;
+            transition: opacity 0.2s ease, background 0.2s ease, color 0.2s ease;
+        }
+
+        .portfolio-card[data-project]:hover .portfolio-card-expand {
+            opacity: 1;
+        }
+
+        .portfolio-card-expand:hover {
+            background: rgba(45, 212, 191, 0.1);
+            color: var(--accent-teal);
+            border-color: rgba(45, 212, 191, 0.3);
+        }
+
+        /* ============================================
+           PORTFOLIO MODAL
+           ============================================ */
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        .portfolio-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(12, 15, 26, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .portfolio-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .portfolio-modal {
+            position: relative;
+            width: 90%;
+            max-width: 620px;
+            max-height: 85vh;
+            background: rgba(20, 24, 40, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-lg);
+            overflow-y: auto;
+            scrollbar-width: none;
+            transform: translateY(30px) scale(0.96);
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .portfolio-modal::-webkit-scrollbar {
+            display: none;
+        }
+
+        .portfolio-modal-overlay.active .portfolio-modal {
+            transform: translateY(0) scale(1);
+        }
+
+        .portfolio-modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 2;
+        }
+
+        .portfolio-modal-close:hover {
+            background: rgba(244, 63, 94, 0.15);
+            border-color: rgba(244, 63, 94, 0.3);
+            color: var(--accent-rose);
+        }
+
+        /* Modal content layout */
+        .pm-accent-band {
+            height: 4px;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        }
+
+        .pm-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 28px 28px 0;
+        }
+
+        .pm-icon {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-sm);
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .pm-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .pm-description {
+            padding: 16px 28px 0;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .pm-image {
+            padding: 20px 28px 0;
+        }
+
+        .pm-image img {
+            width: 100%;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .pm-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            padding: 20px 28px 0;
+        }
+
+        .pm-stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 14px;
+            text-align: center;
+        }
+
+        .pm-stat-value {
+            font-family: var(--font-mono);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .pm-stat-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pm-tech {
+            padding: 20px 28px 28px;
+        }
+
+        .pm-tech-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+
+        .pm-tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .pm-tech-tag {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 1023px) {
+            .portfolio-modal {
+                width: 100%;
+                max-width: 100%;
+                max-height: 100vh;
+                height: 100vh;
+                border-radius: 0;
+            }
+
+            .pm-accent-band {
+                border-radius: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1689,7 +1920,8 @@
                 </div>
                 <div class="portfolio-grid">
                     <!-- Amazon Bid Optimization -->
-                    <div class="portfolio-card">
+                    <div class="portfolio-card" data-project="amazon-bid">
+                        <span class="portfolio-card-expand"><i class="fas fa-expand-alt"></i></span>
                         <div class="portfolio-card-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--accent-amber);">
                             <i class="fab fa-amazon"></i>
                         </div>
@@ -1706,7 +1938,8 @@
                     </div>
 
                     <!-- Causal Impact Analysis -->
-                    <div class="portfolio-card">
+                    <div class="portfolio-card" data-project="causal-impact">
+                        <span class="portfolio-card-expand"><i class="fas fa-expand-alt"></i></span>
                         <div class="portfolio-card-icon" style="background: rgba(139, 92, 246, 0.1); color: var(--accent-violet);">
                             <i class="fas fa-flask"></i>
                         </div>
@@ -1723,7 +1956,8 @@
                     </div>
 
                     <!-- Vertex AI Recommendations -->
-                    <div class="portfolio-card">
+                    <div class="portfolio-card" data-project="vertex-recs">
+                        <span class="portfolio-card-expand"><i class="fas fa-expand-alt"></i></span>
                         <div class="portfolio-card-icon" style="background: rgba(45, 212, 191, 0.1); color: var(--accent-teal);">
                             <i class="fas fa-cubes"></i>
                         </div>
@@ -1740,7 +1974,8 @@
                     </div>
 
                     <!-- Marketing Mix Model -->
-                    <div class="portfolio-card">
+                    <div class="portfolio-card" data-project="mmm">
+                        <span class="portfolio-card-expand"><i class="fas fa-expand-alt"></i></span>
                         <div class="portfolio-card-icon" style="background: rgba(34, 197, 94, 0.1); color: var(--accent-green);">
                             <i class="fas fa-chart-pie"></i>
                         </div>
@@ -1757,7 +1992,8 @@
                     </div>
 
                     <!-- Data Warehouse -->
-                    <div class="portfolio-card">
+                    <div class="portfolio-card" data-project="data-warehouse">
+                        <span class="portfolio-card-expand"><i class="fas fa-expand-alt"></i></span>
                         <div class="portfolio-card-icon" style="background: rgba(244, 63, 94, 0.1); color: var(--accent-rose);">
                             <i class="fas fa-database"></i>
                         </div>
@@ -1774,7 +2010,8 @@
                     </div>
 
                     <!-- Predictive LTV Model -->
-                    <div class="portfolio-card">
+                    <div class="portfolio-card" data-project="ltv-model">
+                        <span class="portfolio-card-expand"><i class="fas fa-expand-alt"></i></span>
                         <div class="portfolio-card-icon" style="background: rgba(139, 92, 246, 0.1); color: var(--accent-violet);">
                             <i class="fas fa-chart-line"></i>
                         </div>
@@ -1791,7 +2028,8 @@
                     </div>
 
                     <!-- Google Ads Automation -->
-                    <div class="portfolio-card">
+                    <div class="portfolio-card" data-project="gads-automation">
+                        <span class="portfolio-card-expand"><i class="fas fa-expand-alt"></i></span>
                         <div class="portfolio-card-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--accent-amber);">
                             <i class="fab fa-google"></i>
                         </div>
@@ -1808,7 +2046,8 @@
                     </div>
 
                     <!-- Server-Side GTM -->
-                    <div class="portfolio-card">
+                    <div class="portfolio-card" data-project="sgtm">
+                        <span class="portfolio-card-expand"><i class="fas fa-expand-alt"></i></span>
                         <div class="portfolio-card-icon" style="background: rgba(45, 212, 191, 0.1); color: var(--accent-teal);">
                             <i class="fas fa-server"></i>
                         </div>
@@ -1826,6 +2065,14 @@
                 </div>
             </div>
         </section>
+
+        <!-- PORTFOLIO MODAL -->
+        <div class="portfolio-modal-overlay" id="portfolioModal">
+            <div class="portfolio-modal" role="dialog" aria-modal="true">
+                <button class="portfolio-modal-close" aria-label="Close"><i class="fas fa-times"></i></button>
+                <div id="portfolioModalContent"></div>
+            </div>
+        </div>
 
         <!-- FOOTER -->
         <footer class="footer">
@@ -1991,6 +2238,209 @@
             document.getElementById('mobileNavOverlay').classList.remove('open');
             document.body.style.overflow = '';
         }
+
+        // ==========================================
+        // PORTFOLIO MODAL
+        // ==========================================
+        const PORTFOLIO_DATA = {
+            'amazon-bid': {
+                title: 'Amazon Bid Optimization Engine',
+                icon: 'fab fa-amazon',
+                iconBg: 'rgba(245, 158, 11, 0.1)',
+                iconColor: 'var(--accent-amber)',
+                accent: 'linear-gradient(90deg, #f59e0b, #fbbf24)',
+                accentColor: 'var(--accent-amber)',
+                description: 'Built a real-time marketing stream that ingests Amazon Advertising performance data and applies automated bid and budget adjustments across Sponsored Products, Sponsored Brands, and Sponsored Display campaigns. The engine uses OR-Tools for constrained optimization, balancing ROAS targets against daily spend pacing within serverless AWS Lambda functions.',
+                stats: [
+                    { value: 'SP/SB/SD', label: 'Campaign Types' },
+                    { value: 'Real-time', label: 'Feedback Loop' },
+                    { value: 'OR-Tools', label: 'Optimizer' }
+                ],
+                tech: ['Python', 'AWS Lambda', 'Amazon Ads API', 'OR-Tools', 'S3', 'CloudWatch', 'EventBridge'],
+                image: null
+            },
+            'causal-impact': {
+                title: 'Causal Impact Analysis',
+                icon: 'fas fa-flask',
+                iconBg: 'rgba(139, 92, 246, 0.1)',
+                iconColor: 'var(--accent-violet)',
+                accent: 'linear-gradient(90deg, #8b5cf6, #a78bfa)',
+                accentColor: 'var(--accent-violet)',
+                description: 'Designed and executed incrementality testing frameworks using geo-holdout experiments and matched-market designs to measure the true causal lift of marketing campaigns. Leveraged Bayesian Structural Time Series (BSTS) models to estimate counterfactual baselines and quantify incremental conversions beyond what correlation-based attribution can capture.',
+                stats: [
+                    { value: 'Geo-Holdouts', label: 'Experiment Design' },
+                    { value: 'Bayesian STS', label: 'Model Type' },
+                    { value: 'Causal Lift', label: 'Measurement' }
+                ],
+                tech: ['Python', 'CausalImpact', 'Bayesian STS', 'Geo-Experiments', 'BigQuery', 'Looker'],
+                image: 'images/udemy_causal_impact.jpeg'
+            },
+            'vertex-recs': {
+                title: 'Vertex AI Recommendations',
+                icon: 'fas fa-cubes',
+                iconBg: 'rgba(45, 212, 191, 0.1)',
+                iconColor: 'var(--accent-teal)',
+                accent: 'linear-gradient(90deg, #2dd4bf, #5eead4)',
+                accentColor: 'var(--accent-teal)',
+                description: 'Deployed a cross-domain product recommendation engine on Google Vertex AI that serves personalized suggestions across web and email channels. The system handles cold-start scenarios using content-based fallbacks and progressively switches to collaborative filtering as user interaction data accumulates.',
+                stats: [
+                    { value: 'Cross-domain', label: 'Rec Scope' },
+                    { value: 'Cold-start', label: 'Handling' },
+                    { value: 'Vertex AI', label: 'Platform' }
+                ],
+                tech: ['Python', 'Vertex AI', 'BigQuery ML', 'Recommendations AI', 'Cloud Functions', 'Firestore'],
+                image: null
+            },
+            'mmm': {
+                title: 'Marketing Mix Model',
+                icon: 'fas fa-chart-pie',
+                iconBg: 'rgba(34, 197, 94, 0.1)',
+                iconColor: 'var(--accent-green)',
+                accent: 'linear-gradient(90deg, #22c55e, #4ade80)',
+                accentColor: 'var(--accent-green)',
+                description: 'Built a Marketing Mix Model using Google\'s Meridian framework with Bayesian inference for media budget allocation and scenario simulation. The pipeline supports weekly model retraining and daily inference, enabling the marketing team to shift budgets across channels based on marginal ROI curves and saturation effects.',
+                stats: [
+                    { value: 'Weekly', label: 'Retraining' },
+                    { value: 'Daily', label: 'Inference' },
+                    { value: 'Bayesian', label: 'Framework' }
+                ],
+                tech: ['Python', 'Meridian', 'Bayesian Inference', 'BigQuery', 'Vertex AI', 'Looker'],
+                image: null
+            },
+            'data-warehouse': {
+                title: 'Data Warehouse',
+                icon: 'fas fa-database',
+                iconBg: 'rgba(244, 63, 94, 0.1)',
+                iconColor: 'var(--accent-rose)',
+                accent: 'linear-gradient(90deg, #f43f5e, #fb7185)',
+                accentColor: 'var(--accent-rose)',
+                description: 'Designed, built, and maintained an end-to-end data warehouse on both Redshift and BigQuery. Optimized schema design, ETL orchestration, and query performance — achieving a 40% reduction in compute costs and cutting data freshness latency from 24 hours to under 1 hour for critical business tables.',
+                stats: [
+                    { value: '40%', label: 'Cost Reduction' },
+                    { value: '< 1h', label: 'Data Latency' },
+                    { value: '24h \u2192 1h', label: 'Improvement' }
+                ],
+                tech: ['Redshift', 'BigQuery', 'Matillion', 'Airflow', 'S3', 'dbt', 'Python'],
+                image: null
+            },
+            'ltv-model': {
+                title: 'Predictive LTV Model',
+                icon: 'fas fa-chart-line',
+                iconBg: 'rgba(139, 92, 246, 0.1)',
+                iconColor: 'var(--accent-violet)',
+                accent: 'linear-gradient(90deg, #8b5cf6, #a78bfa)',
+                accentColor: 'var(--accent-violet)',
+                description: 'Developed a 24-month customer lifetime value prediction model using RFM-based features and XGBoost. The predicted LTV scores are piped back into the server-side pixel infrastructure, enabling media platforms (Google, Meta) to optimize bidding toward high-value customers — resulting in a 12% uplift in repeat order rates.',
+                stats: [
+                    { value: '12%', label: 'Repeat Order Uplift' },
+                    { value: '24mo', label: 'Prediction Horizon' },
+                    { value: 'XGBoost', label: 'Model' }
+                ],
+                tech: ['Python', 'XGBoost', 'RFM', 'BigQuery', 'sGTM', 'Cloud Functions', 'Vertex AI'],
+                image: null
+            },
+            'gads-automation': {
+                title: 'Google Ads Automation',
+                icon: 'fab fa-google',
+                iconBg: 'rgba(245, 158, 11, 0.1)',
+                iconColor: 'var(--accent-amber)',
+                accent: 'linear-gradient(90deg, #f59e0b, #fbbf24)',
+                accentColor: 'var(--accent-amber)',
+                description: 'Built automated Google Ads campaign management scripts that perform bulk operations across thousands of keywords, ad groups, and campaigns using the Google Ads API and GAQL queries. The system handles automated bid management, budget pacing, negative keyword mining, and performance anomaly detection.',
+                stats: [
+                    { value: 'Bulk Ops', label: 'Scale' },
+                    { value: 'GAQL', label: 'Query Language' },
+                    { value: 'Auto-bid', label: 'Management' }
+                ],
+                tech: ['Python', 'Google Ads API', 'GAQL', 'Cloud Functions', 'BigQuery', 'Cloud Scheduler'],
+                image: null
+            },
+            'sgtm': {
+                title: 'Server-Side GTM',
+                icon: 'fas fa-server',
+                iconBg: 'rgba(45, 212, 191, 0.1)',
+                iconColor: 'var(--accent-teal)',
+                accent: 'linear-gradient(90deg, #2dd4bf, #5eead4)',
+                accentColor: 'var(--accent-teal)',
+                description: 'Implemented server-side Google Tag Manager on Cloud Run, building a first-party data collection infrastructure that uncovered 30%+ conversion undercounting caused by ITP restrictions and ad blockers. The implementation spans LATAM-scale operations and integrates with Meta Conversions API, Google Ads Enhanced Conversions, and TikTok Events API.',
+                stats: [
+                    { value: '30%+', label: 'Undercounting Found' },
+                    { value: 'LATAM', label: 'Scale' },
+                    { value: '1st-party', label: 'Data Strategy' }
+                ],
+                tech: ['GTM', 'Cloud Run', 'Meta CAPI', 'Enhanced Conversions', 'TikTok Events API', 'BigQuery'],
+                image: null
+            }
+        };
+
+        function renderModalContent(key) {
+            const d = PORTFOLIO_DATA[key];
+            if (!d) return '';
+            let html = '<div class="pm-accent-band" style="background: ' + d.accent + ';"></div>';
+            html += '<div class="pm-header">';
+            html += '<div class="pm-icon" style="background: ' + d.iconBg + '; color: ' + d.iconColor + ';"><i class="' + d.icon + '"></i></div>';
+            html += '<h2 class="pm-title">' + d.title + '</h2>';
+            html += '</div>';
+            html += '<p class="pm-description">' + d.description + '</p>';
+            if (d.image) {
+                html += '<div class="pm-image"><img src="' + d.image + '" alt="' + d.title + '" loading="lazy"></div>';
+            }
+            html += '<div class="pm-stats">';
+            d.stats.forEach(function(s) {
+                html += '<div class="pm-stat-card">';
+                html += '<div class="pm-stat-value" style="color: ' + d.accentColor + ';">' + s.value + '</div>';
+                html += '<div class="pm-stat-label">' + s.label + '</div>';
+                html += '</div>';
+            });
+            html += '</div>';
+            html += '<div class="pm-tech">';
+            html += '<div class="pm-tech-label">Tech Stack</div>';
+            html += '<div class="pm-tech-tags">';
+            d.tech.forEach(function(t) {
+                html += '<span class="pm-tech-tag">' + t + '</span>';
+            });
+            html += '</div></div>';
+            return html;
+        }
+
+        function openPortfolioModal(key) {
+            const overlay = document.getElementById('portfolioModal');
+            const content = document.getElementById('portfolioModalContent');
+            content.innerHTML = renderModalContent(key);
+            document.body.classList.add('modal-open');
+            requestAnimationFrame(function() {
+                overlay.classList.add('active');
+            });
+        }
+
+        function closePortfolioModal() {
+            const overlay = document.getElementById('portfolioModal');
+            overlay.classList.remove('active');
+            document.body.classList.remove('modal-open');
+            setTimeout(function() {
+                document.getElementById('portfolioModalContent').innerHTML = '';
+            }, 350);
+        }
+
+        // Card click listeners
+        document.querySelectorAll('.portfolio-card[data-project]').forEach(function(card) {
+            card.addEventListener('click', function() {
+                openPortfolioModal(this.getAttribute('data-project'));
+            });
+        });
+
+        // Close on backdrop click
+        document.getElementById('portfolioModal').addEventListener('click', function(e) {
+            if (e.target === this) closePortfolioModal();
+        });
+
+        // Close on X button
+        document.querySelector('.portfolio-modal-close').addEventListener('click', closePortfolioModal);
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closePortfolioModal();
+        });
 
         // ==========================================
         // SMOOTH SCROLL FOR NAV LINKS
