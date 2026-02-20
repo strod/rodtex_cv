@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodrigo Teixeira — Head of Business Intelligence | CV</title>
+    <meta name="description" content="CV of Rodrigo Teixeira — Head of Business Intelligence, Data & Analytics Leader with 8+ years of experience building end-to-end data stacks.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           CSS RESET & BASE
+           ============================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #0f172a;
+            --navy-light: #1e293b;
+            --teal: #0d9488;
+            --teal-light: #14b8a6;
+            --teal-bg: #f0fdfa;
+            --teal-border: #ccfbf1;
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --bg-white: #ffffff;
+            --bg-light: #f8fafc;
+            --border: #e2e8f0;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        html {
+            font-size: 10.5px;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.55;
+            color: var(--text-primary);
+            background: var(--bg-light);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ============================================
+           LAYOUT — Single Column, Max Width
+           ============================================ */
+        .cv-container {
+            max-width: 794px; /* A4 width */
+            margin: 0 auto;
+            background: var(--bg-white);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 20px 60px rgba(0,0,0,0.08);
+        }
+
+        .cv-page {
+            padding: 36px 42px;
+        }
+
+        /* ============================================
+           HEADER
+           ============================================ */
+        header {
+            border-bottom: 3px solid var(--navy);
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 2px;
+        }
+
+        .title-line {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--teal);
+            letter-spacing: 0.01em;
+            margin-bottom: 10px;
+        }
+
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-row a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .contact-row a:hover {
+            color: var(--teal);
+        }
+
+        .contact-item {
+            white-space: nowrap;
+        }
+
+        .contact-sep {
+            color: var(--border);
+        }
+
+        /* ============================================
+           SECTION HEADINGS
+           ============================================ */
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border-bottom: 2px solid var(--teal);
+            padding-bottom: 4px;
+            margin-bottom: 10px;
+            margin-top: 18px;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        /* ============================================
+           PROFESSIONAL SUMMARY
+           ============================================ */
+        .summary {
+            font-size: 0.97rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        /* ============================================
+           CORE COMPETENCIES — Keyword Grid
+           ============================================ */
+        .competencies-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px 16px;
+            margin-top: 8px;
+        }
+
+        .competency-item {
+            display: flex;
+            align-items: baseline;
+            gap: 7px;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .competency-item::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            min-width: 6px;
+            background: var(--teal);
+            border-radius: 50%;
+            position: relative;
+            top: -1px;
+        }
+
+        /* ============================================
+           EXPERIENCE
+           ============================================ */
+        .job {
+            margin-bottom: 14px;
+        }
+
+        .job:last-child {
+            margin-bottom: 0;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 2px;
+        }
+
+        h3 {
+            font-family: var(--font-heading);
+            font-size: 1.07rem;
+            font-weight: 600;
+            color: var(--navy);
+            line-height: 1.3;
+        }
+
+        .job-date {
+            font-size: 0.88rem;
+            color: var(--teal);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .job-company {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+
+        .job-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 5px;
+            line-height: 1.45;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .job ul li {
+            position: relative;
+            padding-left: 14px;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 3px;
+        }
+
+        .job ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-weight: 700;
+        }
+
+        .job ul li strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* ============================================
+           EDUCATION
+           ============================================ */
+        .education-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 20px;
+            margin-top: 4px;
+        }
+
+        .edu-item {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+
+        .edu-degree {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .edu-school {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        .edu-date {
+            color: var(--teal);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* ============================================
+           TECHNICAL SKILLS
+           ============================================ */
+        .skills-list {
+            margin-top: 4px;
+        }
+
+        .skill-row {
+            display: flex;
+            gap: 8px;
+            font-size: 0.92rem;
+            line-height: 1.55;
+            margin-bottom: 3px;
+        }
+
+        .skill-label {
+            font-weight: 600;
+            color: var(--navy);
+            white-space: nowrap;
+            min-width: fit-content;
+        }
+
+        .skill-value {
+            color: var(--text-secondary);
+        }
+
+        /* ============================================
+           LANGUAGES
+           ============================================ */
+        .languages-row {
+            display: flex;
+            gap: 24px;
+            margin-top: 4px;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+        }
+
+        .lang-item strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* ============================================
+           PAGE BREAK HINT
+           ============================================ */
+        .page-break {
+            page-break-before: always;
+            break-before: page;
+        }
+
+        /* ============================================
+           SCREEN-ONLY STYLES
+           ============================================ */
+        @media screen {
+            body {
+                padding: 20px 16px;
+            }
+
+            .cv-container {
+                border-radius: 4px;
+                overflow: hidden;
+            }
+        }
+
+        /* ============================================
+           PRINT STYLES — Optimized for 2 pages
+           ============================================ */
+        @media print {
+            html {
+                font-size: 10.5px;
+            }
+
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cv-container {
+                max-width: none;
+                box-shadow: none;
+                margin: 0;
+            }
+
+            .cv-page {
+                padding: 28px 36px;
+            }
+
+            header {
+                padding-bottom: 12px;
+                margin-bottom: 16px;
+            }
+
+            h1 {
+                font-size: 2.4rem;
+            }
+
+            h2 {
+                margin-top: 14px;
+                margin-bottom: 8px;
+            }
+
+            .job {
+                margin-bottom: 12px;
+            }
+
+            .job ul li {
+                margin-bottom: 2px;
+            }
+
+            a {
+                text-decoration: none !important;
+                color: inherit !important;
+            }
+
+            .contact-row a {
+                color: var(--text-secondary) !important;
+            }
+
+            .page-break {
+                page-break-before: always;
+                break-before: page;
+                margin-top: 0;
+                padding-top: 0;
+            }
+
+            .competencies-grid {
+                gap: 4px 14px;
+            }
+
+            @page {
+                size: A4;
+                margin: 12mm 8mm;
+            }
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media screen and (max-width: 600px) {
+            html {
+                font-size: 10px;
+            }
+
+            .cv-page {
+                padding: 24px 20px;
+            }
+
+            .competencies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-row {
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            .contact-sep {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <div class="cv-page">
+
+            <!-- ========================================
+                 HEADER
+                 ======================================== -->
+            <header>
+                <h1>Rodrigo Teixeira</h1>
+                <div class="title-line">Head of Business Intelligence | Data &amp; Analytics Leader</div>
+                <div class="contact-row">
+                    <span class="contact-item"><a href="mailto:rodrigo@rodtex.dev">rodrigo@rodtex.dev</a></span>
+                    <span class="contact-sep">|</span>
+                    <span class="contact-item"><a href="tel:+5511930212911">+55 11 93021-2911</a></span>
+                    <span class="contact-sep">|</span>
+                    <span class="contact-item">S&#227;o Paulo, Brazil</span>
+                    <span class="contact-sep">|</span>
+                    <span class="contact-item"><a href="https://linkedin.com/in/strodrigo">linkedin.com/in/strodrigo</a></span>
+                    <span class="contact-sep">|</span>
+                    <span class="contact-item"><a href="https://github.com/strod">github.com/strod</a></span>
+                    <span class="contact-sep">|</span>
+                    <span class="contact-item"><a href="https://rodtex.dev">rodtex.dev</a></span>
+                </div>
+            </header>
+
+            <!-- ========================================
+                 PROFESSIONAL SUMMARY
+                 ======================================== -->
+            <section>
+                <h2>Professional Summary</h2>
+                <p class="summary">
+                    Data and analytics leader with 8+ years of experience building and owning end-to-end data stacks&thinsp;&mdash;&thinsp;from ETL/ELT pipelines and data warehouse architecture to semantic layers, BI platforms, and metrics governance. Proven track record designing dimensional models, standardizing business-critical KPIs (MRR, churn, CAC, LTV), and delivering self-service analytics that drive strategic decisions. Deep hands-on experience with modern cloud data stacks (Redshift, BigQuery, Airflow, Matillion, Fivetran) combined with cross-functional leadership spanning engineering, marketing, and executive stakeholders. Currently leading the full data and analytics function at Filterbuy, a D2C e-commerce company.
+                </p>
+            </section>
+
+            <!-- ========================================
+                 CORE COMPETENCIES
+                 ======================================== -->
+            <section>
+                <h2>Core Competencies</h2>
+                <div class="competencies-grid">
+                    <div class="competency-item">End-to-End Data Stack Ownership</div>
+                    <div class="competency-item">Business Metrics: MRR, Churn, CAC, LTV, ROAS</div>
+                    <div class="competency-item">Data Warehouse Architecture &amp; Dimensional Modeling</div>
+                    <div class="competency-item">Cross-Functional Leadership &amp; Stakeholder Management</div>
+                    <div class="competency-item">ETL/ELT Pipeline Design (Matillion, Fivetran, Airflow, Python)</div>
+                    <div class="competency-item">Self-Service Analytics &amp; Data Democratization</div>
+                    <div class="competency-item">Metrics Governance &amp; KPI Standardization</div>
+                    <div class="competency-item">SQL, Python, dbt Concepts, Data Modeling</div>
+                    <div class="competency-item">Business Intelligence &amp; Dashboard Development</div>
+                    <div class="competency-item">Cloud Data Platforms (Redshift, BigQuery, GCP, AWS)</div>
+                </div>
+            </section>
+
+            <!-- ========================================
+                 PROFESSIONAL EXPERIENCE
+                 ======================================== -->
+            <section>
+                <h2>Professional Experience</h2>
+
+                <!-- Filterbuy -->
+                <article class="job">
+                    <div class="job-header">
+                        <h3>Marketing Analytics Director</h3>
+                        <span class="job-date">Jan 2024 &mdash; Present</span>
+                    </div>
+                    <div class="job-company">Filterbuy &mdash; Miami, FL (Remote) &nbsp;|&nbsp; Promoted to Director 2024</div>
+                    <div class="job-desc">D2C e-commerce company. Built and own the entire data and analytics function as a one-person BI team scaled through automation.</div>
+                    <ul>
+                        <li><strong>Data Warehouse Architecture:</strong> Designed and maintain the company's data warehouse on Redshift and BigQuery using dimensional modeling (star/snowflake schemas) for orders, customers, marketing spend, product catalogs, and subscription data</li>
+                        <li><strong>ETL/ELT Pipeline Ownership:</strong> Built end-to-end data pipelines using Matillion, Fivetran, and custom Python ETL jobs to ingest data from 15+ sources (Shopify, Amazon Ads, Google Ads, Meta Ads, Klaviyo, Recharge, Okendo, TikTok)</li>
+                        <li><strong>Metrics Governance:</strong> Established single-source-of-truth definitions for critical business metrics including CAC, LTV, churn rate, MER, ROAS, and contribution margin&thinsp;&mdash;&thinsp;standardized across all dashboards and reports</li>
+                        <li><strong>BI &amp; Dashboard Development:</strong> Built automated reporting dashboards on Looker Studio and QuickSight serving executive, marketing, and operations teams&thinsp;&mdash;&thinsp;reduced reporting latency from 24 hours to under 1 hour</li>
+                        <li><strong>KPI Standardization:</strong> Created BigQuery analytical modules for ROI attribution, cohort analysis, LTV evolution, and churn prediction&thinsp;&mdash;&thinsp;unified metric definitions across business functions</li>
+                        <li><strong>Cost Optimization:</strong> Cut data warehouse query costs by 40% through optimized partitioning, clustering, and schema redesign</li>
+                        <li><strong>Predictive Analytics:</strong> Built 24-month customer LTV prediction model and churn prediction model, driving 12% uplift in repeat purchase orders</li>
+                        <li><strong>Self-Service Analytics:</strong> Empowered stakeholders with self-service data access through semantic layer design and standardized data marts</li>
+                    </ul>
+                </article>
+
+                <!-- IPG Mediabrands -->
+                <article class="job">
+                    <div class="job-header">
+                        <h3>Head of Data LATAM</h3>
+                        <span class="job-date">Jan 2022 &mdash; Dec 2023</span>
+                    </div>
+                    <div class="job-company">IPG Mediabrands &mdash; S&#227;o Paulo, Brazil</div>
+                    <div class="job-desc">Led data strategy and BI operations across Latin America for one of the world's largest media agency networks.</div>
+                    <ul>
+                        <li><strong>Team &amp; Function Leadership:</strong> Led cross-functional data teams delivering BI solutions, data governance, and analytics for enterprise clients across multiple LATAM markets</li>
+                        <li><strong>Data Infrastructure:</strong> Designed first-party data ingestion and unification architecture, integrating CRM and offline sales data into centralized data platforms</li>
+                        <li><strong>Metrics &amp; Reporting:</strong> Established measurement frameworks and standardized KPI definitions for media performance across markets&thinsp;&mdash;&thinsp;ensured consistent metrics governance</li>
+                        <li><strong>Stakeholder Management:</strong> Served as technical consultant to C-level clients, translating data infrastructure capabilities into business investment cases</li>
+                        <li><strong>Platform Implementation:</strong> Led Google Best Practices Implementation (BPI)&thinsp;&mdash;&thinsp;standardized advertising account structures and performance metrics for Nestl&#233; across LATAM</li>
+                    </ul>
+                </article>
+
+                <!-- PAGE 2 STARTS HERE -->
+                <div class="page-break"></div>
+
+                <!-- MINT -->
+                <article class="job">
+                    <div class="job-header">
+                        <h3>Data Manager / Tech Lead</h3>
+                        <span class="job-date">Jan 2020 &mdash; Dec 2022</span>
+                    </div>
+                    <div class="job-company">MINT &mdash; S&#227;o Paulo, Brazil</div>
+                    <div class="job-desc">AI-powered advertising intelligence startup.</div>
+                    <ul>
+                        <li><strong>Data Architecture:</strong> Designed data infrastructure and automated ETL pipelines for marketing measurement and optimization</li>
+                        <li><strong>BI Solutions:</strong> Built automated reporting dashboards and analytics tools using SQL and Python for media investment optimization</li>
+                        <li><strong>Budget Optimization:</strong> Created "AIRE" recommendation engine using portfolio optimization algorithms for media budget allocation&thinsp;&mdash;&thinsp;increased client ROI by 25%+ through metric-driven investment framework</li>
+                        <li><strong>Attribution &amp; KPIs:</strong> Developed attribution models and standardized channel-level KPIs to measure effectiveness across ad networks and DSPs</li>
+                    </ul>
+                </article>
+
+                <!-- WMcCann -->
+                <article class="job">
+                    <div class="job-header">
+                        <h3>Data Analytics Manager</h3>
+                        <span class="job-date">Jan 2019 &mdash; Dec 2019</span>
+                    </div>
+                    <div class="job-company">WMcCann &mdash; S&#227;o Paulo, Brazil</div>
+                    <ul>
+                        <li>Led Marketing Mix Model study for General Motors ($100M+ annual marketing spend)&thinsp;&mdash;&thinsp;defined metric frameworks and optimal budget allocation using measurement and attribution techniques</li>
+                        <li>Designed automated reporting pipelines (SQL, BigQuery) and measurement frameworks for continuous KPI monitoring</li>
+                    </ul>
+                </article>
+
+                <!-- Rede Globo -->
+                <article class="job">
+                    <div class="job-header">
+                        <h3>Data Scientist</h3>
+                        <span class="job-date">Jan 2018 &mdash; Dec 2018</span>
+                    </div>
+                    <div class="job-company">Rede Globo &mdash; Rio de Janeiro, Brazil</div>
+                    <ul>
+                        <li>Designed automated reporting infrastructure for Gshow (entertainment portal) at Latin America's largest TV network, reducing manual reporting time by 80%</li>
+                        <li>Built measurement frameworks to standardize data quality and audience behavior metrics across digital products</li>
+                    </ul>
+                </article>
+
+                <!-- Bridge Consulting -->
+                <article class="job">
+                    <div class="job-header">
+                        <h3>Data Science Consultant</h3>
+                        <span class="job-date">Jan 2017 &mdash; Dec 2017</span>
+                    </div>
+                    <div class="job-company">Bridge Consulting &mdash; Rio de Janeiro, Brazil</div>
+                    <ul>
+                        <li>Delivered data infrastructure and BI consulting projects for retail clients</li>
+                        <li>Designed custom dashboards and measurement frameworks for client-facing analytics</li>
+                    </ul>
+                </article>
+            </section>
+
+            <!-- ========================================
+                 EDUCATION
+                 ======================================== -->
+            <section>
+                <h2>Education</h2>
+                <div class="education-grid">
+                    <div class="edu-item">
+                        <div class="edu-degree">MBA in Data Science &amp; Analytics</div>
+                        <div class="edu-school">USP (Universidade de S&#227;o Paulo)</div>
+                        <div class="edu-date">2020 &mdash; 2021</div>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-degree">M.Sc. in Industrial Engineering</div>
+                        <div class="edu-school">COPPE-UFRJ (Federal University of Rio de Janeiro)</div>
+                        <div class="edu-date">2018 &mdash; 2019</div>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-degree">B.Sc. in Mechanical Engineering</div>
+                        <div class="edu-school">UFF (Universidade Federal Fluminense)</div>
+                        <div class="edu-date">2010 &mdash; 2015</div>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-degree">B.Sc. in Physics</div>
+                        <div class="edu-school">UFF (Universidade Federal Fluminense)</div>
+                        <div class="edu-date">2006 &mdash; 2010</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================
+                 TECHNICAL SKILLS
+                 ======================================== -->
+            <section>
+                <h2>Technical Skills</h2>
+                <div class="skills-list">
+                    <div class="skill-row">
+                        <span class="skill-label">Data Warehouse &amp; Modeling:</span>
+                        <span class="skill-value">Redshift, BigQuery, Dimensional Modeling (Star/Snowflake Schemas), Schema Optimization, Data Marts, Semantic Layers</span>
+                    </div>
+                    <div class="skill-row">
+                        <span class="skill-label">ETL/ELT &amp; Orchestration:</span>
+                        <span class="skill-value">Matillion, Fivetran, Airflow, dbt (data build tool), Custom Python Pipelines, AWS Kinesis, Cloud Functions</span>
+                    </div>
+                    <div class="skill-row">
+                        <span class="skill-label">Cloud Platforms:</span>
+                        <span class="skill-value">AWS (Redshift, S3, Lambda, Kinesis, EventBridge), GCP (BigQuery, Cloud Run, Vertex AI, Cloud Scheduler, Pub/Sub)</span>
+                    </div>
+                    <div class="skill-row">
+                        <span class="skill-label">BI &amp; Visualization:</span>
+                        <span class="skill-value">Looker Studio, LookML, Tableau, QuickSight, Power BI</span>
+                    </div>
+                    <div class="skill-row">
+                        <span class="skill-label">Programming:</span>
+                        <span class="skill-value">Python (Pandas, PyArrow, boto3, XGBoost, SHAP), SQL (Window Functions, CTEs, Optimization), JavaScript</span>
+                    </div>
+                    <div class="skill-row">
+                        <span class="skill-label">Analytics &amp; ML:</span>
+                        <span class="skill-value">Forecasting (Prophet, Auto-ARIMA), Predictive LTV, Churn Prediction, A/B Testing, Attribution Modeling, Marketing Mix Modeling</span>
+                    </div>
+                    <div class="skill-row">
+                        <span class="skill-label">Business Metrics:</span>
+                        <span class="skill-value">MRR, Churn Rate, CAC, LTV, ROAS, MER, ACoS, Contribution Margin, Cohort Analysis</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================
+                 LANGUAGES
+                 ======================================== -->
+            <section>
+                <h2>Languages</h2>
+                <div class="languages-row">
+                    <span class="lang-item"><strong>Portuguese:</strong> Native</span>
+                    <span class="lang-item"><strong>English:</strong> Fluent</span>
+                    <span class="lang-item"><strong>Spanish:</strong> Intermediate</span>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</body>
+</html>
