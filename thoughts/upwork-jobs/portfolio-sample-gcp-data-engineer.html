@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodrigo Teixeira — Portfolio Sample | GCP & Marketing Data Engineering</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --ink-soft: #3d3d3d;
+            --ink-muted: #6b6b6b;
+            --surface: #fafafa;
+            --border: #e5e5e5;
+            --accent: #0d7377;
+            --accent-light: #e8f4f4;
+            --tag-bg: #f0f0f0;
+            --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page {
+            size: A4;
+            margin: 18mm;
+        }
+
+        html {
+            font-size: 11pt;
+            color: var(--ink);
+            background: #fff;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            line-height: 1.5;
+            max-width: 210mm;
+            min-height: 100vh;
+            margin: 0 auto;
+            padding: 12mm 18mm;
+            background: #fff;
+        }
+
+        @media print {
+            html, body {
+                background: #fff;
+                max-width: none;
+                padding: 0;
+                margin: 0;
+            }
+            body { padding: 0 18mm; }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; }
+            .avoid-break { page-break-inside: avoid; }
+            a { color: var(--ink); text-decoration: none; }
+        }
+
+        /* Header */
+        .doc-header {
+            padding-bottom: 1.2rem;
+            border-bottom: 2px solid var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        .doc-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--ink);
+            letter-spacing: -0.02em;
+        }
+        .doc-subtitle {
+            font-size: 0.75rem;
+            color: var(--ink-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 0.25rem;
+        }
+        .doc-meta {
+            font-size: 0.7rem;
+            color: var(--ink-muted);
+            margin-top: 0.5rem;
+        }
+        .doc-meta a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Intro */
+        .intro {
+            font-size: 0.85rem;
+            color: var(--ink-soft);
+            margin-bottom: 1.75rem;
+            max-width: 90%;
+        }
+
+        /* Project card */
+        .project {
+            margin-bottom: 1.75rem;
+            page-break-inside: avoid;
+        }
+        .project:last-child { margin-bottom: 0; }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.5rem;
+        }
+        .project-icon {
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .project-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ink);
+        }
+        .project-desc {
+            font-size: 0.8rem;
+            color: var(--ink-soft);
+            line-height: 1.55;
+            margin-bottom: 0.6rem;
+            padding-left: 3rem;
+        }
+        .project-stats {
+            display: flex;
+            gap: 1rem;
+            padding-left: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        .project-stat {
+            font-size: 0.7rem;
+        }
+        .project-stat-value {
+            font-weight: 600;
+            color: var(--accent);
+            font-family: var(--font-mono);
+        }
+        .project-stat-label {
+            color: var(--ink-muted);
+        }
+        .project-tech {
+            padding-left: 3rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+        }
+        .project-tag {
+            font-size: 0.65rem;
+            font-family: var(--font-mono);
+            background: var(--tag-bg);
+            color: var(--ink-soft);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        /* Footer */
+        .doc-footer {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.7rem;
+            color: var(--ink-muted);
+        }
+        .doc-footer a { color: var(--accent); text-decoration: none; }
+
+        .print-hint {
+            font-size: 0.7rem;
+            color: var(--ink-muted);
+            background: var(--tag-bg);
+            padding: 0.4rem 0.6rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <p class="print-hint no-print">To save as PDF: File → Print (or Ctrl/Cmd+P) → Destination: Save as PDF → Paper size: A4 → Margins: Default.</p>
+    <header class="doc-header">
+        <h1 class="doc-title">Rodrigo Teixeira</h1>
+        <p class="doc-subtitle">Portfolio sample — GCP &amp; Marketing Data Engineering</p>
+        <p class="doc-meta">
+            rodstex@gmail.com · +55 11 930212911 ·
+            <a href="https://rodtex.dev">rodtex.dev</a> ·
+            <a href="https://github.com/strod">github.com/strod</a> ·
+            <a href="https://linkedin.com/in/strodrigo">linkedin.com/in/strodrigo</a>
+        </p>
+    </header>
+
+    <p class="intro">
+        Selected projects relevant to BigQuery data warehousing, Cloud Functions, scheduled pipelines, Looker Studio reporting, and AI/LLM integration. Full portfolio and detailed case studies at <strong>rodtex.dev</strong>.
+    </p>
+
+    <section class="project avoid-break">
+        <div class="project-header">
+            <div class="project-icon" style="background: #fce8e8; color: #c53030;">▣</div>
+            <h2 class="project-title">Data Warehouse (BigQuery &amp; Redshift)</h2>
+        </div>
+        <p class="project-desc">
+            Designed, built, and maintained an end-to-end data warehouse on Redshift and BigQuery for a US e‑commerce company. Owned schema design, ETL orchestration (Matillion, dbt, Python), and query performance. Delivered a 40% reduction in compute costs and cut data freshness from 24 hours to under 1 hour for critical business tables. Pipelines consolidate Amazon Ads, TikTok, Google Ads, Pipedrive CRM, and web analytics into a single analytics layer powering Looker/QuickSight dashboards and ML models.
+        </p>
+        <div class="project-stats">
+            <span class="project-stat"><span class="project-stat-value">40%</span> <span class="project-stat-label">cost reduction</span></span>
+            <span class="project-stat"><span class="project-stat-value">&lt; 1h</span> <span class="project-stat-label">data latency</span></span>
+            <span class="project-stat"><span class="project-stat-value">24h → 1h</span> <span class="project-stat-label">freshness improvement</span></span>
+        </div>
+        <div class="project-tech">
+            <span class="project-tag">BigQuery</span>
+            <span class="project-tag">Redshift</span>
+            <span class="project-tag">Matillion</span>
+            <span class="project-tag">dbt</span>
+            <span class="project-tag">Python</span>
+            <span class="project-tag">S3</span>
+            <span class="project-tag">Looker</span>
+        </div>
+    </section>
+
+    <section class="project avoid-break">
+        <div class="project-header">
+            <div class="project-icon" style="background: #e0f4f0; color: #0d7377;">▣</div>
+            <h2 class="project-title">Vertex AI Recommendations</h2>
+        </div>
+        <p class="project-desc">
+            Deployed a cross-domain product recommendation engine on Google Vertex AI that serves personalized suggestions across web and email. The system handles cold-start via content-based fallbacks and switches to collaborative filtering as interaction data accumulates. Data is prepared in BigQuery and served through Cloud Functions; results are written back for analytics and dashboard reporting.
+        </p>
+        <div class="project-stats">
+            <span class="project-stat"><span class="project-stat-value">Cross-domain</span> <span class="project-stat-label">rec scope</span></span>
+            <span class="project-stat"><span class="project-stat-value">Cold-start</span> <span class="project-stat-label">handling</span></span>
+            <span class="project-stat"><span class="project-stat-value">Vertex AI</span> <span class="project-stat-label">platform</span></span>
+        </div>
+        <div class="project-tech">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Vertex AI</span>
+            <span class="project-tag">BigQuery ML</span>
+            <span class="project-tag">Cloud Functions</span>
+            <span class="project-tag">Firestore</span>
+        </div>
+    </section>
+
+    <section class="project avoid-break">
+        <div class="project-header">
+            <div class="project-icon" style="background: #fef3e2; color: #b45309;">▣</div>
+            <h2 class="project-title">Google Ads Automation (Cloud Functions + Scheduler)</h2>
+        </div>
+        <p class="project-desc">
+            Built automated Google Ads campaign management using the Google Ads API and GAQL: bulk operations across thousands of keywords, ad groups, and campaigns. Implements automated bid management, budget pacing, negative keyword mining, and performance anomaly detection. Runs on Google Cloud Functions triggered by Cloud Scheduler; reporting and logs are stored in BigQuery for auditing and dashboards.
+        </p>
+        <div class="project-stats">
+            <span class="project-stat"><span class="project-stat-value">Bulk ops</span> <span class="project-stat-label">scale</span></span>
+            <span class="project-stat"><span class="project-stat-value">GAQL</span> <span class="project-stat-label">query language</span></span>
+            <span class="project-stat"><span class="project-stat-value">Cloud Scheduler</span> <span class="project-stat-label">orchestration</span></span>
+        </div>
+        <div class="project-tech">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Google Ads API</span>
+            <span class="project-tag">GAQL</span>
+            <span class="project-tag">Cloud Functions</span>
+            <span class="project-tag">Cloud Scheduler</span>
+            <span class="project-tag">BigQuery</span>
+        </div>
+    </section>
+
+    <section class="project avoid-break">
+        <div class="project-header">
+            <div class="project-icon" style="background: #e8f4f4; color: #0d7377;">▣</div>
+            <h2 class="project-title">Server-Side GTM (Cloud Run)</h2>
+        </div>
+        <p class="project-desc">
+            Implemented server-side Google Tag Manager on Cloud Run for first-party data collection at LATAM scale. Uncovered 30%+ conversion undercounting from ITP and ad blockers. Integrates with Meta Conversions API, Google Ads Enhanced Conversions, and TikTok Events API; event data is streamed to BigQuery for attribution and reporting.
+        </p>
+        <div class="project-stats">
+            <span class="project-stat"><span class="project-stat-value">30%+</span> <span class="project-stat-label">undercounting recovered</span></span>
+            <span class="project-stat"><span class="project-stat-value">LATAM</span> <span class="project-stat-label">scale</span></span>
+        </div>
+        <div class="project-tech">
+            <span class="project-tag">GTM</span>
+            <span class="project-tag">Cloud Run</span>
+            <span class="project-tag">Meta CAPI</span>
+            <span class="project-tag">BigQuery</span>
+        </div>
+    </section>
+
+    <footer class="doc-footer">
+        This document is a condensed portfolio sample. Full project details, code samples, and contact information: <a href="https://rodtex.dev">rodtex.dev</a> · GitHub: <a href="https://github.com/strod">github.com/strod</a>. Generated for the GCP Data Engineer — Marketing Funnel Scoring opportunity. Rodrigo Teixeira · rodstex@gmail.com
+    </footer>
+</body>
+</html>
