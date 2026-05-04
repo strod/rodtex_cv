@@ -62,8 +62,14 @@ The site uses the **Midnight Dashboard** design (formerly `vote/c.html`), deploy
   - `cover-letter.md` — tailored pitch with direct answers to the RFQ's technical confirmations
   - `portfolio-sample.html` (or named after the role) — single-file dark-themed HTML one-pager with `@media print` that flips to a printable light theme
   - `*.pdf` — Chrome-headless export of the HTML, used as the Upwork attachment
-- **CipherSalt POC application** (`upwork-job-2050078365074842831_ciphersalt/`) — RFQ for a Salt Score POC (AMC + CSV → Python scoring engine → Next.js/RSC/Vercel AI SDK dashboard with Optimization Dial). Materials include `milestones.md`, `cover-letter.md`, and `rt-portfolio-and-plan.html` (+ PDF) covering RFQ Fit Map, 5 case studies, Section 6 confirmations, milestone plan, and stack matrix.
+- **CipherSalt POC application** (`upwork-job-2050078365074842831_ciphersalt/`) — RFQ for a Salt Score POC (AMC + CSV → Python scoring engine → Next.js/RSC/Vercel AI SDK dashboard with Optimization Dial). Materials include `milestones.md`, `cover-letter.md`, and `rt-portfolio-and-plan.html` (+ PDF) covering RFQ Fit Map, 5 case studies, Section 6 confirmations, milestone plan, and stack matrix. Also includes the signed NDA: `CipherSalt_IP_NDA_filled.html` + `.pdf` (filled from the original `CipherSalt_IP_NDA_Professional (1).pdf`).
 - **Two earlier Upwork applications** also live in `thoughts/job-descriptions/`: CallRail+PI Law Firm pipeline (`022041296316618992385`) and a third RFQ (`022044023046738693790`).
+
+## Signature & NDA Filling Convention
+
+- **Signature image:** `doc/assets/assinatura-rod_without_bg.PNG` (transparent-background PNG of Rodrigo's handwritten signature). Embed as base64 data URI in HTML — do not link the file.
+- **Filling NDAs / contracts:** Recreate the original PDF layout in HTML (preserving headings, spacing, signature blocks), fill blanks with bold/underlined values, embed the signature image on the contractor signature line, then export with the standard Chrome-headless flags. Keep both `*_filled.html` (source) and `*_filled.pdf` (final) alongside the original.
+- **Standard contractor identity:** Rodrigo Teixeira, São Paulo, Brazil (full legal/contact details in `doc/context/PROFESSIONAL_PROFILE_CONTEXT.md`).
 
 ## PDF Generation Convention
 
