@@ -1,7 +1,7 @@
 # rodtex_cv — Personal Portfolio Site Context
 
-**Purpose:** Static personal portfolio/CV website for Rodrigo Teixeira, hosted on GitHub Pages at **rodtex.dev**. No build system, no bundler, no package manager — pure HTML/CSS/JS.
-**Last Updated:** 2026-02-20
+**Purpose:** Static personal portfolio/CV website for Rodrigo Teixeira, hosted on GitHub Pages at **rodtex.dev**. No build system, no bundler, no package manager — pure HTML/CSS/JS. Also serves as the working directory for Upwork job application materials under `thoughts/job-descriptions/`.
+**Last Updated:** 2026-05-04
 
 ## Current Design
 
@@ -54,7 +54,28 @@ The site uses the **Midnight Dashboard** design (formerly `vote/c.html`), deploy
 - Instagram: instagram.com/tex.rod (updated from rodtex on 2026-02-10)
 - Email: rodrigo@rodtex.dev
 
-## Recent Changes (2026-02-20)
+## Recent Changes (2026-05-04)
+
+- **Upwork application workflow established** in `thoughts/job-descriptions/`. Each job folder follows a standard pattern:
+  - `Job-Description.txt` (or `job-description.txt`) — raw paste of the Upwork RFQ
+  - `milestones.md` — proposed payment-aligned milestones (e.g. 30/40/30 split)
+  - `cover-letter.md` — tailored pitch with direct answers to the RFQ's technical confirmations
+  - `portfolio-sample.html` (or named after the role) — single-file dark-themed HTML one-pager with `@media print` that flips to a printable light theme
+  - `*.pdf` — Chrome-headless export of the HTML, used as the Upwork attachment
+- **CipherSalt POC application** (`upwork-job-2050078365074842831_ciphersalt/`) — RFQ for a Salt Score POC (AMC + CSV → Python scoring engine → Next.js/RSC/Vercel AI SDK dashboard with Optimization Dial). Materials include `milestones.md`, `cover-letter.md`, and `rt-portfolio-and-plan.html` (+ PDF) covering RFQ Fit Map, 5 case studies, Section 6 confirmations, milestone plan, and stack matrix.
+- **Two earlier Upwork applications** also live in `thoughts/job-descriptions/`: CallRail+PI Law Firm pipeline (`022041296316618992385`) and a third RFQ (`022044023046738693790`).
+
+## PDF Generation Convention
+
+For HTML → PDF in this repo, use Chrome headless with these flags:
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+  --headless --disable-gpu --no-pdf-header-footer \
+  --print-to-pdf="output.pdf" "input.html"
+```
+HTML files should include a `@media print` block that overrides CSS variables to a light palette and adds `print-color-adjust: exact` so background tints survive the export.
+
+## Previous Changes (2026-02-20)
 
 - Created new AI/ATS-optimized CV PDF (`rodrigoteixeira_cv.pdf`) replacing the old version — clean semantic HTML, proper heading hierarchy, quantified achievements, keyword-rich for AI screening
 - Added "Download CV" button to hero section in `index.html` (between "Get in Touch" and "View Projects")

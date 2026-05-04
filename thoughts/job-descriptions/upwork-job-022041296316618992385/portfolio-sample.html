@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodrigo Teixeira — Portfolio | Marketing Analytics & Data Pipelines</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --ink-soft: #3d3d3d;
+            --ink-muted: #6b6b6b;
+            --surface: #fafafa;
+            --border: #e0e0e0;
+            --border-light: #f0f0f0;
+            --accent: #0d7377;
+            --accent-dark: #095a5d;
+            --accent-light: #e8f4f4;
+            --amber: #b45309;
+            --amber-light: #fef3e2;
+            --rose: #be123c;
+            --rose-light: #fce8ec;
+            --violet: #6d28d9;
+            --violet-light: #ede9fe;
+            --green: #047857;
+            --green-light: #e6f7f0;
+            --blue: #1d4ed8;
+            --blue-light: #e8eeff;
+            --tag-bg: #f3f3f3;
+            --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page {
+            size: A4;
+            margin: 14mm 16mm;
+        }
+
+        html {
+            font-size: 10.5pt;
+            color: var(--ink);
+            background: #fff;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            line-height: 1.5;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 10mm 16mm;
+            background: #fff;
+        }
+
+        @media print {
+            html, body { background: #fff; max-width: none; padding: 0; margin: 0; }
+            body { padding: 0; }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; }
+            .avoid-break { page-break-inside: avoid; }
+            a { color: var(--ink); text-decoration: none; }
+        }
+
+        /* ---- Header ---- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 0.7rem;
+            border-bottom: 2.5px solid var(--accent);
+            margin-bottom: 0.8rem;
+        }
+        .header-left { flex: 1; }
+        .header-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--ink);
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+        }
+        .header-title {
+            font-size: 0.78rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: 0.15rem;
+            letter-spacing: 0.02em;
+        }
+        .header-meta {
+            font-size: 0.68rem;
+            color: var(--ink-muted);
+            margin-top: 0.35rem;
+            line-height: 1.6;
+        }
+        .header-meta a { color: var(--accent); text-decoration: none; }
+        .header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.2rem;
+            padding-top: 0.2rem;
+        }
+        .header-badge {
+            font-size: 0.6rem;
+            font-family: var(--font-mono);
+            background: var(--accent-light);
+            color: var(--accent-dark);
+            padding: 0.2rem 0.55rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        /* ---- Intro ---- */
+        .intro {
+            font-size: 0.78rem;
+            color: var(--ink-soft);
+            margin-bottom: 0.9rem;
+            max-width: 95%;
+            line-height: 1.55;
+        }
+        .intro strong { color: var(--ink); }
+
+        /* ---- Skills Grid ---- */
+        .skills-section {
+            margin-bottom: 0.9rem;
+        }
+        .section-title {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink-muted);
+            margin-bottom: 0.6rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.5rem;
+        }
+        .skill-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.55rem 0.65rem;
+            background: #fff;
+        }
+        .skill-card-title {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 0.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .skill-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .skill-card-desc {
+            font-size: 0.64rem;
+            color: var(--ink-muted);
+            line-height: 1.45;
+        }
+
+        /* ---- Pipeline Visual ---- */
+        .pipeline-section {
+            margin-bottom: 0.9rem;
+        }
+        .pipeline-diagram {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0.7rem 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.3rem;
+        }
+        .pipeline-stage {
+            text-align: center;
+            flex: 1;
+        }
+        .pipeline-box {
+            font-size: 0.62rem;
+            font-family: var(--font-mono);
+            font-weight: 500;
+            padding: 0.35rem 0.25rem;
+            border-radius: 6px;
+            border: 1px solid;
+            line-height: 1.3;
+        }
+        .pipeline-label {
+            font-size: 0.56rem;
+            color: var(--ink-muted);
+            margin-top: 0.2rem;
+        }
+        .pipeline-arrow {
+            font-size: 0.9rem;
+            color: var(--ink-muted);
+            flex-shrink: 0;
+            margin: 0 -0.1rem;
+        }
+
+        /* ---- Projects ---- */
+        .projects-section { margin-bottom: 0.6rem; }
+        .project {
+            margin-bottom: 0.7rem;
+            page-break-inside: avoid;
+        }
+        .project:last-child { margin-bottom: 0; }
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.35rem;
+        }
+        .project-icon {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            font-weight: 700;
+        }
+        .project-title {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--ink);
+        }
+        .project-context {
+            font-size: 0.64rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+        .project-desc {
+            font-size: 0.73rem;
+            color: var(--ink-soft);
+            line-height: 1.5;
+            margin-bottom: 0.35rem;
+            padding-left: 2.5rem;
+        }
+        .project-metrics {
+            display: flex;
+            gap: 0.8rem;
+            padding-left: 2.5rem;
+            margin-bottom: 0.3rem;
+        }
+        .metric {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.3rem 0.6rem;
+            min-width: 4.5rem;
+        }
+        .metric-value {
+            font-size: 0.82rem;
+            font-weight: 700;
+            font-family: var(--font-mono);
+            color: var(--accent);
+            line-height: 1.2;
+        }
+        .metric-label {
+            font-size: 0.55rem;
+            color: var(--ink-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .project-tech {
+            padding-left: 2.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+        }
+        .tag {
+            font-size: 0.6rem;
+            font-family: var(--font-mono);
+            background: var(--tag-bg);
+            color: var(--ink-soft);
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+        }
+
+        /* ---- Relevance callout ---- */
+        .relevance {
+            background: var(--accent-light);
+            border: 1px solid #c1dede;
+            border-radius: 8px;
+            padding: 0.45rem 0.65rem;
+            margin-bottom: 0.9rem;
+        }
+        .relevance-title {
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: var(--accent-dark);
+            margin-bottom: 0.3rem;
+        }
+        .relevance-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.2rem 1rem;
+        }
+        .relevance-item {
+            font-size: 0.68rem;
+            color: var(--ink-soft);
+            display: flex;
+            align-items: baseline;
+            gap: 0.3rem;
+        }
+        .relevance-check {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.72rem;
+        }
+
+        /* ---- Footer ---- */
+        .doc-footer {
+            margin-top: 0.8rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.65rem;
+            color: var(--ink-muted);
+            display: flex;
+            justify-content: space-between;
+        }
+        .doc-footer a { color: var(--accent); text-decoration: none; }
+
+        /* Print hint */
+        .print-hint {
+            font-size: 0.7rem;
+            color: var(--ink-muted);
+            background: var(--tag-bg);
+            padding: 0.4rem 0.6rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <p class="print-hint no-print">To save as PDF: File > Print (or Cmd+P) > Destination: Save as PDF > Paper size: A4 > Margins: Default.</p>
+
+    <!-- ============ HEADER ============ -->
+    <header class="header">
+        <div class="header-left">
+            <h1 class="header-name">Rodrigo Teixeira</h1>
+            <p class="header-title">Marketing Analytics Director & Data Engineer</p>
+            <p class="header-meta">
+                <a href="https://rodtex.dev">rodtex.dev</a> &middot;
+                <a href="https://github.com/strod">github.com/strod</a> &middot;
+                <a href="https://linkedin.com/in/strodrigo">linkedin.com/in/strodrigo</a>
+            </p>
+        </div>
+        <div class="header-right">
+            <span class="header-badge">8+ years</span>
+            <span class="header-badge">50+ projects</span>
+            <span class="header-badge">UTC-3</span>
+        </div>
+    </header>
+
+    <!-- ============ INTRO ============ -->
+    <p class="intro">
+        Full-stack marketing analytics professional with <strong>8+ years</strong> building end-to-end data pipelines, measurement systems, and client-facing reporting. Currently leading Data Engineering and Data Science at a US e-commerce company. Career spans major agencies (McCann Worldgroup, IPG Mediabrands), media (Rede Globo), AI startups (MINT), and international e-commerce (Filterbuy). Engineering background (Physics + Mechanical Engineering) applied to marketing measurement and optimization.
+    </p>
+
+    <!-- ============ RELEVANCE CALLOUT ============ -->
+    <div class="relevance avoid-break">
+        <p class="relevance-title">Direct Relevance to This Project</p>
+        <div class="relevance-grid">
+            <span class="relevance-item"><span class="relevance-check">&check;</span> Multi-source marketing data pipelines (10+ platforms)</span>
+            <span class="relevance-item"><span class="relevance-check">&check;</span> Channel normalization & attribution</span>
+            <span class="relevance-item"><span class="relevance-check">&check;</span> CRM API integration (Pipedrive, Salesforce ecosystem)</span>
+            <span class="relevance-item"><span class="relevance-check">&check;</span> Client-ready Looker Studio dashboards & reports</span>
+            <span class="relevance-item"><span class="relevance-check">&check;</span> Synthetic data generation (statistics background)</span>
+            <span class="relevance-item"><span class="relevance-check">&check;</span> Cost-per-acquisition & channel economics analysis</span>
+            <span class="relevance-item"><span class="relevance-check">&check;</span> Heatmap & funnel visualization</span>
+            <span class="relevance-item"><span class="relevance-check">&check;</span> REST API evaluation & documentation</span>
+        </div>
+    </div>
+
+    <!-- ============ SKILLS GRID ============ -->
+    <div class="skills-section">
+        <h2 class="section-title">Core Competencies</h2>
+        <div class="skills-grid">
+            <div class="skill-card avoid-break">
+                <p class="skill-card-title"><span class="skill-dot" style="background: var(--accent);"></span>Data Pipelines</p>
+                <p class="skill-card-desc">Python, SQL, ETL orchestration. Ingestion from APIs, CSVs, and databases. Data cleaning, normalization, deduplication at scale.</p>
+            </div>
+            <div class="skill-card avoid-break">
+                <p class="skill-card-title"><span class="skill-dot" style="background: var(--amber);"></span>Marketing Analytics</p>
+                <p class="skill-card-desc">Multi-channel attribution, MMM (Google Meridian), cost-per-acquisition, ROAS, channel economics. GA4, GTM, server-side tracking.</p>
+            </div>
+            <div class="skill-card avoid-break">
+                <p class="skill-card-title"><span class="skill-dot" style="background: var(--violet);"></span>Reporting & BI</p>
+                <p class="skill-card-desc">Looker Studio, QuickSight, Tableau. Client-facing dashboards, heatmaps, funnel visualizations, PDF/slide report templates.</p>
+            </div>
+            <div class="skill-card avoid-break">
+                <p class="skill-card-title"><span class="skill-dot" style="background: var(--rose);"></span>API Integration</p>
+                <p class="skill-card-desc">Built API clients for Google Ads, DV360, TikTok, Amazon Ads, Pipedrive CRM. REST API evaluation and documentation.</p>
+            </div>
+            <div class="skill-card avoid-break">
+                <p class="skill-card-title"><span class="skill-dot" style="background: var(--green);"></span>Cloud Infrastructure</p>
+                <p class="skill-card-desc">GCP (BigQuery, Cloud Functions, Cloud Run, Vertex AI). AWS (Redshift, Lambda, S3, Kinesis). Serverless-first approach.</p>
+            </div>
+            <div class="skill-card avoid-break">
+                <p class="skill-card-title"><span class="skill-dot" style="background: var(--blue);"></span>Data Science & ML</p>
+                <p class="skill-card-desc">Predictive LTV, churn prediction, RFM segmentation, forecasting (Prophet, ARIMA). MBA thesis on ML for audience generation.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ PIPELINE VISUAL ============ -->
+    <div class="pipeline-section">
+        <h2 class="section-title">How I Build Marketing Data Pipelines</h2>
+        <div class="pipeline-diagram avoid-break">
+            <div class="pipeline-stage">
+                <div class="pipeline-box" style="background: var(--rose-light); border-color: #f0b8c4; color: var(--rose);">Raw Sources<br>APIs / CSVs</div>
+                <p class="pipeline-label">Multi-platform</p>
+            </div>
+            <span class="pipeline-arrow">&rarr;</span>
+            <div class="pipeline-stage">
+                <div class="pipeline-box" style="background: var(--amber-light); border-color: #f0d8a8; color: var(--amber);">Normalize<br>& Deduplicate</div>
+                <p class="pipeline-label">Clean & map</p>
+            </div>
+            <span class="pipeline-arrow">&rarr;</span>
+            <div class="pipeline-stage">
+                <div class="pipeline-box" style="background: var(--accent-light); border-color: #b0d8d8; color: var(--accent);">Analytics<br>Layer</div>
+                <p class="pipeline-label">Score & compute</p>
+            </div>
+            <span class="pipeline-arrow">&rarr;</span>
+            <div class="pipeline-stage">
+                <div class="pipeline-box" style="background: var(--violet-light); border-color: #c8b8f0; color: var(--violet);">Dashboards<br>& Reports</div>
+                <p class="pipeline-label">Client-ready</p>
+            </div>
+            <span class="pipeline-arrow">&rarr;</span>
+            <div class="pipeline-stage">
+                <div class="pipeline-box" style="background: var(--green-light); border-color: #a8d8c0; color: var(--green);">Insights<br>& Action</div>
+                <p class="pipeline-label">Decisions</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ PROJECTS ============ -->
+    <div class="projects-section">
+        <h2 class="section-title">Selected Projects</h2>
+
+        <section class="project avoid-break">
+            <div class="project-header">
+                <div class="project-icon" style="background: var(--rose-light); color: var(--rose);">1</div>
+                <div>
+                    <h3 class="project-title">Multi-Platform Marketing Data Warehouse</h3>
+                    <p class="project-context">Filterbuy &middot; E-commerce &middot; Production</p>
+                </div>
+            </div>
+            <p class="project-desc">
+                End-to-end data warehouse consolidating <strong>10+ marketing sources</strong> (Google Ads, Meta, Amazon Ads SP/SB/SD, TikTok, GA4, Pipedrive CRM) into a unified analytics layer. Built channel name normalization, cross-platform deduplication, and attribution mapping — handling the same inconsistent labeling and missing-source challenges that real-world CallRail data presents.
+            </p>
+            <div class="project-metrics">
+                <div class="metric"><span class="metric-value">10+</span><span class="metric-label">data sources</span></div>
+                <div class="metric"><span class="metric-value">40%</span><span class="metric-label">cost reduction</span></div>
+                <div class="metric"><span class="metric-value">24h&rarr;1h</span><span class="metric-label">latency</span></div>
+                <div class="metric"><span class="metric-value">Daily</span><span class="metric-label">refresh</span></div>
+            </div>
+            <div class="project-tech">
+                <span class="tag">Python</span><span class="tag">BigQuery</span><span class="tag">Redshift</span><span class="tag">Matillion</span><span class="tag">dbt</span><span class="tag">S3</span><span class="tag">Looker</span><span class="tag">QuickSight</span>
+            </div>
+        </section>
+
+        <section class="project avoid-break">
+            <div class="project-header">
+                <div class="project-icon" style="background: var(--amber-light); color: var(--amber);">2</div>
+                <div>
+                    <h3 class="project-title">CRM Integration & Channel Attribution Pipeline</h3>
+                    <p class="project-context">Filterbuy &middot; Pipedrive CRM + Ad Platforms</p>
+                </div>
+            </div>
+            <p class="project-desc">
+                Built a pipeline connecting <strong>Pipedrive CRM</strong> (deals, activities, lead sources) with ad platform spend data to compute cost-per-lead and cost-per-deal by channel. Handles CRM records with missing or inconsistent source attribution — mapping them to known marketing channels through fuzzy matching and rule-based normalization. Reports include funnel conversion rates and channel-level ROI breakdowns.
+            </p>
+            <div class="project-metrics">
+                <div class="metric"><span class="metric-value">CRM+Ads</span><span class="metric-label">data join</span></div>
+                <div class="metric"><span class="metric-value">Fuzzy</span><span class="metric-label">source matching</span></div>
+                <div class="metric"><span class="metric-value">Per-channel</span><span class="metric-label">ROI tracking</span></div>
+            </div>
+            <div class="project-tech">
+                <span class="tag">Python</span><span class="tag">Pipedrive API</span><span class="tag">BigQuery</span><span class="tag">Looker Studio</span><span class="tag">REST API</span>
+            </div>
+        </section>
+
+        <section class="project avoid-break">
+            <div class="project-header">
+                <div class="project-icon" style="background: var(--accent-light); color: var(--accent);">3</div>
+                <div>
+                    <h3 class="project-title">Marketing Mix Model (Google Meridian)</h3>
+                    <p class="project-context">Filterbuy &middot; Budget Optimization</p>
+                </div>
+            </div>
+            <p class="project-desc">
+                Production MMM pipeline with weekly retraining and daily inference. Ingests channel spend and conversion data from the data warehouse, estimates channel-level contribution curves, and produces <strong>budget reallocation recommendations</strong>. Outputs include a Visibility Score equivalent: what percentage of marketing impact is measurable vs. dark — directly analogous to the Visibility Score in this project.
+            </p>
+            <div class="project-metrics">
+                <div class="metric"><span class="metric-value">Weekly</span><span class="metric-label">retrain</span></div>
+                <div class="metric"><span class="metric-value">6+</span><span class="metric-label">channels</span></div>
+                <div class="metric"><span class="metric-value">ROI</span><span class="metric-label">curves</span></div>
+            </div>
+            <div class="project-tech">
+                <span class="tag">Python</span><span class="tag">Google Meridian</span><span class="tag">BigQuery</span><span class="tag">Cloud Storage</span><span class="tag">Looker Studio</span>
+            </div>
+        </section>
+
+        <section class="project avoid-break">
+            <div class="project-header">
+                <div class="project-icon" style="background: var(--violet-light); color: var(--violet);">4</div>
+                <div>
+                    <h3 class="project-title">Automated Reporting & Heatmap Dashboards</h3>
+                    <p class="project-context">Filterbuy + IPG Mediabrands &middot; Client-Facing</p>
+                </div>
+            </div>
+            <p class="project-desc">
+                Built client-facing dashboards with <strong>funnel tables, heatmaps (day x hour), score gauges, and channel comparison charts</strong> — the same visual components required for this project's report template. At IPG Mediabrands, delivered automated reporting for Nestl&eacute; across 8 LATAM markets. At Filterbuy, maintain executive dashboards with cost-per-acquisition, channel economics, and performance anomaly detection.
+            </p>
+            <div class="project-metrics">
+                <div class="metric"><span class="metric-value">8</span><span class="metric-label">LATAM markets</span></div>
+                <div class="metric"><span class="metric-value">Heatmaps</span><span class="metric-label">day x hour</span></div>
+                <div class="metric"><span class="metric-value">Auto</span><span class="metric-label">refresh</span></div>
+            </div>
+            <div class="project-tech">
+                <span class="tag">Looker Studio</span><span class="tag">QuickSight</span><span class="tag">BigQuery</span><span class="tag">Python</span><span class="tag">PDF export</span>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============ API EXPERIENCE ============ -->
+    <div class="projects-section" style="margin-top: 1.2rem;">
+        <h2 class="section-title">API Clients Built From Scratch</h2>
+
+        <section class="project avoid-break">
+            <div class="project-header">
+                <div class="project-icon" style="background: var(--green-light); color: var(--green);">5</div>
+                <div>
+                    <h3 class="project-title">Custom API Clients (Google Ads, DV360, TikTok, Amazon)</h3>
+                    <p class="project-context">Open Source &middot; github.com/strod</p>
+                </div>
+            </div>
+            <p class="project-desc">
+                Built Python API clients from scratch for <strong>Google Ads (GAQL), DV360, TikTok Marketing API, and Amazon Advertising</strong>. Each handles OAuth authentication, pagination, rate limiting, error handling, and data extraction. This experience is directly transferable to evaluating and documenting the Filevine, Litify, and SmartAdvocate APIs — I know exactly what to look for: auth methods, field availability, data model structure, and access restrictions.
+            </p>
+            <div class="project-tech">
+                <span class="tag">Python</span><span class="tag">REST APIs</span><span class="tag">OAuth</span><span class="tag">Google Ads API</span><span class="tag">DV360 API</span><span class="tag">TikTok API</span><span class="tag">Amazon Ads API</span>
+            </div>
+        </section>
+
+        <section class="project avoid-break">
+            <div class="project-header">
+                <div class="project-icon" style="background: var(--blue-light); color: var(--blue);">6</div>
+                <div>
+                    <h3 class="project-title">First-Party Data & Server-Side GTM (LATAM)</h3>
+                    <p class="project-context">IPG Mediabrands &middot; Nestl&eacute; LATAM</p>
+                </div>
+            </div>
+            <p class="project-desc">
+                Implemented server-side Google Tag Manager on Cloud Run across 8 markets, uncovering <strong>30%+ conversion undercounting</strong> from ITP and ad blockers. Connected CRM and offline data to the Google ecosystem for first-party audience activation. This Salesforce ecosystem experience is relevant to Litify (Salesforce-based) API research.
+            </p>
+            <div class="project-metrics">
+                <div class="metric"><span class="metric-value">30%+</span><span class="metric-label">undercounting found</span></div>
+                <div class="metric"><span class="metric-value">8</span><span class="metric-label">markets</span></div>
+                <div class="metric"><span class="metric-value">1P data</span><span class="metric-label">activation</span></div>
+            </div>
+            <div class="project-tech">
+                <span class="tag">GTM Server-Side</span><span class="tag">Cloud Run</span><span class="tag">Meta CAPI</span><span class="tag">Salesforce</span><span class="tag">BigQuery</span>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============ EDUCATION + CAREER (compact) ============ -->
+    <div style="display: flex; gap: 0.8rem; margin-bottom: 0.6rem;">
+        <div style="flex: 1;">
+            <h2 class="section-title" style="margin-bottom: 0.35rem;">Education</h2>
+            <div style="font-size: 0.64rem; color: var(--ink-soft); line-height: 1.5;">
+                <strong style="color: var(--ink);">MBA Data Science</strong> — USP (2020-21) &middot; ML for Audience Generation<br>
+                <strong style="color: var(--ink);">M.Sc. Industrial Eng.</strong> — COPPE-UFRJ (2018-19) &middot; Non-Linear Programming for MMM<br>
+                <strong style="color: var(--ink);">B.Sc. Mech. Eng. + Physics</strong> — UFF &middot; Statistics, optimization, quantitative analysis
+            </div>
+        </div>
+        <div style="flex: 1.3;">
+            <h2 class="section-title" style="margin-bottom: 0.35rem;">Career</h2>
+            <div style="display: flex; gap: 0.25rem; flex-wrap: wrap; align-items: center; font-size: 0.58rem;">
+                <span style="background: var(--tag-bg); padding: 0.15rem 0.4rem; border-radius: 4px; border: 1px solid var(--border);"><strong>Bridge</strong> '17</span>
+                <span style="color: var(--ink-muted);">&rarr;</span>
+                <span style="background: var(--tag-bg); padding: 0.15rem 0.4rem; border-radius: 4px; border: 1px solid var(--border);"><strong>Globo</strong> '18</span>
+                <span style="color: var(--ink-muted);">&rarr;</span>
+                <span style="background: var(--tag-bg); padding: 0.15rem 0.4rem; border-radius: 4px; border: 1px solid var(--border);"><strong>WMcCann</strong> '19</span>
+                <span style="color: var(--ink-muted);">&rarr;</span>
+                <span style="background: var(--tag-bg); padding: 0.15rem 0.4rem; border-radius: 4px; border: 1px solid var(--border);"><strong>MINT</strong> '20-22</span>
+                <span style="color: var(--ink-muted);">&rarr;</span>
+                <span style="background: var(--tag-bg); padding: 0.15rem 0.4rem; border-radius: 4px; border: 1px solid var(--border);"><strong>IPG Mediabrands</strong> '22-23</span>
+                <span style="color: var(--ink-muted);">&rarr;</span>
+                <span style="background: var(--accent-light); padding: 0.15rem 0.4rem; border-radius: 4px; border: 1.5px solid var(--accent); color: var(--accent-dark); font-weight: 700;">Filterbuy '22+</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ APPROACH BOX ============ -->
+    <div class="relevance avoid-break" style="background: var(--amber-light); border-color: #f0d8a8;">
+        <p class="relevance-title" style="color: var(--amber);">My Approach to This Project</p>
+        <div style="font-size: 0.66rem; color: var(--ink-soft); line-height: 1.5;">
+            <strong>Wk 1:</strong> Synthetic data (realistic distributions + intentional messiness) + full pipeline (ingestion, normalization, dedup, 3 outputs).
+            <strong>Wk 2:</strong> Report template (gauge, heatmap, funnel, charts) + CRM API research (4 platforms) + integration testing + walkthrough.
+            <strong>Stack:</strong> Python + Looker Studio + Markdown/PDF. Daily async updates.
+        </div>
+    </div>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="doc-footer">
+        <span>Rodrigo Teixeira &middot; <a href="https://rodtex.dev">rodtex.dev</a> &middot; <a href="https://github.com/strod">github.com/strod</a></span>
+        <span>Portfolio sample for Marketing Analytics Pipeline (CallRail + PI Law Firm) opportunity</span>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+Summary
+Marketing Analytics Pipeline — CallRail + PI Law Firm CRM Integration (Prototype)
+
+**Budget:** Fixed price — $2,000–$4,000 (based on experience and speed)
+**Timeline:** 2–3 weeks
+**Experience level:** Intermediate to Expert
+
+---
+
+## Overview
+
+We're an independent marketing measurement service for personal injury law firms. We need a contractor to build a prototype analytics pipeline that takes two raw data inputs (ad spend by channel + CallRail call data) and produces a client-ready report showing marketing visibility, intake leakage, and cost-per-call by channel.
+
+This is a prototype build on synthetic data — no live client data yet. The goal is to prove the pipeline works and measure how long it takes per client.
+
+Alongside the build, we need API research on three legal CRM platforms (Filevine, Litify, SmartAdvocate) to assess feasibility of a future integration.
+
+---
+
+## Scope
+
+### 1. Create a realistic synthetic data set
+
+- 6 months of monthly ad spend across 5–6 channels (TV, billboards, LSAs, Google Ads, radio, digital) for a firm spending ~$1.2M/year
+- 3,000–5,000 simulated CallRail call records with: date, time, tracking number, source/channel, answered/missed, duration
+- Intentionally messy: some calls with missing source labels, inconsistent channel names, gaps — this simulates real-world data
+
+### 2. Build the data pipeline
+
+Ingest the two inputs and produce three outputs:
+
+**Output 1 — Visibility Score (0–100):** What percentage of annual ad spend is traceable to a sourced call with reliable channel labeling in CallRail.
+
+**Output 2 — Intake Economics Baseline:** Answer rate, missed calls, missed-call revenue estimate (using placeholder assumptions), breakouts by channel, day of week, and time of day (heatmap).
+
+**Output 3 — Channel Cost-per-Call Snapshot:** Spend, call volume, and cost per call by channel. Two additional columns (cost per signed case, fee per dollar spent) are intentionally left blank — this is by design.
+
+Pipeline must handle: unmapped sources, duplicate calls, channels with spend but no tracking numbers, inconsistent source labels.
+
+Technology is your choice — Python, Google Sheets, Looker Studio, simple web dashboard, whatever gets to a working prototype fastest.
+
+### 3. Build a report template
+
+Presentation-ready output (PDF, Slides, or Looker dashboard with export) that includes:
+- Visibility Score as a visual gauge
+- Intake funnel table with greyed-out rows for data we don't have
+- Missed-call heatmap
+- Channel cost-per-call chart with greyed-out columns
+
+Doesn't need to be design-polished — we have a designer. Structure and data accuracy matter.
+
+### 4. CRM API research document
+
+Research and document (1–2 pages per platform):
+
+**Filevine:**
+- API documentation review
+- Available fields for: signed cases, case type, originating source, settlement value, fee earned
+- Authentication method
+- Where marketing source lives in the data model
+- Rate limits or access restrictions
+
+**Litify:**
+- Same questions — noting Litify is built on Salesforce
+- Whether standard Salesforce API access works or Litify has its own layer
+- Settlement/fee data accessibility
+
+**SmartAdvocate:**
+- API availability and data access for case source, outcomes, financial data
+
+**CallRail:**
+- API vs CSV export field differences
+- Source/channel attribution methodology
+- Form submission data availability
+
+### 5. Time log
+
+Log hours spent on each task. This is critical — we're using your time data to estimate per-client delivery costs. Simple table: task, hours, blockers.
+
+---
+
+## What We're Looking For
+
+**Must have:**
+- Experience with CallRail (API or data exports)
+- Experience building analytics pipelines from messy marketing data (multiple sources, inconsistent labels)
+- Comfortable with at least one CRM API (Salesforce-based preferred given Litify)
+- Can produce a clean, client-facing report output (not just raw data)
+
+**Nice to have:**
+- Experience with legal tech platforms (Filevine, Litify, SmartAdvocate)
+- GA4 / Google Tag Manager experience
+- Looker Studio dashboard experience
+- Experience in marketing attribution or multi-channel analytics
+
+**Not needed:**
+- Frontend development
+- Design work
+- Ongoing maintenance (this is a one-time prototype build)
+
+---
+
+## Deliverables
+
+1. Synthetic data set (spend + CallRail CSVs)
+2. Working pipeline that produces the three outputs from raw inputs
+3. Report template with sample output
+4. CRM API research document (4 platforms)
+5. Time log by task
+
+---
+
+## Communication
+
+- Async preferred (Slack or messages)
+- Daily 1-line status update
+- Flag blockers immediately
+- End of project: 30-minute walkthrough call

@@ -1,0 +1,81 @@
+# POC Demo - ()
+
+NOTE - this entire description is attached and contains tables that did not format correctly for this description box. Please refer to the attached document to complete your pricing and view the entire document.
+
+Request for Quotation (RFQ): CipherSalt Lean POC Development
+Project Phase: Proof of Concept (Manual Extraction & Static Dashboard)
+Data Environment: Amazon Marketing Cloud (AMC) & Proprietary CSVs
+Delivery Framework: Lean POC / "Black Box" Logic
+
+Section 1: Non-Disclosure Agreement (NDA) & Ownership
+Notice of Confidentiality: By receiving, opening, or reviewing this RFQ and its associated documents, the Recipient is automatically bound by the non-disclosure terms of CipherSalt Inc. listed below. Use of this information for any purpose other than the preparation of a bid for CipherSalt Inc. is strictly prohibited.
+Non Disclosure Terms:
+Confidentiality: The Recipient shall maintain all proprietary information, including the "Salt Score" weighting logic and technical workflows, in strict confidence.
+Non-Use: Information provided may not be used for any commercial purpose or to develop a competing product.
+IP Ownership: All deliverables, including Python scripts, Figma files, data mapping schemas, and the finalized "Salt Score" logic, are "Work for Hire." 100% ownership transfers to CipherSalt Inc. upon the first milestone payment.
+"Black Box" Protection: The specific weighting formulas are trade secrets; reproduction or reverse engineering of this methodology is strictly prohibited.
+
+Section 2: Technical Execution & AI Utilization Standards
+We expect our partners to utilize the most advanced tools available to ensure maximum efficiency and precision, including AI-augmented coding environments, automated GUI design suites, and advanced formula modeling tools. However, these tools must strictly augment your existing domain expertise, not replace it. To be clear: the founder is not paying for a "pro prompter"; I am paying for your deep engineering and analytical expertise. When presenting milestone deliverables, you must demonstrate a granular understanding of the critical code architecture and the underlying mathematical formulas. You are expected to articulate exactly how these formulas interplay to populate the GUI and how that data flow produces the specific result the CMO sees. You must be able to identify where all critical code and formulas reside, how they function, and exactly where they feed into the user interface.
+Furthermore, you are responsible for rigorous internal QA prior to any founder review. All figures must "tick and tie"—meaning a manual mental check and a technical audit must be performed to ensure the numbers make sense and the logic is sound. We expect a high-level review of all outputs before they are presented for founder-level sign-off.
+
+Scope of AI Augmentation:
+Partners should leverage AI tools in the following areas while maintaining full ownership of the output:
+Code Generation & Refactoring: Accelerating boilerplate development and logic optimization.
+GUI & UX Prototyping: Utilizing generative design tools for rapid wireframing and front-end layout.
+Formula & Algorithm Modeling: Assisting in high-level data science and complex ROI calculations.
+Automated Documentation: Generating technical maps that trace the path from back-end logic to the UI.
+Quality Assurance: AI-driven edge-case detection and unit testing to ensure stability.
+
+Section 3: Terms and Conditions
+Engagement Model: Fixed-fee project based on the proposed hours and rates in Section 6.
+Access: CipherSalt Inc. will provide login credentials to the AMC instance.
+Payment Milestones:
+30% complete: 30% payment after review and acceptance of deliverable
+70% complete: 40% payment after review and acceptance of deliverable
+100% complete: 30% payment after review and acceptance of deliverable
+Deliverable milestone review for acceptance and payment: The Vendor is required to: (a) Before the review, provide the Founder with any questions that need to be answered by the Founder in the review meeting (b) QA all deliverables before review to ensure all current functionality code, design, etc., is demonstrable. (c) Run through the current state deliverable in detail and discuss any questions or actions for the Founder, and what the plan is for the next deliverable. These reviews should last a maximum of 30- 60 minutes
+
+Section 4: Data Strategy & Flow
+The Lean POC relies on a three-tier data structure that must be unified into a single "Join" engine:
+Direct Data: Raw SQL exports pulled directly from Amazon Marketing Cloud (AMC) (e.g., Impressions, Deterministic Reach, Conversions).
+Derived Data: Metrics calculated from raw AMC data (e.g., Path Depth, Revenue Velocity, New-to-Brand rates).
+Synthesized Data: Proxy data manually inserted into the CSV to represent non-digital metrics
+Requirement: CipherSalt Inc. will provide the AMC access, but the vendor is expected to navigate the AMC environment, execute the necessary SQL queries, and perform data exports without oversight or technical direction.
+
+Section 5 Role & Responsibility
+Role
+Primary Responsibility
+Key Deliverable
+Quant / Data Scientist
+Map 17 proprietary metrics into a "Salt Score" using CSV data pools. Finalize weighting formulas for the "Moneyball" logic.
+Cleaned Python script that outputs a "Scorecard" per supplier.
+GUI Developer & Design Expert
+Refine Founder’s v0.app "first cuts" into a world-class SaaS interface. Implement Agentic UI using Vercel AI SDK and RSC.
+High-fidelity, agentic dashboard featuring the "Optimization Dial" and "Situation Room" views.
+
+Python Developer
+Build the "Data Bridge" between the CSV data lake and the GUI. Ensure the "Join" logic between Procurement and Performance CSVs is seamless.
+Integrated POC environment (Python/Next.js) that feeds the GUI from the CSV pool.
+
+Founder / Director
+Provide initial "v0.app" UI prompts to establish intent. Define "Moneyball" business rules and oversee investor-ready demo flow. Final POC Demo script and strategic direction.
+
+
+Section 6: Technical Confirmations Required
+Design Refinement (The "Expert" Requirement): Confirm your ability to take a founder-provided "v0.app" prototype and elevate it to professional SaaS standards. How do you apply high-end UX principles to ensure an "agent-driven" dashboard feels intuitive rather than cluttered?
+
+RSC Performance (The "Terminal" Feel): Since our data lake is comprised of CSV files, confirm how you will use React Server Components (RSC) to fetch, filter, and serve this data from the Python backend fast enough to maintain a sub-second "Financial Terminal" response time.
+
+v0.app Handoff: Describe your workflow for importing and "cleaning up" AI-generated code from v0. How do you integrate your own design expertise into the generated code to ensure a bespoke, premium feel?
+
+GUI development and best practice: Provide your recommendations regarding best tools to use for GUI development and demo, including those not identified in this RFQ i.e. Figma, Streamlit etc.. if you feel they can be implemented faster and look as good or better than the agentic v0.app
+
+CSV-to-UI Pipeline: Explain the technical path for a user action (e.g., turning the "Optimization Dial") to trigger a recalculation within the Python logic and update the UI using the data from the CSV pool.
+
+Vercel AI SDK (Generative UI): Confirm experience using streamUI to allow the Agent to "explain" the Salt Score results by rendering custom components on the fly as it reads the CSV data.
+
+Section 7: Pricing & Estimated Effort **see attached document for pricing table**
+
+Submission Instructions
+Please submit your proposal, including the Confirmations from Section 6 and the completed Pricing Table from Section 7. Proposals are due in 3 days from receipt of the RFQ.

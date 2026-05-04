@@ -1,0 +1,19 @@
+Marketing Data Engineer (dbt, BigQuery, Google Cloud Platform)
+Data Engineering Posted Apr 14, 2026
+Hi, we're looking for a data engineer to join our team and help to develop some existing data model's, set up new pipelines etc.
+
+It's constant, on-going work. It's complex and requires lots of contextual knowledge, so really we're looking for someone to come in, get really deep into the modeling, business logic etc. and be available each day for the myriad of requests that come in. It's the type of data work where you really have to understand the business model in-depth first.
+
+This'd be for a minimum of 20 hours per week, likely more. So we need focus, and are not interested in working with agencies.
+
+Lots of dbt and cloud run work.
+
+For context, we're a telehealth company based in the U.S. (joinamble.com) 
+
+Skills and Expertise
+Mandatory skills
+dbt
+BigQuery
+Google Cloud Platform
+SQL
+ETL Pipeline

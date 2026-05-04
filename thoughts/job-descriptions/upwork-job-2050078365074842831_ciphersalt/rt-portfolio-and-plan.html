@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodrigo Teixeira — Portfolio | CipherSalt POC Submission</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0d12;
+            --surface: #11141b;
+            --surface-2: #161a23;
+            --border: #232838;
+            --border-soft: #1b1f2a;
+            --ink: #e8ecf4;
+            --ink-soft: #b6bdcc;
+            --ink-muted: #7a8295;
+            --teal: #2dd4bf;
+            --teal-dim: #115e59;
+            --violet: #a78bfa;
+            --violet-dim: #4c1d95;
+            --amber: #fbbf24;
+            --amber-dim: #78350f;
+            --rose: #fb7185;
+            --rose-dim: #881337;
+            --green: #4ade80;
+            --green-dim: #14532d;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @page { size: A4; margin: 12mm 14mm; }
+
+        html {
+            font-size: 10.5pt;
+            color: var(--ink);
+            background: var(--bg);
+        }
+
+        body {
+            font-family: var(--font-sans);
+            line-height: 1.55;
+            background: var(--bg);
+            min-height: 100vh;
+            padding: 28px 0;
+        }
+
+        .doc {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        @media print {
+            :root {
+                --bg: #ffffff;
+                --surface: #ffffff;
+                --surface-2: #f6f7fa;
+                --border: #d4d8e0;
+                --border-soft: #e6e9ef;
+                --ink: #14181f;
+                --ink-soft: #2f3642;
+                --ink-muted: #5a6271;
+                --teal: #0d6b66;
+                --violet: #5b3bb8;
+                --amber: #92580a;
+                --rose: #a8123a;
+                --green: #0a6b3f;
+            }
+            html, body { background: #fff !important; color: var(--ink) !important; }
+            body { padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .doc { padding: 0; max-width: none; }
+            .no-print { display: none !important; }
+
+            .header, .card, .case, .fit, .approach-item, .stack-col, .milestone, .cta {
+                background: #fff !important;
+                border-color: var(--border) !important;
+                box-shadow: none !important;
+            }
+            .header { background: #fafbfd !important; }
+            .header::before { display: none !important; }
+            .cta { background: #fafbfd !important; }
+
+            .stack-item, .milestone-accept, .milestone-list code {
+                background: var(--surface-2) !important;
+                border-color: var(--border-soft) !important;
+                color: var(--ink-soft) !important;
+            }
+
+            .milestone-number {
+                background: #e8f6f4 !important;
+                color: var(--teal) !important;
+                border-color: #b9dcd6 !important;
+            }
+            .milestone-number.alt-violet {
+                background: #efeafd !important;
+                color: var(--violet) !important;
+                border-color: #d4c8f3 !important;
+            }
+            .milestone-number.alt-amber {
+                background: #fbf0d8 !important;
+                color: var(--amber) !important;
+                border-color: #ecd5a0 !important;
+            }
+
+            .case-tag.tag-teal   { color: var(--teal)   !important; background: #e8f6f4 !important; border-color: #b9dcd6 !important; }
+            .case-tag.tag-violet { color: var(--violet) !important; background: #efeafd !important; border-color: #d4c8f3 !important; }
+            .case-tag.tag-amber  { color: var(--amber)  !important; background: #fbf0d8 !important; border-color: #ecd5a0 !important; }
+            .case-tag.tag-rose   { color: var(--rose)   !important; background: #fbe5ec !important; border-color: #f0bccc !important; }
+            .case-tag.tag-green  { color: var(--green)  !important; background: #e2f3eb !important; border-color: #b9dcc8 !important; }
+
+            .header-tag { color: var(--teal) !important; background: #e8f6f4 !important; border-color: #b9dcd6 !important; }
+            .header-name { color: var(--ink) !important; }
+            .header-title, .section-title, .stack-col-title { color: var(--teal) !important; }
+            .section-title::before { background: var(--teal) !important; }
+            .section-title::after { background: var(--border-soft) !important; }
+            .approach-q { color: var(--violet) !important; }
+            .milestone-list li::before { color: var(--teal) !important; }
+            .milestone-accept { border-left-color: var(--teal) !important; }
+            .milestone-accept-label { color: var(--teal) !important; }
+            .fit-arrow { color: var(--teal) !important; }
+            .fit-label, .case-org, .milestone-sub, .header-meta, .cta-meta { color: var(--ink-muted) !important; }
+            .fit-need, .fit-have strong, .case-title, .case-body strong, .approach-a strong, .milestone-title, .milestone-list li strong, .header-pitch strong, .cta-text strong { color: var(--ink) !important; }
+            .header-pitch, .case-body, .approach-a, .fit-have, .milestone-theme, .stack-list, .cta-text, p, li, td, th, dt, dd { color: var(--ink-soft) !important; }
+            .accent-teal { color: var(--teal) !important; }
+            .accent-violet { color: var(--violet) !important; }
+            .accent-amber { color: var(--amber) !important; }
+            .accent-rose { color: var(--rose) !important; }
+            .accent-green { color: var(--green) !important; }
+            a { color: var(--teal) !important; text-decoration: none; }
+
+            .page-break { page-break-before: always; }
+            .avoid-break { page-break-inside: avoid; }
+        }
+
+        /* ---- Header ---- */
+        .header {
+            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 26px 28px;
+            margin-bottom: 22px;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: "";
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(45,212,191,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+            position: relative;
+        }
+        .header-name {
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+        }
+        .header-title {
+            font-size: 0.95rem;
+            color: var(--teal);
+            font-weight: 500;
+            margin-top: 2px;
+            letter-spacing: 0.01em;
+        }
+        .header-meta {
+            text-align: right;
+            font-size: 0.78rem;
+            color: var(--ink-muted);
+            font-family: var(--font-mono);
+            line-height: 1.7;
+        }
+        .header-meta a { color: var(--ink-soft); text-decoration: none; }
+        .header-tag {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 4px 10px;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--teal);
+            background: rgba(45,212,191,0.08);
+            border: 1px solid rgba(45,212,191,0.25);
+            border-radius: 4px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .header-pitch {
+            margin-top: 14px;
+            font-size: 0.95rem;
+            color: var(--ink-soft);
+            max-width: 640px;
+            line-height: 1.6;
+        }
+        .header-pitch strong { color: var(--ink); font-weight: 600; }
+
+        /* ---- Section ---- */
+        .section { margin-bottom: 22px; }
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--teal);
+            margin-bottom: 14px;
+            font-family: var(--font-mono);
+        }
+        .section-title::before {
+            content: "";
+            width: 18px;
+            height: 1.5px;
+            background: var(--teal);
+        }
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--border-soft);
+        }
+
+        /* ---- Cards ---- */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 20px;
+        }
+
+        /* ---- Fit Map (hero grid) ---- */
+        .fit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .fit {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+        .fit-label {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ink-muted);
+            margin-bottom: 4px;
+        }
+        .fit-need { font-size: 0.92rem; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+        .fit-arrow { color: var(--teal); font-family: var(--font-mono); font-size: 0.78rem; margin-bottom: 4px; }
+        .fit-have { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.5; }
+        .fit-have strong { color: var(--ink); font-weight: 600; }
+
+        /* ---- Cases ---- */
+        .case {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 12px;
+        }
+        .case-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 4px;
+            flex-wrap: wrap;
+        }
+        .case-title { font-size: 1rem; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+        .case-org { font-size: 0.78rem; color: var(--ink-muted); font-family: var(--font-mono); }
+        .case-tag {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.66rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .tag-teal { color: var(--teal); background: rgba(45,212,191,0.08); border: 1px solid rgba(45,212,191,0.25); }
+        .tag-violet { color: var(--violet); background: rgba(167,139,250,0.08); border: 1px solid rgba(167,139,250,0.25); }
+        .tag-amber { color: var(--amber); background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.25); }
+        .tag-rose { color: var(--rose); background: rgba(251,113,133,0.08); border: 1px solid rgba(251,113,133,0.25); }
+        .tag-green { color: var(--green); background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.25); }
+
+        .case-body { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; }
+        .case-body strong { color: var(--ink); font-weight: 600; }
+        .case-body p + p { margin-top: 8px; }
+
+        .case-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px dashed var(--border-soft);
+        }
+        .stack-item {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--ink-soft);
+            background: var(--surface-2);
+            border: 1px solid var(--border-soft);
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        /* ---- Approach blocks (Section 6 confirmations) ---- */
+        .approach {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .approach-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+        .approach-q {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--violet);
+            margin-bottom: 6px;
+            font-family: var(--font-mono);
+            letter-spacing: 0.01em;
+        }
+        .approach-a { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.55; }
+        .approach-a strong { color: var(--ink); font-weight: 600; }
+
+        /* ---- Stack matrix ---- */
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .stack-col {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 14px;
+        }
+        .stack-col-title {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--teal);
+            margin-bottom: 8px;
+        }
+        .stack-list { list-style: none; font-size: 0.82rem; color: var(--ink-soft); }
+        .stack-list li {
+            padding: 3px 0;
+            border-bottom: 1px dashed var(--border-soft);
+            font-family: var(--font-mono);
+        }
+        .stack-list li:last-child { border-bottom: none; }
+
+        /* ---- Milestones ---- */
+        .milestone {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 12px;
+            position: relative;
+        }
+        .milestone-head {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-template-rows: auto auto;
+            column-gap: 14px;
+            row-gap: 8px;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed var(--border-soft);
+        }
+        .milestone-number {
+            grid-row: 1 / span 2;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 1rem;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: rgba(45,212,191,0.10);
+            color: var(--teal);
+            border: 1px solid rgba(45,212,191,0.30);
+            letter-spacing: 0.04em;
+        }
+        .milestone-number.alt-violet {
+            background: rgba(167,139,250,0.10);
+            color: var(--violet);
+            border-color: rgba(167,139,250,0.30);
+        }
+        .milestone-number.alt-amber {
+            background: rgba(251,191,36,0.10);
+            color: var(--amber);
+            border-color: rgba(251,191,36,0.30);
+        }
+        .milestone-meta { display: flex; flex-direction: column; gap: 2px; }
+        .milestone-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+        }
+        .milestone-sub {
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            color: var(--ink-muted);
+            letter-spacing: 0.04em;
+        }
+        .milestone-theme {
+            grid-column: 2;
+            font-size: 0.85rem;
+            color: var(--ink-soft);
+            line-height: 1.55;
+            font-style: italic;
+        }
+        .milestone-list {
+            list-style: none;
+            font-size: 0.86rem;
+            color: var(--ink-soft);
+            line-height: 1.6;
+        }
+        .milestone-list li {
+            position: relative;
+            padding: 5px 0 5px 18px;
+        }
+        .milestone-list li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: var(--teal);
+            font-size: 0.78rem;
+        }
+        .milestone-list li strong { color: var(--ink); font-weight: 600; }
+        .milestone-list code {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            background: var(--surface-2);
+            border: 1px solid var(--border-soft);
+            padding: 1px 5px;
+            border-radius: 3px;
+            color: var(--teal);
+        }
+        .milestone-accept {
+            margin-top: 12px;
+            padding: 10px 12px;
+            background: var(--surface-2);
+            border-left: 3px solid var(--teal);
+            border-radius: 4px;
+            font-size: 0.82rem;
+            color: var(--ink-soft);
+            line-height: 1.55;
+        }
+        .milestone-accept-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.66rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--teal);
+            margin-right: 6px;
+        }
+
+        /* ---- Footer / CTA ---- */
+        .cta {
+            background: linear-gradient(135deg, rgba(45,212,191,0.06), rgba(167,139,250,0.06));
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .cta-text { font-size: 0.92rem; color: var(--ink-soft); max-width: 560px; line-height: 1.55; }
+        .cta-text strong { color: var(--ink); }
+        .cta-meta {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--ink-muted);
+            text-align: right;
+            line-height: 1.7;
+        }
+        .cta-meta a { color: var(--teal); text-decoration: none; }
+
+        .accent-teal { color: var(--teal); }
+        .accent-violet { color: var(--violet); }
+        .accent-amber { color: var(--amber); }
+        .accent-rose { color: var(--rose); }
+        .accent-green { color: var(--green); }
+
+        @media (max-width: 640px) {
+            .fit-grid, .approach, .stack-grid { grid-template-columns: 1fr; }
+            .header-top { flex-direction: column; }
+            .header-meta { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+<div class="doc">
+
+    <!-- ============ HEADER ============ -->
+    <header class="header avoid-break">
+        <div class="header-top">
+            <div>
+                <div class="header-name">Rodrigo Teixeira</div>
+                <div class="header-title">Marketing Analytics Director · Data Engineer · Quant Builder</div>
+                <span class="header-tag">RFQ Response · CipherSalt Lean POC</span>
+            </div>
+            <div class="header-meta">
+                <div><a href="https://rodtex.dev">rodtex.dev</a></div>
+                <div><a href="https://github.com/strod">github.com/strod</a></div>
+                <div><a href="https://linkedin.com/in/strodrigo">linkedin.com/in/strodrigo</a></div>
+                <div>São Paulo · Remote · EN/PT/ES</div>
+            </div>
+        </div>
+        <p class="header-pitch">
+            Eight years building <strong>weighted scoring engines, MarTech data pipelines, and CMO-grade dashboards</strong> at the intersection of Python, SQL, and cloud. Currently leading data engineering and data science at <strong>Filterbuy</strong> (US e-commerce), with hands-on Amazon Marketing Cloud, optimization-based "Moneyball" logic, and multi-LLM agentic UI experience. This portfolio maps my work directly to the CipherSalt POC's three-tier data flow, Salt Score engine, and agentic dashboard.
+        </p>
+    </header>
+
+    <!-- ============ FIT MAP ============ -->
+    <section class="section avoid-break">
+        <div class="section-title">RFQ Fit Map · Where I've Done This Before</div>
+        <div class="fit-grid">
+            <div class="fit">
+                <div class="fit-label">CipherSalt needs</div>
+                <div class="fit-need">17 metrics → weighted "Salt Score" with swappable Moneyball logic</div>
+                <div class="fit-arrow">─→</div>
+                <div class="fit-have">Built <strong>AIRE</strong> at MINT — a multi-channel scoring &amp; budget reallocation engine using linear optimization, lifted ROI <strong>25%+</strong>. Comfortable owning both the formula and the audit trail.</div>
+            </div>
+            <div class="fit">
+                <div class="fit-label">CipherSalt needs</div>
+                <div class="fit-need">AMC SQL extraction + CSV join engine (three-tier data)</div>
+                <div class="fit-arrow">─→</div>
+                <div class="fit-have">Run <strong>Filterbuy's Amazon Advertising stack end-to-end</strong> — AMC-adjacent SQL, Reporting API automation, and a Lambda-based <strong>Amazon Bids Optimizer</strong> that joins procurement-style and performance data daily.</div>
+            </div>
+            <div class="fit">
+                <div class="fit-label">CipherSalt needs</div>
+                <div class="fit-need">Python data bridge → Next.js / RSC / Vercel AI SDK</div>
+                <div class="fit-arrow">─→</div>
+                <div class="fit-have">Shipped <strong>multi-LLM applications with generative UI</strong> (Adagio Chatbot, AI Media Planner) using FastAPI back-ends streaming structured component output to React front-ends.</div>
+            </div>
+            <div class="fit">
+                <div class="fit-label">CipherSalt needs</div>
+                <div class="fit-need">Investor-ready demo with tick-and-tie auditability</div>
+                <div class="fit-arrow">─→</div>
+                <div class="fit-have">Delivered <strong>$100M+ GM Marketing Mix Model</strong> at WMcCann — every recommended dollar traceable from raw spend → coefficient → board slide. Same audit discipline applied here.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CASE STUDIES ============ -->
+    <section class="section">
+        <div class="section-title">Case Studies · Pattern-Match to the POC</div>
+
+        <article class="case avoid-break">
+            <div class="case-head">
+                <div class="case-title">AIRE — AI Recommendation Engine (Weighted Scoring + Optimization Dial Analogue)</div>
+                <div class="case-org">MINT · 2020–2022 · Lead Algorithm Engineer</div>
+            </div>
+            <span class="case-tag tag-teal">Salt Score parallel</span>
+            <div class="case-body">
+                <p>Built the core engine MINT sold to enterprise advertisers: ingest performance data across digital channels, fit a constrained linear optimization model, and recommend a reallocated budget vector that maximizes ROI under business rules (min/max per channel, frequency caps, brand-safety floors).</p>
+                <p>The interaction model is the same one CipherSalt's <strong>Optimization Dial</strong> needs: <strong>user changes a constraint → backend recomputes → UI re-ranks instantly</strong>. I own that pattern from formula design to streaming UI update. Result: <strong>+25% ROI lift</strong> across deployed accounts, plus a Markowitz-style Predictive Planning Algorithm productionized alongside it.</p>
+            </div>
+            <div class="case-stack">
+                <span class="stack-item">Python</span>
+                <span class="stack-item">scipy.optimize</span>
+                <span class="stack-item">Linear Programming</span>
+                <span class="stack-item">FastAPI</span>
+                <span class="stack-item">GCP / Cloud Run</span>
+                <span class="stack-item">React Frontend</span>
+            </div>
+        </article>
+
+        <article class="case avoid-break">
+            <div class="case-head">
+                <div class="case-title">Filterbuy Amazon Bids Optimizer — Production AMC-Adjacent Pipeline</div>
+                <div class="case-org">Filterbuy · 2024–Present · Director, Marketing Analytics</div>
+            </div>
+            <span class="case-tag tag-violet">AMC + CSV join parallel</span>
+            <div class="case-body">
+                <p>Designed and deployed the bid-optimization engine that runs Filterbuy's Amazon Advertising spend. AWS Lambda pulls Amazon Reporting API data, joins it against internal procurement / margin CSVs (the same shape as your Direct + Synthesized data), applies a weighted scoring model per ASIN, and writes back recommended bids — all with full reproducibility and a tick-and-tie audit log per run.</p>
+                <p>I navigate AMC, write the SQL, manage the data lake (S3 + Redshift), and own the delivery layer end-to-end — exactly the autonomy your RFQ requires under "navigate the AMC environment without oversight."</p>
+            </div>
+            <div class="case-stack">
+                <span class="stack-item">Amazon Marketing Cloud</span>
+                <span class="stack-item">AWS Lambda</span>
+                <span class="stack-item">Redshift</span>
+                <span class="stack-item">S3</span>
+                <span class="stack-item">Python</span>
+                <span class="stack-item">SQL</span>
+            </div>
+        </article>
+
+        <article class="case avoid-break">
+            <div class="case-head">
+                <div class="case-title">Adagio Chatbot &amp; AI Media Planner — Agentic UI with Streaming Components</div>
+                <div class="case-org">Personal / Adagio · 2024 · Architect &amp; Builder</div>
+            </div>
+            <span class="case-tag tag-amber">streamUI / Agentic UX parallel</span>
+            <div class="case-body">
+                <p>Two production-grade LLM apps where the agent does not return prose — it <strong>renders structured components</strong>. Adagio Chatbot answers tea-shop product queries by streaming a recommendation card (image, fit reasoning, pairing). AI Media Planner ingests a brief and streams a budget-allocation grid the planner can edit in place.</p>
+                <p>This is the exact pattern your <strong>"agent explains the Salt Score"</strong> requirement calls for: the model reads the Scorecard, decides which 3–5 metrics dominate, and renders a custom explanation component on the fly via Vercel AI SDK <code>streamUI</code>.</p>
+            </div>
+            <div class="case-stack">
+                <span class="stack-item">Vercel AI SDK</span>
+                <span class="stack-item">Next.js / RSC</span>
+                <span class="stack-item">FastAPI</span>
+                <span class="stack-item">Multi-LLM (OpenAI / Anthropic)</span>
+                <span class="stack-item">Embeddings + Vector Store</span>
+            </div>
+        </article>
+
+        <article class="case avoid-break">
+            <div class="case-head">
+                <div class="case-title">GM Marketing Mix Model — $100M+ Audit-Grade Recommendation</div>
+                <div class="case-org">WMcCann (McCann Worldgroup) · 2019 · Data Analytics Manager</div>
+            </div>
+            <span class="case-tag tag-green">Tick-and-tie discipline</span>
+            <div class="case-body">
+                <p>Led an MMM study sizing General Motors' annual marketing budget. The model touched a hundred million dollars of spend and was reviewed at executive level — every coefficient, transformation, and recommended reallocation had to be traceable on demand. Built the data pipeline, the model, and the reporting layer.</p>
+                <p>That audit muscle is what I'd bring to your milestone reviews: a written tick-and-tie sheet showing 3–5 suppliers traced raw → derived → weighted → final, so you can point at any number and I can point at the line of code.</p>
+            </div>
+            <div class="case-stack">
+                <span class="stack-item">Marketing Mix Modeling</span>
+                <span class="stack-item">BigQuery</span>
+                <span class="stack-item">Python / R</span>
+                <span class="stack-item">Executive Reporting</span>
+            </div>
+        </article>
+
+        <article class="case avoid-break">
+            <div class="case-head">
+                <div class="case-title">Filterbuy MMM (Google Meridian) + Markov Attribution — Current Live System</div>
+                <div class="case-org">Filterbuy · 2024–Present</div>
+            </div>
+            <span class="case-tag tag-rose">Multi-source data unification</span>
+            <div class="case-body">
+                <p>Operating MMM via Google Meridian and a Markov-chain attribution model in parallel, both fed by ETL pipelines consolidating Amazon, TikTok, Google Ads, Pipedrive CRM, and web analytics into a unified Redshift → BigQuery layer. RFM segmentation, predictive churn, and continuous A/B testing run on top.</p>
+                <p>Same fundamental challenge as CipherSalt's <strong>Join engine</strong>: heterogeneous source systems, conflicting keys, missing fields, and one supplier-grain (or customer-grain) view at the end.</p>
+            </div>
+            <div class="case-stack">
+                <span class="stack-item">Google Meridian</span>
+                <span class="stack-item">Markov Attribution</span>
+                <span class="stack-item">Redshift / BigQuery</span>
+                <span class="stack-item">DBT</span>
+                <span class="stack-item">Python</span>
+                <span class="stack-item">Looker / QuickSight</span>
+            </div>
+        </article>
+    </section>
+
+    <!-- ============ MILESTONES ============ -->
+    <section class="section page-break">
+        <div class="section-title">Proposed Milestones · 30 / 70 / 100 (per RFQ Section 3)</div>
+
+        <div class="milestone avoid-break">
+            <div class="milestone-head">
+                <div class="milestone-number">M1</div>
+                <div class="milestone-meta">
+                    <div class="milestone-title">Data Foundation &amp; Salt Score Engine</div>
+                    <div class="milestone-sub">30% complete &middot; <span class="accent-teal">30% payment</span></div>
+                </div>
+                <div class="milestone-theme">Get raw inputs out of AMC, unify the three-tier data structure, ship a working "black box" Python scorer on real CSVs.</div>
+            </div>
+            <ul class="milestone-list">
+                <li><strong>AMC extraction pack</strong> — documented SQL queries pulling Direct Data (Impressions, Deterministic Reach, Conversions) plus inputs for Derived Data (Path Depth, Revenue Velocity, New-to-Brand). Versioned CSV outputs.</li>
+                <li><strong>Three-tier data dictionary</strong> — one-page schema mapping each of the 17 metrics to Direct / Derived / Synthesized origin, with formula + source field for every Derived metric.</li>
+                <li><strong>Join engine (Python)</strong> — ingests Procurement and Performance CSVs, normalizes supplier keys, resolves duplicates → single supplier-level dataframe ready for scoring.</li>
+                <li><strong>Salt Score v1 script</strong> — parameterized weighting engine, Moneyball rules in a swappable config file, outputs a per-supplier Scorecard CSV.</li>
+                <li><strong>QA tick-and-tie sheet</strong> — 3–5 suppliers traced raw AMC field → derived metric → weighted contribution → final Salt Score, end-to-end.</li>
+            </ul>
+            <div class="milestone-accept"><span class="milestone-accept-label">Acceptance</span> <code>python score.py</code> on provided CSVs produces a Scorecard whose top/bottom suppliers pass the founder's smell test; any score traceable in under a minute.</div>
+        </div>
+
+        <div class="milestone avoid-break">
+            <div class="milestone-head">
+                <div class="milestone-number alt-violet">M2</div>
+                <div class="milestone-meta">
+                    <div class="milestone-title">Integrated POC · CSV-to-UI Pipeline &amp; Optimization Dial</div>
+                    <div class="milestone-sub">70% complete &middot; <span class="accent-violet">40% payment</span></div>
+                </div>
+                <div class="milestone-theme">Wire the Python engine to a Next.js front-end via React Server Components. Sub-second dial response, real numbers behind every visual.</div>
+            </div>
+            <ul class="milestone-list">
+                <li><strong>Data Bridge (FastAPI)</strong> — two surfaces: batch pre-compute path for steady-state views + on-demand recompute endpoint for dial interactions.</li>
+                <li><strong>Next.js dashboard skeleton (RSC-first)</strong> — v0.app starting layout cleaned up to production: typography system, spacing scale, color tokens, component primitives. Server Components fetch &amp; aggregate; Client Components reserved for interactivity.</li>
+                <li><strong>Optimization Dial (live)</strong> — drag re-weights the Moneyball formula → Python recomputes → UI updates with optimistic streaming. Target: <strong>&lt;800 ms perceived latency</strong> at POC volumes.</li>
+                <li><strong>Situation Room v1</strong> — read-only view of top movers, supplier scorecards, and breakdown of any Salt Score into its 17 contributing metrics.</li>
+                <li><strong>Architecture map</strong> — one-page diagram tracing dial-turn → recalc → render through every layer, with file paths and function names.</li>
+            </ul>
+            <div class="milestone-accept"><span class="milestone-accept-label">Acceptance</span> Founder opens dashboard, turns dial, sees suppliers re-rank in near real time, clicks any score to see its formula breakdown sourced from real CSV values.</div>
+        </div>
+
+        <div class="milestone avoid-break">
+            <div class="milestone-head">
+                <div class="milestone-number alt-amber">M3</div>
+                <div class="milestone-meta">
+                    <div class="milestone-title">Agentic UI, Demo Polish &amp; Handover</div>
+                    <div class="milestone-sub">100% complete &middot; <span class="accent-amber">30% payment</span></div>
+                </div>
+                <div class="milestone-theme">Take the working POC from "engineer-grade" to "investor-ready." Layer in the agent, harden, document, hand over.</div>
+            </div>
+            <ul class="milestone-list">
+                <li><strong>Vercel AI SDK / <code>streamUI</code> integration</strong> — agent reads the Scorecard and renders custom components on the fly to <em>explain</em> a Salt Score (e.g. "Why is Supplier X #3?" → streamed component showing dominant weighted metrics, not prose).</li>
+                <li><strong>Situation Room v2</strong> — narrative views the CMO can present from: anomaly callouts, period-over-period deltas, what-if traces tied to dial movements.</li>
+                <li><strong>End-to-end QA pass</strong> — edge-case sweep (empty CSVs, missing joins, extreme weights), unit tests on the scoring module, regression check (same input → same Salt Score).</li>
+                <li><strong>Demo script &amp; founder run-book</strong> — exact flow for the investor demo + short technical map (where formulas live, how to swap weights, how to refresh AMC data) so the founder is not dependent on me post-handover.</li>
+                <li><strong>Final handover bundle</strong> — Python repo + Next.js repo + Figma reference + data dictionary + architecture map. Work-for-hire IP transfer per Section 1.</li>
+            </ul>
+            <div class="milestone-accept"><span class="milestone-accept-label">Acceptance</span> Founder runs the investor demo unaided; agent narrates Salt Scores convincingly; all 17 metrics tick-and-tie; repo is clean, documented, reproducible.</div>
+        </div>
+    </section>
+
+    <!-- ============ APPROACH (Section 6 confirmations) ============ -->
+    <section class="section avoid-break">
+        <div class="section-title">Section 6 Confirmations · Compressed Answers</div>
+        <div class="approach">
+            <div class="approach-item">
+                <div class="approach-q">Q1 · v0.app handoff &amp; design refinement</div>
+                <div class="approach-a">Treat v0 as a <strong>layout sketch</strong>, not a codebase. Pass 1: extract typography, spacing, color tokens into a design system. Pass 2: replace ad-hoc components with composable primitives. Pass 3: wire RSC data, strip the client-side fetch boilerplate v0 over-generates. Result: bespoke, premium feel, no AI-generated tells.</div>
+            </div>
+            <div class="approach-item">
+                <div class="approach-q">Q2 · RSC &amp; sub-second "Financial Terminal" feel</div>
+                <div class="approach-a">FastAPI service exposes <strong>two surfaces</strong>: batch pre-compute (steady views) + on-demand recompute (dial). Server Components handle CSV aggregation server-side; Client Components only where interaction demands it. Pre-compute the Scorecard at ingest → dial stays under <strong>800 ms</strong> at POC volumes.</div>
+            </div>
+            <div class="approach-item">
+                <div class="approach-q">Q3 · CSV-to-UI pipeline (dial → Python → render)</div>
+                <div class="approach-a">User turns dial → Client Component fires server action with new weights → FastAPI recomputes Salt Score against the in-memory CSV pool → returns updated Scorecard rows → RSC streams re-rendered Situation Room with optimistic UI. Every step instrumented for audit.</div>
+            </div>
+            <div class="approach-item">
+                <div class="approach-q">Q4 · Vercel AI SDK / streamUI for agent explanations</div>
+                <div class="approach-a">Agent reads the Scorecard, identifies the top weighted contributors per supplier, and uses <code>streamUI</code> to render a custom explanation component (bar of metric weights, deltas vs peer set, narrative caption). No prose walls — every number renders as a structured, on-brand element.</div>
+            </div>
+            <div class="approach-item">
+                <div class="approach-q">Q5 · GUI tooling beyond v0.app</div>
+                <div class="approach-a">v0 + Next.js stays the backbone for the agentic feel. Figma added only as a design-system reference layer. Streamlit is rejected — fast to ship but won't deliver terminal-grade response or bespoke aesthetic the brief calls for.</div>
+            </div>
+            <div class="approach-item">
+                <div class="approach-q">Q6 · QA &amp; tick-and-tie</div>
+                <div class="approach-a">Every milestone review ships with a written audit sheet: 3–5 suppliers traced raw AMC field → derived metric → weighted contribution → final Salt Score. Unit tests on the scoring module, edge-case sweep before founder review, regression check that identical input yields identical score.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ STACK MATRIX ============ -->
+    <section class="section avoid-break">
+        <div class="section-title">Stack I'd Use for This POC</div>
+        <div class="stack-grid">
+            <div class="stack-col">
+                <div class="stack-col-title">Data &amp; Backend</div>
+                <ul class="stack-list">
+                    <li>Python 3.11+</li>
+                    <li>FastAPI</li>
+                    <li>pandas / polars</li>
+                    <li>scipy.optimize</li>
+                    <li>pydantic v2</li>
+                    <li>pytest</li>
+                </ul>
+            </div>
+            <div class="stack-col">
+                <div class="stack-col-title">Frontend &amp; Agent</div>
+                <ul class="stack-list">
+                    <li>Next.js 14+ (App Router)</li>
+                    <li>React Server Components</li>
+                    <li>Vercel AI SDK · streamUI</li>
+                    <li>Tailwind + shadcn/ui</li>
+                    <li>v0.app (refined)</li>
+                    <li>TypeScript</li>
+                </ul>
+            </div>
+            <div class="stack-col">
+                <div class="stack-col-title">Data Sources &amp; Ops</div>
+                <ul class="stack-list">
+                    <li>Amazon Marketing Cloud</li>
+                    <li>CSV data lake</li>
+                    <li>SQL (AMC dialect)</li>
+                    <li>Vercel deploy target</li>
+                    <li>GitHub + Actions</li>
+                    <li>Figma (reference only)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta avoid-break">
+        <div class="cta-text">
+            <strong>Ready to start the AMC walkthrough.</strong> Detailed milestones (30 / 70 / 100 split per Section 3) and Section 6 written confirmations have been submitted alongside this portfolio. Happy to do a 30-minute architecture call before you commit.
+        </div>
+        <div class="cta-meta">
+            <div><a href="mailto:rodstex@gmail.com">rodstex@gmail.com</a></div>
+            <div>+55 11 93021-2911</div>
+            <div><a href="https://rodtex.dev">rodtex.dev</a></div>
+        </div>
+    </section>
+
+</div>
+</body>
+</html>
