@@ -1,7 +1,7 @@
 # rodtex_cv — Personal Portfolio Site Context
 
 **Purpose:** Static personal portfolio/CV website for Rodrigo Teixeira, hosted on GitHub Pages at **rodtex.dev**. No build system, no bundler, no package manager — pure HTML/CSS/JS. Also serves as the working directory for Upwork job application materials under `thoughts/job-descriptions/`.
-**Last Updated:** 2026-05-04
+**Last Updated:** 2026-05-04 (CipherSalt scope negotiation: backtesting + iterative testing guardrails locked in)
 
 ## Current Design
 
@@ -63,6 +63,8 @@ The site uses the **Midnight Dashboard** design (formerly `vote/c.html`), deploy
   - `portfolio-sample.html` (or named after the role) — single-file dark-themed HTML one-pager with `@media print` that flips to a printable light theme
   - `*.pdf` — Chrome-headless export of the HTML, used as the Upwork attachment
 - **CipherSalt POC application** (`upwork-job-2050078365074842831_ciphersalt/`) — RFQ for a Salt Score POC (AMC + CSV → Python scoring engine → Next.js/RSC/Vercel AI SDK dashboard with Optimization Dial). Materials include `milestones.md`, `cover-letter.md`, and `rt-portfolio-and-plan.html` (+ PDF) covering RFQ Fit Map, 5 case studies, Section 6 confirmations, milestone plan, and stack matrix. Also includes the signed NDA: `CipherSalt_IP_NDA_filled.html` + `.pdf` (filled from the original `CipherSalt_IP_NDA_Professional (1).pdf`).
+- **CipherSalt scope negotiation (in flight, 2026-05-04):** Founder Jeff Baccetti proposed a Phase 1 scope (AMC extraction, three-tier data model, Python Salt Score, modular/testable engine, scorecards CSV/JSON + API-ready). Mapped against M1 — gaps were unit tests (was M3) and JSON/FastAPI surface (was M2). Rodrigo proposed pulling those into M1 at the same price ($2,250 / 2 weeks), keeping 30/40/30 split. Subsequent thread established two key contractual guardrails: (1) **backtesting** acceptance must be tied to *methodology rigor* not *outcome* (algorithm IP risk stays with founder); (2) **iterative implementation testing** (tick-and-tie reviews on 3–5 supplier sample, 2–3 review cycles in week 1, founder sign-off before scaling) sits *before* backtesting in the sequence, so backtest measures the algorithm not a bug. Founder agreed to both framings. Founder review-availability flagged as the main delivery dependency.
+- **Quant requirements brief** (`data_scientist_quant_requirements_&_capabilities_needed.md`) — internal notes on the data-scientist/quant capabilities the role demands.
 - **Two earlier Upwork applications** also live in `thoughts/job-descriptions/`: CallRail+PI Law Firm pipeline (`022041296316618992385`) and a third RFQ (`022044023046738693790`).
 
 ## Signature & NDA Filling Convention
