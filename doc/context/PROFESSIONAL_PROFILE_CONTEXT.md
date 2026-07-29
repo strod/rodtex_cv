@@ -61,13 +61,22 @@ and architecting the event-driven pipeline that fixed a vendor's 5-second webhoo
 Both appear on the same page, so a reader always sees the real title. Never alter the experience
 entry to match the headline.
 
-**Handling convention (decided 2026-07-29):** keep the actual title, then state the real
-company-wide data-platform and AI scope immediately beneath it. Do not reframe the title itself.
-Honest and survives reference checks.
+**Team leadership — two distinct facts, keep them distinct:**
 
-**Team leadership:** cross-functional / dotted line. Leads engineers and analysts on projects
-**without formal direct reports.** Write this as *technical leadership* — never claim line
-management.
+| Role | Direct reports | Detail |
+|---|---|---|
+| **IPG Mediabrands** (2022–2023) | **~8** | The country hub analytics leads for **Brazil, Mexico, Argentina, Chile, Colombia** — a team of team leads, i.e. **second-line leadership across 5 markets** |
+| **MINT** (2020–2021) | **6** | 2 data scientists, 3 data analysts, 1 data engineer |
+| **Filterbuy** (current) | **0** | Cross-functional / dotted-line leadership of engineers and analysts |
+
+- **Hiring and interviewing in both** prior roles; also referred and placed candidates into adjacent
+  roles outside the direct reporting line.
+- **Coaching and mentoring in both**, in two directions: *data science for non-technical marketing
+  stakeholders* and *marketing analytics for data scientists*. Fluency in both worlds is the
+  differentiator — most data scientists lack the marketing side.
+
+**Writing rule:** state line management with numbers for MINT and IPG. State cross-functional
+leadership for Filterbuy. **Never imply current direct reports.**
 
 ---
 
@@ -198,6 +207,8 @@ and the UK.
 
 ### 3. IPG Mediabrands — Head of Data LATAM (2022 – 2023)
 **São Paulo, Brazil.**
+- **Led a team of ~8** — the country hub analytics leads for Brazil, Mexico, Argentina, Chile and
+  Colombia (second-line leadership across 5 markets). Hired and interviewed for the organisation
 - Led first-party data unification across Latin America, integrating CRM and offline sales into
   the Google advertising ecosystem
 - Server-side GTM measurement across 8 LATAM markets, quantifying browser-side conversion loss
@@ -207,6 +218,9 @@ and the UK.
 
 ### 4. MINT — Data Manager / Tech Lead (2020 – 2021)
 **São Paulo, Brazil.** AI-powered advertising intelligence startup.
+- **Led a team of 6** — 2 data scientists, 3 data analysts, 1 data engineer. Hired and interviewed
+- Coached and mentored in both directions: data science for non-technical marketing stakeholders,
+  marketing analytics for data scientists
 - **AIRE** — next-best-investment engine using Markowitz-style portfolio optimization for budget
   reallocation across digital channels and DSPs; **increased ROI by 25%+**
 - **Megalista** — privacy-safe smart audience generation from ML models fed with web traffic data
@@ -337,7 +351,12 @@ projects) · 2023-era API-client spikes (2–5 commits each).
 
 ## Open Questions
 
-Tracked in full in `rodtex_cv/thoughts/professional-summary-2026.md` §7. Outstanding:
+Tracked in full in `rodtex_cv/thoughts/professional-summary-2026.md` §7.
+
+**Resolved 2026-07-29:** team leadership (see the table above — ~8 reports at IPG, 6 at MINT, hiring
+and interviewing in both); Filterbuy start date (Jan 2024, no earlier role).
+
+Outstanding:
 
 - [x] **RESOLVED 2026-07-29 — Filterbuy start date is January 2024.** There was no earlier Filterbuy
       role; the "Sr. Marketing Analytics Developer 2022–2023" entry in prior versions of this

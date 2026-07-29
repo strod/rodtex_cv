@@ -202,10 +202,27 @@ Center feed governance (**10,532 rows × 132 columns**, with auditable QA outcom
 
 ### 2.8 Team leadership
 
-**Not evidenced in the repositories.** See §7 — this needs your input, and it matters for a Director role.
-The only adjacent signal is `rt-weekly-worklog`, described in its own README as "the Slack message
-delivered to the dev team," and its CLAUDE.md noting it is "read by the dev team and must be accurate."
-That evidences team *reporting*, not people management.
+**Not evidenced in the repositories — but confirmed by Rodrigo on 2026-07-29, and substantial.**
+Code cannot show people management; this came from him directly.
+
+| Role | Reports | Composition |
+|---|---|---|
+| **IPG Mediabrands**, Head of Data LATAM | **~8** | The **country hub analytics leads** for Brazil, Mexico, Argentina, Chile and Colombia — i.e. a team of team leads, **second-line leadership** across five markets |
+| **MINT**, Data Manager / Tech Lead | **6** | 2 data scientists, 3 data analysts, 1 data engineer |
+| **Filterbuy**, current | 0 direct | Cross-functional / dotted-line leadership of engineers and analysts |
+
+- **Hiring and interviewing in both roles.** Also referred and placed candidates into adjacent roles
+  outside his direct reporting line.
+- **Coaching and mentoring in both roles**, across a specific and unusually valuable gap: *data science
+  for non-technical marketing stakeholders*, and *marketing analytics for data scientists*. He is fluent
+  in both worlds, which most data scientists are not.
+
+The honest arc is therefore: **line management at MINT and IPG → currently cross-functional at
+Filterbuy.** That is a normal senior trajectory, not a gap. The only real limitation is that the people
+leadership is not in the *current* role.
+
+The one adjacent repo signal remains `rt-weekly-worklog`, whose README calls it "the Slack message
+delivered to the dev team" — team *reporting*, not management.
 
 ---
 
@@ -500,9 +517,14 @@ Nothing below goes into the CV until you answer. Grouped by how much it changes 
 
 ### DECIDED 2026-07-29 (answers from Rodrigo)
 
-- [x] **Team leadership → cross-functional / dotted line.** No direct reports. Write it as *technical
-      leadership* — leading engineers and analysts on projects without formal reporting lines. **Do not
-      claim line management anywhere.** Lead with platform ownership and scope.
+- [x] **Team leadership → REVISED 2026-07-29 (supersedes the earlier reading).** Rodrigo confirmed
+      **real direct reports in prior roles**: ~8 at IPG Mediabrands (the country hub analytics leads for
+      Brazil, Mexico, Argentina, Chile, Colombia — second-line leadership) and 6 at MINT (2 data
+      scientists, 3 data analysts, 1 data engineer). **Hiring and interviewing in both.** Coaching and
+      mentoring in both, bridging data science and marketing analytics in both directions.
+      At **Filterbuy the leadership is cross-functional / dotted-line, no direct reports** — that
+      distinction must be preserved. So: state line management for MINT and IPG with numbers; state
+      cross-functional leadership for Filterbuy. **Never imply current direct reports.**
 - [x] **Title → keep the actual title, restate the scope beneath it.** "Marketing Analytics Director" stays
       as the formal title; the summary line immediately underneath states the company-wide data platform
       and AI scope. Honest, survives reference checks.
@@ -649,14 +671,14 @@ implies. **Absent** = no evidence found.
 | **A/B testing & experimentation** | **Thin** | You confirmed it's real, and it stays on the CV. No supporting code in 123 repos — no assignment logic, no test registry, no analysis notebooks. **Fix:** name the platform (Optimizely? VWO? in-house?) and one test with a result, or expect it to be probed in interview |
 | **dbt** | **Thin, bordering absent** | Zero dbt projects across 123 repos — no `dbt_project.yml`, no `profiles.yml`, no `models/`. What exists: dbt named as the *upstream producer* of 56 `filterbuy_lake_marts` tables, and **22 dbt model contracts you authored** for a QuickSight-to-Athena migration. So you specify and consume dbt output; there's no evidence you build and run the models. **Fix:** either clarify that you own the dbt project elsewhere, or reframe as "specified dbt model contracts; consume dbt-built marts" |
 | **Looker / LookML** | **Thin** | No LookML, no `.lkml`, no Looker project anywhere. You have Looker *Studio* (10 deployed views) and genuinely deep **QuickSight** (11 documented dashboards, a 116-visual review, SPICE dataset management). **Fix:** if the LookML is real, it lives outside these repos — say where. Otherwise lead with QuickSight, which is your actual strength |
-| **Team leadership (3–4 people)** | **Absent** as specified | You confirmed cross-functional / dotted-line leadership with **no direct reports**. Written as technical leadership throughout; line management is never claimed. This is the single biggest first-screen risk for a Director title. **Fix:** if you've ever had reports, mentored named juniors, or owned hiring/onboarding, that's worth stating explicitly |
+| **Team leadership (3–4 people)** | **Strong** (revised 2026-07-29) | Was assessed as absent from the code, then confirmed directly: **~8 reports at IPG Mediabrands** (the country hub analytics leads for 5 LATAM markets — second-line leadership, exceeding the 3–4 asked for) and **6 at MINT** (2 data scientists, 3 analysts, 1 data engineer), with **hiring and interviewing in both** plus two-way coaching between data science and marketing analytics. Now on the CV with numbers. Residual nuance: the people leadership is in **prior** roles; Filterbuy is cross-functional/dotted-line. Expect one interview question about why the current role has no reports |
 | **Segment** | **Absent** | Zero evidence. Removed from the CV and profile doc with your agreement |
 
 ### The three things worth fixing before applying
 
-1. **Team leadership.** A Director JD asking for 3–4 people screens on this first. Dotted-line leadership
-   is writable, but if there's any people-management history — mentoring, onboarding, interviewing —
-   surface it.
+1. ~~**Team leadership.**~~ **RESOLVED 2026-07-29.** ~8 reports at IPG (second-line, 5 LATAM markets) and
+   6 at MINT, with hiring, interviewing and mentoring in both. Now stated with numbers on the CV. The
+   requirement asked for 3–4; the evidence exceeds it.
 2. **One business outcome at Filterbuy.** The evidence is overwhelmingly *scale and method*, almost never
    *result*. A single permitted figure (spend optimized, ROAS lift, cost avoided) would do more for the CV
    than any rewording.
