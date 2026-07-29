@@ -51,6 +51,16 @@ and architecting the event-driven pipeline that fixed a vendor's 5-second webhoo
 > Filterbuy tenure begins Jan 2024. This also resolves what looked like a Filterbuy/IPG date
 > overlap: IPG Mediabrands ran 2022 – 2023, Filterbuy from Jan 2024. Do not reintroduce it.
 
+**Title handling, refined 2026-07-29 for LLM/ATS screening — two distinct fields:**
+
+| Field | Value | Why |
+|---|---|---|
+| **CV headline** (under the name) | *Director of Data & AI · Data Platform Ownership \| Production LLM & ML Systems \| Applied Optimization* | A positioning line, not an employment record. Carries the target-role keywords that semantic screeners weight heavily. |
+| **Experience entry** (role field) | *Marketing Analytics Director* — Filterbuy, Jan 2024 – Present | The **actual title, unchanged.** Verifiable, survives reference checks. |
+
+Both appear on the same page, so a reader always sees the real title. Never alter the experience
+entry to match the headline.
+
 **Handling convention (decided 2026-07-29):** keep the actual title, then state the real
 company-wide data-platform and AI scope immediately beneath it. Do not reframe the title itself.
 Honest and survives reference checks.
