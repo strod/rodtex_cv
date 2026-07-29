@@ -498,26 +498,29 @@ born 7 Jan 1988 · B.Sc. Mechanical Engineering (not Industrial) plus B.Sc. Phys
 
 Nothing below goes into the CV until you answer. Grouped by how much it changes the output.
 
-### Blocking — these change the positioning itself
+### DECIDED 2026-07-29 (answers from Rodrigo)
 
-- [ ] **Team leadership.** No repository evidences managing people. For a Director role this is a
-      first-screen requirement. How many direct reports, what roles, since when? If it's dotted-line or
-      cross-functional rather than direct reports, say so — that's still writable, just differently.
-- [ ] **Current title.** Is "Marketing Analytics Director" still the formal title? Is there anything
-      closer to the actual scope?
-- [ ] **Filterbuy vs IPG Mediabrands date overlap** (both listed 2022–2023). Which is correct?
+- [x] **Team leadership → cross-functional / dotted line.** No direct reports. Write it as *technical
+      leadership* — leading engineers and analysts on projects without formal reporting lines. **Do not
+      claim line management anywhere.** Lead with platform ownership and scope.
+- [x] **Title → keep the actual title, restate the scope beneath it.** "Marketing Analytics Director" stays
+      as the formal title; the summary line immediately underneath states the company-wide data platform
+      and AI scope. Honest, survives reference checks.
+- [x] **Claims to keep: dbt, Looker/LookML, A/B testing & experimentation.** These are real work that
+      never landed in a repository. Write them without repo-derived specifics — no invented counts, no
+      fabricated project names. **Segment is dropped entirely.**
+- [x] **Client naming → name no clients.** Rodrigo's framing: these are side gigs, and surfacing them
+      risks reading as moonlighting rather than as a career-oriented Director candidate. No client names
+      anywhere on the CV or the public site. See the open question directly below on how far this goes.
 
-### Client naming permission — needed before the website goes live
+### Blocking — remaining
 
-- [ ] **Forneria Luce** — by far the largest independent body of work (~30 repos: the Bling platform, the
-      chatbot, the CRM, the router, the SSO gate, the BI dashboard). Name them, or "a Brazilian
-      food-service business"?
-- [ ] **Adagio Teas** — personalization stack. Name?
-- [ ] **Hoshinsul / FMHI Hapkido federation** — the app is publicly live at a `.web.app` URL, so it is
-      already effectively public. Confirm it's fine to link.
-- [ ] **Daniel Turner / Insourced Agency / Hop Vietnamese** (Marketing Funnel Scoring) — this has the best
-      hard numbers of any client project. Permission to describe, and at what level of naming?
-- [ ] **Doutor Sofá**, **CR Vendas** — name or describe generically?
+- [ ] **Filterbuy vs IPG Mediabrands date overlap** (profile doc lists both as 2022–2023). Which is correct?
+- [ ] **How far does "no side projects" go?** Naming is settled (none). What is *not* settled is whether
+      the independent work appears at all. This matters because the deepest AI/LLM evidence in the whole
+      estate is independent, not employer, work — the 345-commit multi-tenant agent platform, the
+      text-to-SQL analytics agent, the public MCP server. Dropping all of it costs the strongest proof of
+      the exact thing the repositioning is built on. Three viable shapes, in §8.
 
 ### Metrics I could not obtain from the repositories
 
@@ -610,3 +613,46 @@ Engineering + B.Sc. Physics, UFRJ M.Sc. interrupted — verified across `index.h
 
 **"50+ projects" / "40+ projects"** → 123 repositories audited, ~94 with commit history. The claim gets
 more accurate *and* more impressive.
+
+---
+
+## 9. Turno-style requirements — honest gap assessment
+
+Assessed 2026-07-29 against the repository evidence. **Strongly evidenced** = a hiring manager could
+verify it from artifacts. **Thin** = real but narrower or on different tooling than the requirement
+implies. **Absent** = no evidence found.
+
+| Requirement | Verdict | Evidence / gap |
+|---|---|---|
+| **Leading NL / LLM interfaces to a data warehouse** | **Strong** | Best-in-class. Text-to-SQL agent over BigQuery (93 commits) with an `ActionGuard` write-safety layer and tests for prompt behaviour under adversarial input; LLM grounded on a hand-built schema dictionary driving a diagnostic runbook over a 253-job ETL platform; 61-skill agent library with a mutation-safety contract |
+| **GCP** | **Strong** | 22+ gen2 Cloud Functions, Cloud Run, Pub/Sub, Cloud Tasks, Firestore, Secret Manager, Vertex AI, Cloud Build — all deployed via Workload Identity Federation, no long-lived keys |
+| **BigQuery** | **Strong** | The whole independent estate. Partitioned/clustered tables, `MERGE` upserts, staging-table patterns, partition-pruned queries, cost-aware design, a boolean segment AST compiled to parameterized SQL |
+| **Marketplace / SaaS domain** | **Strong** | Amazon US+CA, Walmart, eBay, Home Depot, Target marketplaces in the warehouse; a multi-tenant agent SaaS platform; a multi-tenant ERP connector designed for Cloud Marketplace billing |
+| **Data governance** (dictionaries, contracts, quality standards) | **Strong**, with a caveat | 36-table dictionary with *Validated Field Definitions*; 16-source lineage register with a prefix→source convention; 99-page agent-readable catalog with per-assertion evidence logs; 20 enumerable SQL quality assertions; one literal "9-column shared contract". **Caveat:** all self-built documentation and hand-rolled SQL checks — no Great Expectations, no dbt tests, no data-observability platform. Present it as *governance built from scratch where none existed*, which is the honest and more impressive framing |
+| **Executive stakeholder partnership** | **Thin** | Indirect only: 11 QuickSight dashboards including `executive_summary` and `profit_and_loss`; a 116-visual weekly business review; IPG-era "investment cases" for enterprise clients. No artifact shows you *in the room*. **Fix:** one or two concrete sentences from you — which executives, what cadence, what decisions changed |
+| **Financial-data reconciliation** | **Thin** | Adjacent but not the thing. `unmatch-orders` is *marketing attribution* reconciliation, explicitly not financial. Real financial engineering does exist — Stripe billing automation with FX sourcing, markup rules, idempotency keys and PaymentIntent-vs-Invoice modelling (54 tests) — plus QuickBooks Online, Routable and payroll ingestion with restricted PII chains and a `finance` warehouse domain. **Gap:** no ledger/AR/AP tie-out or month-end close work. Don't claim reconciliation; claim financial data pipelines and billing systems |
+| **ML deployed to production** (Vertex AI / SageMaker) | **Thin** | Production ML is real: Prophet forecasting on AWS Lambda *and* GCP Cloud Functions (4 models, 120-day horizon), Bayesian MMM trained on ECS Fargate, Vertex AI Search for Retail recommendations with 2 live serving configs. **But:** no custom model training or endpoint deployment on Vertex AI, and **no SageMaker at all.** If a JD names those two platforms specifically, this reads as a gap |
+| **A/B testing & experimentation** | **Thin** | You confirmed it's real, and it stays on the CV. No supporting code in 123 repos — no assignment logic, no test registry, no analysis notebooks. **Fix:** name the platform (Optimizely? VWO? in-house?) and one test with a result, or expect it to be probed in interview |
+| **dbt** | **Thin, bordering absent** | Zero dbt projects across 123 repos — no `dbt_project.yml`, no `profiles.yml`, no `models/`. What exists: dbt named as the *upstream producer* of 56 `filterbuy_lake_marts` tables, and **22 dbt model contracts you authored** for a QuickSight-to-Athena migration. So you specify and consume dbt output; there's no evidence you build and run the models. **Fix:** either clarify that you own the dbt project elsewhere, or reframe as "specified dbt model contracts; consume dbt-built marts" |
+| **Looker / LookML** | **Thin** | No LookML, no `.lkml`, no Looker project anywhere. You have Looker *Studio* (10 deployed views) and genuinely deep **QuickSight** (11 documented dashboards, a 116-visual review, SPICE dataset management). **Fix:** if the LookML is real, it lives outside these repos — say where. Otherwise lead with QuickSight, which is your actual strength |
+| **Team leadership (3–4 people)** | **Absent** as specified | You confirmed cross-functional / dotted-line leadership with **no direct reports**. Written as technical leadership throughout; line management is never claimed. This is the single biggest first-screen risk for a Director title. **Fix:** if you've ever had reports, mentored named juniors, or owned hiring/onboarding, that's worth stating explicitly |
+| **Segment** | **Absent** | Zero evidence. Removed from the CV and profile doc with your agreement |
+
+### The three things worth fixing before applying
+
+1. **Team leadership.** A Director JD asking for 3–4 people screens on this first. Dotted-line leadership
+   is writable, but if there's any people-management history — mentoring, onboarding, interviewing —
+   surface it.
+2. **One business outcome at Filterbuy.** The evidence is overwhelmingly *scale and method*, almost never
+   *result*. A single permitted figure (spend optimized, ROAS lift, cost avoided) would do more for the CV
+   than any rewording.
+3. **dbt and LookML.** Both are on the CV and both are invisible in the code. If a technical screen probes
+   either, the gap shows. Decide now whether to defend them or reframe them.
+
+### What is genuinely differentiating
+
+Lead with these, because they are rare and fully evidenced: **owning two warehouse platforms end to end**;
+**building the agent-safety layer that lets LLMs mutate production ad accounts safely**; **applied
+optimization in production** (Hill curves, convex programs, Empirical Bayes); and **reliability
+engineering with measured before/after** (p50 19s → sub-second; 43.8% → ~37% attribution gap; 13-hour job
+re-platformed). Very few Data & AI candidates can show all four.
