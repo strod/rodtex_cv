@@ -44,8 +44,12 @@ and architecting the event-driven pipeline that fixed a vendor's 5-second webhoo
 
 ## Current Title
 
-**Marketing Analytics Director** at Filterbuy (2024 – present).
-Previously **Sr. Marketing Analytics Developer** at Filterbuy (2022 – 2023).
+**Marketing Analytics Director** at Filterbuy — **started January 2024** (confirmed 2026-07-29).
+
+> **Correction:** earlier versions of this document listed a prior Filterbuy role,
+> "Sr. Marketing Analytics Developer (2022 – 2023)". **That role does not exist** — Rodrigo's
+> Filterbuy tenure begins Jan 2024. This also resolves what looked like a Filterbuy/IPG date
+> overlap: IPG Mediabrands ran 2022 – 2023, Filterbuy from Jan 2024. Do not reintroduce it.
 
 **Handling convention (decided 2026-07-29):** keep the actual title, then state the real
 company-wide data-platform and AI scope immediately beneath it. Do not reframe the title itself.
@@ -140,12 +144,20 @@ tooling layer above both.
   through partitioning, clustering and schema redesign
 - Causal-impact frameworks using geo-holdouts and matched-market experiments
 
-### 2. rt analytica — Principal Consultant, Data & AI (Oct 2025 – present)
-**São Paulo, Brazil.** Independent data and AI practice; e-commerce, food-service and retail
-clients in Brazil and the UK.
+### 2. rt analytica — Independent Data & AI Work (Oct 2025 – present)
+**São Paulo, Brazil.** Independent practice; e-commerce, food-service and retail clients in Brazil
+and the UK.
 
-> **Client naming policy (decided 2026-07-29): name no clients** on the CV or public site.
-> Describe by sector only. Present as one consultancy role, never as a list of side projects.
+> **Placement policy (decided 2026-07-29) — read this before writing any CV:**
+> **rt analytica does NOT appear on the CV.** No experience entry, no bullets, no mention.
+> The CV covers employers only: Filterbuy → IPG Mediabrands → MINT → WMcCann → Rede Globo →
+> Bridge Consulting. These projects surface **only in the rodtex.dev website portfolio**, where the
+> footer link on the CV points.
+>
+> **Client naming policy: name no clients** anywhere — CV or website. Describe by sector only.
+>
+> The record below exists so the work stays documented and reusable for website copy,
+> interview answers and targeted applications — not for the CV.
 
 - **Multi-tenant LLM agent platform** on Cloud Run (345 commits): customer-facing WhatsApp
   ordering plus internal BI-analyst agents, per-tenant credentials/permissions/catalog/guardrails,
@@ -317,9 +329,10 @@ projects) · 2023-era API-client spikes (2–5 commits each).
 
 Tracked in full in `rodtex_cv/thoughts/professional-summary-2026.md` §7. Outstanding:
 
-- [ ] **Filterbuy vs IPG Mediabrands date overlap** — the previous version of this document listed
-      both as 2022–2023. The CV currently uses IPG 2022–2023 and Filterbuy 2024–present (with
-      Sr. Marketing Analytics Developer 2022–2023 unstated on the CV). Needs a decision.
+- [x] **RESOLVED 2026-07-29 — Filterbuy start date is January 2024.** There was no earlier Filterbuy
+      role; the "Sr. Marketing Analytics Developer 2022–2023" entry in prior versions of this
+      document was wrong and has been removed. Timeline is clean: IPG 2022–2023, Filterbuy Jan 2024
+      onward, no overlap.
 - [ ] **Business outcome metrics at Filterbuy** — the repos hold scale and method but almost no
       results. Any permitted figure (revenue influenced, spend optimized, ROAS lift) would
       materially strengthen the CV.

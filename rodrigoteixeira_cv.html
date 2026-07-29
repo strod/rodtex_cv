@@ -376,11 +376,11 @@
         @media print {
             @page {
                 size: A4;
-                margin: 9mm 10mm 9mm 10mm;
+                margin: 12mm 11mm 12mm 11mm;
             }
 
             html {
-                font-size: 10.2px;
+                font-size: 10.6px;
             }
 
             body {
@@ -395,7 +395,7 @@
             }
 
             .cv-header {
-                padding: 16px 22px 14px;
+                padding: 22px 28px 20px;
                 background: var(--navy) !important;
                 color: #ffffff !important;
             }
@@ -414,11 +414,11 @@
             }
 
             .cv-body {
-                padding: 14px 22px 16px;
+                padding: 20px 28px 24px;
             }
 
             .section {
-                margin-bottom: 11px;
+                margin-bottom: 15px;
             }
 
             .section-title {
@@ -428,7 +428,7 @@
 
             .exp-achievements li {
                 margin-bottom: 2px;
-                line-height: 1.42;
+                line-height: 1.5;
             }
 
             .exp-description {
@@ -458,7 +458,7 @@
 
             .experience-entry {
                 page-break-inside: avoid;
-                margin-bottom: 9px;
+                margin-bottom: 13px;
             }
 
             .education-list li {
@@ -564,7 +564,7 @@
         <section class="section">
             <h2 class="section-title">Professional Summary</h2>
             <p class="summary-text">
-                Data and AI leader who still ships code. Own a company-wide data platform end to end &mdash; a nine-schema Redshift warehouse fed by 16 source systems, a 99-table Athena/Iceberg lakehouse, and the orchestration, governance and quality layers around both &mdash; while designing the production LLM systems built on top: agent-safety libraries, natural-language interfaces to the warehouse, and customer-facing conversational agents. Engineering training applied commercially: Bayesian marketing mix modelling, convex-optimization budget allocation, and an advertising bid engine closing the loop from ingestion to automated bid writes. Lead engineers and analysts cross-functionally.
+                Data and AI leader who still ships code. Own a company-wide data platform end to end &mdash; a nine-schema Redshift warehouse fed by 16 source systems, a 99-table Athena/Iceberg lakehouse, and the orchestration, governance and quality layers around both &mdash; while designing the production LLM systems built on top: agent-safety layers that let LLM agents operate on live systems, and natural-language interfaces to the warehouse itself. Engineering training applied commercially: Bayesian marketing mix modelling, convex-optimization budget allocation, and an advertising bid engine closing the loop from ingestion to automated bid writes. Lead engineers and analysts cross-functionally.
             </p>
         </section>
 
@@ -592,23 +592,6 @@
                     <li>Built a predictive 24-month LTV model (RFM + XGBoost) wired to a server-side pixel for media optimization &mdash; <strong>12% uplift in repeat purchase orders</strong></li>
                     <li>Led the GA4 migration with client- and server-side GTM, uncovering <strong>30%+ conversion undercounting</strong> from ITP and ad blockers; implemented causal-impact frameworks using geo-holdouts and matched-market experiments</li>
                     <li><strong>Cut reporting latency from 24 hours to under 1 hour</strong> via real-time pipelines, and <strong>reduced warehouse query costs 40%</strong> through partitioning, clustering and schema redesign</li>
-                </ul>
-            </article>
-
-            <!-- rt analytica -->
-            <article class="experience-entry">
-                <div class="exp-header">
-                    <h3>Principal Consultant &mdash; Data &amp; AI</h3>
-                    <div class="company-line">rt analytica &mdash; S&atilde;o Paulo, Brazil</div>
-                    <div class="date-line">Oct 2025 &mdash; Present</div>
-                </div>
-                <p class="exp-description">Independent data and AI practice serving e-commerce, food-service and retail clients in Brazil and the UK.</p>
-                <ul class="exp-achievements">
-                    <li>Built a <strong>multi-tenant LLM agent platform</strong> on Cloud Run &mdash; customer-facing WhatsApp ordering plus internal BI-analyst agents, with per-tenant guardrails, MCP integration, multi-LLM routing and prompt-injection hardening</li>
-                    <li>Rearchitected an ERP-to-BigQuery integration failing a vendor's 5-second webhook SLA at <strong>p50 19s</strong>, with up to 99% of deliveries counted as failures, into ack-first ingress plus idempotent async workers and scheduled reconciliation &mdash; <strong>sub-second acknowledgement</strong> across 22 Cloud Functions</li>
-                    <li>Delivered a <strong>natural-language analytics agent over BigQuery</strong> with a guarded write path to a live ERP, tested for write safety, prompt behaviour and upstream outages</li>
-                    <li>Shipped a marketing funnel scoring engine for a UK hospitality group: multi-source BigQuery ingestion, a weighted 0&ndash;1000 scoring model, LLM recommendations and a human approval app &mdash; 339 recommendations reviewed and deployed</li>
-                    <li>Published <strong>blingMCP</strong> (open source, MIT): a Model Context Protocol server consolidating 254 ERP API endpoints into 18 LLM-friendly tools via OpenAPI code generation</li>
                 </ul>
             </article>
 

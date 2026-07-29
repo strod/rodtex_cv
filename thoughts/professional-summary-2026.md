@@ -513,14 +513,24 @@ Nothing below goes into the CV until you answer. Grouped by how much it changes 
       risks reading as moonlighting rather than as a career-oriented Director candidate. No client names
       anywhere on the CV or the public site. See the open question directly below on how far this goes.
 
+- [x] **Independent work → website portfolio ONLY, not the CV.** Final call: **rt analytica does not
+      appear on the CV at all** — no experience entry, no bullets, no mention. The CV covers employers
+      only (Filterbuy → IPG → MINT → WMcCann → Rede Globo → Bridge). The independent projects live in
+      the rodtex.dev portfolio, which the CV footer links to.
+      *Consequence, stated plainly:* the CV's AI/LLM evidence now rests entirely on Filterbuy work —
+      the 61-skill agent-safety library, LLM-assisted ETL diagnostics, and Bedrock in the pipeline.
+      That is still substantial, but the deepest artifacts (345-commit multi-tenant agent platform,
+      text-to-SQL agent, public MCP server) are visible only via the website. The CV summary was
+      reworded to stop claiming "customer-facing conversational agents", since nothing in the CV body
+      evidences it any more.
+- [x] **Filterbuy start date = January 2024.** There was no earlier Filterbuy role. The
+      "Sr. Marketing Analytics Developer 2022–2023" line in the old profile doc was **wrong** and is
+      removed. The apparent Filterbuy/IPG overlap was an artifact of that error — timeline is now clean:
+      IPG 2022–2023, Filterbuy Jan 2024 onward.
+
 ### Blocking — remaining
 
-- [ ] **Filterbuy vs IPG Mediabrands date overlap** (profile doc lists both as 2022–2023). Which is correct?
-- [ ] **How far does "no side projects" go?** Naming is settled (none). What is *not* settled is whether
-      the independent work appears at all. This matters because the deepest AI/LLM evidence in the whole
-      estate is independent, not employer, work — the 345-commit multi-tenant agent platform, the
-      text-to-SQL analytics agent, the public MCP server. Dropping all of it costs the strongest proof of
-      the exact thing the repositioning is built on. Three viable shapes, in §8.
+Nothing blocking. Remaining items below are enhancements, not blockers.
 
 ### Metrics I could not obtain from the repositories
 
@@ -606,6 +616,10 @@ MarTech last. Unverifiable claims removed pending your §7 answers.
 
 **Portfolio.** From ~40 loosely-described projects to the 15 in §5, chosen for range and each with a
 stated demonstration. `mediamixmodel` removed. Filterbuy work described in prose with no links.
+
+**CV vs website split (final).** The **CV is employer-only** — Filterbuy, IPG Mediabrands, MINT,
+WMcCann, Rede Globo, Bridge Consulting. Independent work appears **only in the website portfolio**,
+reached via the CV footer link to rodtex.dev. No client is named in either place.
 
 **Stale facts corrected.** GitHub `strod`, LinkedIn `strodrigo`, born 7 Jan 1988, B.Sc. Mechanical
 Engineering + B.Sc. Physics, UFRJ M.Sc. interrupted — verified across `index.html` and every
