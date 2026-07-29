@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodrigo Teixeira — CV</title>
+    <meta name="description" content="CV of Rodrigo Teixeira — Marketing Analytics Director, Data & Marketing Intelligence Leader. Python, SQL, GCP, AWS, Marketing Mix Modeling, Data Warehousing.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================
+           CSS RESET & VARIABLES
+           ============================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1a1a2e;
+            --navy-dark: #12122a;
+            --navy-light: #2a2a4a;
+            --teal: #2dd4bf;
+            --teal-dark: #14b8a6;
+            --teal-subtle: #f0fdfa;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --bg-white: #ffffff;
+            --bg-light: #f8fafc;
+            --border-light: #e2e8f0;
+            --border-medium: #cbd5e1;
+            --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        /* ============================================
+           BASE STYLES
+           ============================================ */
+        html {
+            font-size: 15px;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            background: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           PAGE WRAPPER
+           ============================================ */
+        .page-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--bg-white);
+        }
+
+        /* Screen-only shadow and spacing */
+        @media screen {
+            .page-wrapper {
+                margin: 32px auto;
+                box-shadow:
+                    0 1px 3px rgba(0, 0, 0, 0.06),
+                    0 10px 40px rgba(0, 0, 0, 0.08);
+                border-radius: 2px;
+            }
+        }
+
+        /* ============================================
+           HEADER
+           ============================================ */
+        .cv-header {
+            background: var(--navy);
+            color: #ffffff;
+            padding: 40px 48px 36px;
+        }
+
+        .cv-header h1 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+            color: #ffffff;
+        }
+
+        .cv-header .title-line {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--teal);
+            margin-bottom: 20px;
+            letter-spacing: 0.01em;
+        }
+
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 24px;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        .contact-row a {
+            color: #cbd5e1;
+            text-decoration: none;
+        }
+
+        .contact-row a:hover {
+            color: var(--teal);
+        }
+
+        .contact-row .separator {
+            color: #475569;
+        }
+
+        /* ============================================
+           MAIN CONTENT
+           ============================================ */
+        .cv-body {
+            padding: 36px 48px 48px;
+        }
+
+        /* ============================================
+           SECTION STYLES
+           ============================================ */
+        .section {
+            margin-bottom: 28px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--teal);
+            margin-bottom: 16px;
+        }
+
+        /* ============================================
+           PROFESSIONAL SUMMARY
+           ============================================ */
+        .summary-text {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ============================================
+           EXPERIENCE ENTRIES
+           ============================================ */
+        .experience-entry {
+            margin-bottom: 24px;
+            page-break-inside: avoid;
+        }
+
+        .experience-entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .exp-header {
+            margin-bottom: 8px;
+        }
+
+        .exp-header h3 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 2px;
+        }
+
+        .exp-header .company-line {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .exp-header .date-line {
+            font-size: 0.82rem;
+            color: var(--teal-dark);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .exp-description {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .exp-achievements {
+            list-style: none;
+            padding: 0;
+        }
+
+        .exp-achievements li {
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 5px;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        .exp-achievements li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 5px;
+            height: 5px;
+            background: var(--teal);
+            border-radius: 50%;
+        }
+
+        /* ============================================
+           EDUCATION
+           ============================================ */
+        .education-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .education-list li {
+            margin-bottom: 10px;
+            page-break-inside: avoid;
+        }
+
+        .education-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .edu-degree {
+            font-family: var(--font-heading);
+            font-size: 0.93rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .edu-school {
+            font-size: 0.87rem;
+            color: var(--text-secondary);
+        }
+
+        .edu-year {
+            font-size: 0.82rem;
+            color: var(--teal-dark);
+            font-weight: 500;
+        }
+
+        .edu-thesis {
+            font-size: 0.83rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: 1px;
+        }
+
+        /* ============================================
+           SKILLS
+           ============================================ */
+        .skills-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .skill-row {
+            display: flex;
+            gap: 8px;
+            line-height: 1.55;
+        }
+
+        .skill-category {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--navy);
+            min-width: 180px;
+            flex-shrink: 0;
+        }
+
+        .skill-items {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* ============================================
+           LANGUAGES
+           ============================================ */
+        .languages-list {
+            display: flex;
+            gap: 32px;
+            font-size: 0.9rem;
+        }
+
+        .lang-item strong {
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        .lang-item span {
+            color: var(--text-secondary);
+        }
+
+        /* ============================================
+           PORTFOLIO HIGHLIGHTS
+           ============================================ */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 24px;
+        }
+
+        .portfolio-item {
+            font-size: 0.87rem;
+            color: var(--text-secondary);
+            padding: 4px 0;
+            padding-left: 16px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 11px;
+            width: 5px;
+            height: 5px;
+            background: var(--teal);
+            border-radius: 50%;
+        }
+
+        .portfolio-item .tech-tag {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* ============================================
+           FOOTER (screen only)
+           ============================================ */
+        .cv-footer {
+            text-align: center;
+            padding: 12px 48px 20px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-light);
+        }
+
+        .cv-footer a {
+            color: var(--teal-dark);
+            text-decoration: none;
+        }
+
+        /* ============================================
+           PRINT STYLES
+           ============================================ */
+        @media print {
+            @page {
+                size: A4;
+                margin: 12mm 11mm 12mm 11mm;
+            }
+
+            html {
+                font-size: 10.6px;
+            }
+
+            body {
+                background: #ffffff;
+            }
+
+            .page-wrapper {
+                max-width: 100%;
+                margin: 0;
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .cv-header {
+                padding: 22px 28px 20px;
+                background: var(--navy) !important;
+                color: #ffffff !important;
+            }
+
+            .cv-header h1 {
+                color: #ffffff !important;
+            }
+
+            .cv-header .title-line {
+                color: var(--teal) !important;
+            }
+
+            .contact-row,
+            .contact-row a {
+                color: #cbd5e1 !important;
+            }
+
+            .cv-body {
+                padding: 20px 28px 24px;
+            }
+
+            .section {
+                margin-bottom: 15px;
+            }
+
+            .section-title {
+                margin-bottom: 8px;
+                padding-bottom: 4px;
+            }
+
+            .exp-achievements li {
+                margin-bottom: 2px;
+                line-height: 1.5;
+            }
+
+            .exp-description {
+                margin-bottom: 4px;
+            }
+
+            .exp-header {
+                margin-bottom: 4px;
+            }
+
+            .skill-row {
+                margin-bottom: 5px;
+            }
+
+            .education-list li {
+                margin-bottom: 4px;
+            }
+
+            .summary-text {
+                line-height: 1.5;
+            }
+
+            .section-title {
+                border-bottom-color: var(--teal) !important;
+                color: var(--navy) !important;
+            }
+
+            .experience-entry {
+                page-break-inside: avoid;
+                margin-bottom: 13px;
+            }
+
+            .education-list li {
+                page-break-inside: avoid;
+            }
+
+            .exp-achievements li::before,
+            .portfolio-item::before {
+                background: var(--teal) !important;
+            }
+
+            /* Ensure proper page breaks */
+            h2, h3 {
+                page-break-after: avoid;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+
+            /* Allow experience section to break across pages */
+            .section.experience-section {
+                page-break-inside: auto;
+            }
+
+            .cv-footer {
+                display: none;
+            }
+
+            a {
+                text-decoration: none !important;
+            }
+        }
+
+        /* ============================================
+           RESPONSIVE (screen)
+           ============================================ */
+        @media screen and (max-width: 700px) {
+            .cv-header {
+                padding: 28px 24px 24px;
+            }
+
+            .cv-body {
+                padding: 24px 24px 32px;
+            }
+
+            .contact-row {
+                gap: 4px 16px;
+            }
+
+            .skill-row {
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            .skill-category {
+                min-width: auto;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .languages-list {
+                flex-direction: column;
+                gap: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+
+    <!-- ========================================
+         HEADER
+         ======================================== -->
+    <header class="cv-header">
+        <h1>Rodrigo Teixeira</h1>
+        <div class="title-line">Data &amp; AI Leader &mdash; Platform Ownership | Production LLM Systems | Applied Optimization</div>
+        <div class="contact-row">
+            <span>rodrigo@rodtex.dev</span>
+            <span class="separator">|</span>
+            <span>+55 11 930212911</span>
+            <span class="separator">|</span>
+            <span>S&atilde;o Paulo, Brazil</span>
+            <span class="separator">|</span>
+            <a href="https://linkedin.com/in/strodrigo">linkedin.com/in/strodrigo</a>
+            <span class="separator">|</span>
+            <a href="https://github.com/strod">github.com/strod</a>
+            <span class="separator">|</span>
+            <a href="https://rodtex.dev">rodtex.dev</a>
+        </div>
+    </header>
+
+    <!-- ========================================
+         BODY
+         ======================================== -->
+    <main class="cv-body">
+
+        <!-- PROFESSIONAL SUMMARY -->
+        <section class="section">
+            <h2 class="section-title">Professional Summary</h2>
+            <p class="summary-text">
+                Data and AI leader who still ships code. Own a company-wide data platform end to end &mdash; a nine-schema Redshift warehouse fed by 16 source systems, a 99-table Athena/Iceberg lakehouse, and the orchestration, governance and quality layers around both &mdash; while designing the production LLM systems built on top: agent-safety layers that let LLM agents operate on live systems, and natural-language interfaces to the warehouse itself. Engineering training applied commercially: Bayesian marketing mix modelling, convex-optimization budget allocation, and an advertising bid engine closing the loop from ingestion to automated bid writes. Lead engineers and analysts cross-functionally.
+            </p>
+        </section>
+
+        <!-- PROFESSIONAL EXPERIENCE -->
+        <section class="section experience-section">
+            <h2 class="section-title">Professional Experience</h2>
+
+            <!-- Filterbuy -->
+            <article class="experience-entry">
+                <div class="exp-header">
+                    <h3>Marketing Analytics Director</h3>
+                    <div class="company-line">Filterbuy &mdash; Fort Lauderdale, FL (Remote)</div>
+                    <div class="date-line">Jan 2024 &mdash; Present</div>
+                </div>
+                <p class="exp-description">D2C and marketplace e-commerce in HVAC air filtration. Own the company-wide data platform, the advertising decision systems on it, and the AI tooling layer above both.</p>
+                <ul class="exp-achievements">
+                    <li>Own two warehouse platforms: a nine-schema Redshift warehouse (36-table star schema, isolated PII chains) fed by <strong>16 source systems</strong>, and a <strong>99-table Athena/Iceberg lakehouse</strong> ingested event-driven via S3&rarr;EventBridge&rarr;Lambda&rarr;MERGE</li>
+                    <li>Built the Amazon advertising decision platform end to end &mdash; 34 scheduled pipelines across 17 report types feeding a production bid engine (19,000+ lines of Python, 62 test suites) that writes bids through the Ads API behind a circuit breaker</li>
+                    <li>Designed the outer optimization loop: per-campaign Hill saturation curves fitted with bootstrap uncertainty, solved as a <strong>convex program in cvxpy</strong> under expected, risk-averse and chance-constrained modes to set profit-maximizing ACoS targets across ~300 campaigns per round</li>
+                    <li>Architected a <strong>61-skill agent-safety library</strong> across three ad platforms giving LLM agents one mutation contract &mdash; dry-run default, idempotency keys, risk gating, blast-radius estimation, approval and redacted audit (59 test suites)</li>
+                    <li>Led migration off an end-of-life ETL platform (<strong>253 jobs</strong>) onto serverless AWS orchestration; re-platformed a 13-hour job with recurring timeout failures onto Step Functions</li>
+                    <li>Built a <strong>Bayesian marketing mix model</strong> on Google Meridian over a purpose-built Iceberg lakehouse, trained on ECS Fargate, with six diagnostic guards and production alerting on fit quality and data freshness</li>
+                    <li>Established warehouse governance: a 36-table data dictionary with validated field definitions, a 16-source lineage register, and a 99-page agent-readable data-lake catalog</li>
+                    <li>Diagnosed a <strong>43.8% marketing-attribution gap</strong> (66,850 of 152,575 orders) and root-caused it to four checkout mechanisms, separating expected-by-design from fixable loss; drove the gap from ~53% to ~37%</li>
+                    <li>Built a predictive 24-month LTV model (RFM + XGBoost) wired to a server-side pixel for media optimization &mdash; <strong>12% uplift in repeat purchase orders</strong></li>
+                    <li>Led the GA4 migration with client- and server-side GTM, uncovering <strong>30%+ conversion undercounting</strong> from ITP and ad blockers; implemented causal-impact frameworks using geo-holdouts and matched-market experiments</li>
+                    <li><strong>Cut reporting latency from 24 hours to under 1 hour</strong> via real-time pipelines, and <strong>reduced warehouse query costs 40%</strong> through partitioning, clustering and schema redesign</li>
+                </ul>
+            </article>
+
+            <!-- IPG Mediabrands -->
+            <article class="experience-entry">
+                <div class="exp-header">
+                    <h3>Head of Data LATAM</h3>
+                    <div class="company-line">IPG Mediabrands &mdash; S&atilde;o Paulo, Brazil</div>
+                    <div class="date-line">Jan 2022 &mdash; Dec 2023</div>
+                </div>
+                <ul class="exp-achievements">
+                    <li>Led first-party data unification across Latin America, integrating CRM and offline sales into the Google advertising ecosystem; implemented server-side measurement across multiple LATAM markets</li>
+                    <li>Delivered Nestl&eacute;'s &ldquo;Speedboat&rdquo; programme &mdash; technical integration of CRM, cloud and digital advertising platforms; partnered with enterprise stakeholders to turn infrastructure needs into investment cases</li>
+                </ul>
+            </article>
+
+            <!-- MINT -->
+            <article class="experience-entry">
+                <div class="exp-header">
+                    <h3>Data Manager / Tech Lead</h3>
+                    <div class="company-line">MINT &mdash; S&atilde;o Paulo, Brazil</div>
+                    <div class="date-line">Jan 2020 &mdash; Dec 2021</div>
+                </div>
+                <ul class="exp-achievements">
+                    <li>Built <strong>AIRE</strong>, a next-best-investment engine using Markowitz-style portfolio optimization to allocate media budget across channels and DSPs &mdash; <strong>increased ROI by 25%+</strong></li>
+                    <li>Developed <strong>Megalista</strong>, privacy-safe ML-driven audience generation, plus attribution models measuring channel effectiveness and incremental value</li>
+                </ul>
+            </article>
+
+            <!-- WMcCann -->
+            <article class="experience-entry">
+                <div class="exp-header">
+                    <h3>Data Analytics Manager</h3>
+                    <div class="company-line">WMcCann (McCann Worldgroup) &mdash; S&atilde;o Paulo, Brazil</div>
+                    <div class="date-line">Jan 2019 &mdash; Dec 2019</div>
+                </div>
+                <ul class="exp-achievements">
+                    <li>Led a marketing mix modelling study for General Motors (<strong>$100M+ annual spend</strong>) defining optimal annual budget allocation, with automated measurement pipelines in SQL and BigQuery</li>
+                </ul>
+            </article>
+
+            <!-- Rede Globo -->
+            <article class="experience-entry">
+                <div class="exp-header">
+                    <h3>Data Scientist</h3>
+                    <div class="company-line">Rede Globo &mdash; Rio de Janeiro, Brazil</div>
+                    <div class="date-line">Jan 2018 &mdash; Dec 2018</div>
+                </div>
+                <ul class="exp-achievements">
+                    <li>Automated reporting for Gshow, Latin America's largest entertainment portal &mdash; <strong>reduced manual reporting time by 80%</strong>; built a churn optimization algorithm for content engagement</li>
+                </ul>
+            </article>
+
+            <!-- Bridge Consulting -->
+            <article class="experience-entry">
+                <div class="exp-header">
+                    <h3>Data Science Consultant</h3>
+                    <div class="company-line">Bridge Consulting &mdash; Rio de Janeiro, Brazil</div>
+                    <div class="date-line">Jan 2017 &mdash; Dec 2017</div>
+                </div>
+                <ul class="exp-achievements">
+                    <li>Built target-stock calculation and expense outlier-detection algorithms for retail clients, with custom dashboards and automated reporting</li>
+                </ul>
+            </article>
+
+        </section>
+
+        <!-- TECHNICAL SKILLS -->
+        <section class="section">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-row">
+                    <div class="skill-category">Data Engineering</div>
+                    <div class="skill-items">Dimensional modelling &amp; warehouse design, Redshift, BigQuery, Athena, Apache Iceberg, Glue, Matillion, Fivetran, Airflow, dbt, event-driven pipelines (Pub/Sub, EventBridge, SNS), Step Functions, data governance (dictionaries, lineage, contracts, quality assertions)</div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-category">AI &amp; LLM Engineering</div>
+                    <div class="skill-items">Agent tool/skill layer design (dry-run, idempotency, risk gating, approval, audit, rollback), production LLM agents &amp; tool-calling orchestration, Model Context Protocol (MCP), text-to-SQL over warehouses, prompt-injection hardening, multi-LLM routing (Anthropic, OpenAI, Bedrock, Vertex AI), RAG &amp; vector search (FAISS)</div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-category">Analytics &amp; Experimentation</div>
+                    <div class="skill-items">Marketing Mix Modelling (Google Meridian, Meta Robyn, Bayesian MCMC), convex &amp; portfolio optimization (cvxpy, SciPy), Empirical Bayes smoothing, attribution (Markov chain, multi-touch), predictive LTV (XGBoost, SHAP), A/B testing, causal impact (geo-holdouts, matched markets), forecasting (Prophet, ARIMA), RFM segmentation, churn prediction</div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-category">Cloud &amp; Infrastructure</div>
+                    <div class="skill-items">GCP (BigQuery, Cloud Run, Cloud Functions, Pub/Sub, Firestore, Vertex AI, Secret Manager), AWS (Redshift, Athena, Lambda, S3, Step Functions, EventBridge, DynamoDB, ECS Fargate, Bedrock), Terraform, Docker, Kubernetes, GitHub Actions CI/CD with Workload Identity Federation &amp; OIDC, OIDC/SSO &amp; JWT auth</div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-category">BI &amp; Visualization</div>
+                    <div class="skill-items">Amazon QuickSight, Looker &amp; LookML, Looker Studio, Tableau, Power BI, Streamlit, custom analytics front-ends (React, CloudFront/S3)</div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-category">MarTech &amp; Advertising</div>
+                    <div class="skill-items">Amazon Ads (Reporting API, Marketing Stream, AMC, Ads API), Google Ads &amp; GAQL, Meta, TikTok, Bing, Google Merchant Center, GA4, GTM (client &amp; server-side), DV360, Campaign Manager 360, Vertex AI Search for Retail; Shopify, Klaviyo, Okendo, Recharge, Triple Whale</div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-category">Languages</div>
+                    <div class="skill-items">Python (pandas, PyArrow, SciPy, cvxpy, Prophet, boto3), SQL, TypeScript / Node.js, React, FastAPI, Zod, pytest / Vitest &mdash; Portuguese (native), English (fluent), Spanish (intermediate)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section class="section">
+            <h2 class="section-title">Education</h2>
+            <ul class="education-list">
+                <li>
+                    <div class="edu-degree">MBA in Data Science &amp; Analytics &mdash; <span class="edu-school-inline">USP (Universidade de S&atilde;o Paulo)</span></div>
+                    <div class="edu-year">2020 &ndash; 2021 &middot; Thesis: Machine Learning Applied to Audience Generation in Digital Marketing</div>
+                </li>
+                <li>
+                    <div class="edu-degree">M.Sc. in Industrial Engineering <em>(interrupted)</em> &mdash; <span class="edu-school-inline">COPPE-UFRJ</span></div>
+                    <div class="edu-year">2018 &ndash; 2019 &middot; Research: Non-Linear Programming Methods for Media Mix Modelling</div>
+                </li>
+                <li>
+                    <div class="edu-degree">B.Sc. in Mechanical Engineering &mdash; <span class="edu-school-inline">UFF (Universidade Federal Fluminense)</span></div>
+                    <div class="edu-year">2010 &ndash; 2015</div>
+                </li>
+                <li>
+                    <div class="edu-degree">B.Sc. in Physics &mdash; <span class="edu-school-inline">UFF (Universidade Federal Fluminense)</span></div>
+                    <div class="edu-year">2006 &ndash; 2010</div>
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- FOOTER (screen only) -->
+    <footer class="cv-footer">
+        Full portfolio and interactive CV at <a href="https://rodtex.dev">rodtex.dev</a>
+    </footer>
+
+</div>
+
+</body>
+</html>
